@@ -28,7 +28,7 @@
             <li><a href="#services">Services</a></li>
             <li><a href="#writing">Writing</a></li>
             <li>
-              <a href="#contact" class="btn btn-secondary">Get in touch</a>
+              <a href="#contact" class="btn btn-secondary">Get in touch  →</a>
             </li>
           </ul>
         </nav>
@@ -73,26 +73,27 @@
       </section>
 
       <section class="about">
+        <!-- Refactored: standardized shared section utility classes for consistent typography -->
         <div class="container about-container">
           <div class="about-left">
-            <span class="about-label">01 — Who I am</span>
+            <span class="section-label">01 — Who I am</span>
           </div>
 
           <div class="about-right">
-            <h2 class="about-title">
+            <h2 class="section-title">
               A final-year mathematics and computer-science student from
               Southsss Africa, learning to build software the long way, one
               carefully understood problem at a time.
             </h2>
 
-            <p class="about-text">
+            <p class="section-description">
               I care more about the shape of a problem than the tools I use to
               solve it. My background in mathematics taught me to be patient
               with abstraction; my time writing code has taught me to be
               impatient with anything that hides how a system actually works.
             </p>
 
-            <a href="#" class="about-link"> More about me → </a>
+            <a href="#" class="section-link"> More about me → </a>
           </div>
         </div>
       </section>
@@ -101,11 +102,11 @@
         <div class="container philosophy-container">
           <!-- Left -->
           <div class="philosophy-left">
-            <span class="philosophy-label"> 02 — What I believe </span>
+            <span class="section-label"> 02 — What I believe </span>
 
-            <h2 class="philosophy-title">Principles that guide my work.</h2>
+            <h2 class="section-title">Principles that guide my work.</h2>
 
-            <p class="philosophy-intro">
+            <p class="section-description">
               A short list of convictions I keep coming back to—the ones that
               actually shape how I decide what to build and how to build it.
             </p>
@@ -193,11 +194,11 @@
           <!-- LEFT SIDE -->
 
           <div class="skills-intro">
-            <h3 class="skills-label">03 — What I build</h3>
+            <h3 class="section-label">03 — What I build</h3>
 
-            <h2 class="skills-title">The kinds of software I make.</h2>
+            <h2 class="section-title">The kinds of software I make.</h2>
 
-            <p class="skills-description">
+            <p class="section-description">
               Organised by the shape of the problem, not by the tool. Each area
               is something I actively practice, ship and write about.
             </p>
@@ -324,17 +325,17 @@
           <!-- SECTION INTRO -->
 
           <div class="projects-header">
-            <h3 class="projects-label">04 — Featured projects</h3>
+            <h3 class="section-label">04 — Featured projects</h3>
 
-            <h2 class="projects-title">Stories, not screenshots.</h2>
+            <h2 class="section-title">Stories, not screenshots.</h2>
 
-            <p class="projects-description">
+            <p class="section-description">
               A handful of projects, each one a problem I wanted to understand
               end-to-end. The best way to know me is to see how I think through
               the work.
             </p>
 
-            <a href="#" class="projects-link"> All work → </a>
+            <a href="#" class="section-link"> All work → </a>
           </div>
 
           <!-- PROJECT -->
@@ -421,11 +422,11 @@
         <div class="container education-container">
           <!-- LEFT -->
           <div class="education-intro">
-            <p class="education-label">05 — Education & Continuous Learning</p>
+            <p class="section-label">05 — Education & Continuous Learning</p>
 
-            <h2 class="education-heading">Still a student — on purpose.</h2>
+            <h2 class="section-title">Still a student — on purpose.</h2>
 
-            <p class="education-text">
+            <p class="section-description">
               A career is a long compounding curve. Here's what I've been
               growing through, what I'm learning now, and the certifications
               I've earned along the way.
@@ -555,118 +556,96 @@
         </div>
       </section>
 
-     <section class="services">
+      <section class="services">
+        <div class="container services-container">
+          <!-- LEFT -->
 
-    <div class="container services-container">
+          <div class="services-intro">
+            <h3 class="section-label">06 — Services</h3>
 
-        <!-- LEFT -->
+            <h2 class="section-title">Yes — you can hire me.</h2>
 
-        <div class="services-intro">
-
-            <h3 class="services-label">
-                06 — Services
-            </h3>
-
-            <h2 class="services-title">
-                Yes — you can hire me.
-            </h2>
-
-            <p class="services-description">
-                I take on a small number of projects at a time. If your problem
-                needs careful thinking rather than a template, we'll get along.
+            <p class="section-description">
+              I take on a small number of projects at a time. If your problem
+              needs careful thinking rather than a template, we'll get along.
             </p>
 
-            <a href="#" class="services-link">
-                Full services →
-            </a>
+            <a href="#" class="section-link"> Full services → </a>
+          </div>
 
-        </div>
+          <!-- RIGHT -->
 
-        <!-- RIGHT -->
-
-        <div class="services-content">
-
+          <div class="services-content">
             <div class="services-grid">
+              <article class="services-card">
+                <h4>Software Development</h4>
+                <p>
+                  Custom applications built end-to-end, from schema to
+                  interface.
+                </p>
+              </article>
 
-                <article class="services-card">
-                    <h4>Software Development</h4>
-                    <p>
-                        Custom applications built end-to-end, from schema to
-                        interface.
-                    </p>
-                </article>
+              <article class="services-card">
+                <h4>Backend Development</h4>
+                <p>APIs, databases, authentication and scalable services.</p>
+              </article>
 
-                <article class="services-card">
-                    <h4>Backend Development</h4>
-                    <p>
-                        APIs, databases, authentication and scalable services.
-                    </p>
-                </article>
+              <article class="services-card">
+                <h4>AI Solutions</h4>
+                <p>
+                  Intelligent automation, LLM features and AI-powered software.
+                </p>
+              </article>
 
-                <article class="services-card">
-                    <h4>AI Solutions</h4>
-                    <p>
-                        Intelligent automation, LLM features and AI-powered
-                        software.
-                    </p>
-                </article>
+              <article class="services-card">
+                <h4>Website Development</h4>
+                <p>Fast, responsive websites and modern web applications.</p>
+              </article>
 
-                <article class="services-card">
-                    <h4>Website Development</h4>
-                    <p>
-                        Fast, responsive websites and modern web applications.
-                    </p>
-                </article>
+              <article class="services-card">
+                <h4>Technical Consulting</h4>
+                <p>
+                  Helping businesses choose the right architecture and
+                  technologies.
+                </p>
+              </article>
 
-                <article class="services-card">
-                    <h4>Technical Consulting</h4>
-                    <p>
-                        Helping businesses choose the right architecture and
-                        technologies.
-                    </p>
-                </article>
-
-                <article class="services-card">
-                    <h4>Automation & Tooling</h4>
-                    <p>
-                        Internal tools and automation that remove repetitive
-                        work.
-                    </p>
-                </article>
-
+              <article class="services-card">
+                <h4>Automation & Tooling</h4>
+                <p>
+                  Internal tools and automation that remove repetitive work.
+                </p>
+              </article>
             </div>
 
             <div class="services-availability">
-
-                <h5>Available for</h5>
-                <div class="services-tags">
-                    <span>Freelance</span>
-                    <span>Internships</span>
-                    <span>Graduate Roles</span>
-                    <span>Collaborations</span>
-                </div>
-
+              <h5>Available for</h5>
+              <div class="services-tags">
+                <span>Freelance</span>
+                <span>Internships</span>
+                <span>Graduate Roles</span>
+                <span>Collaborations</span>
+              </div>
             </div>
-
+          </div>
         </div>
-    </div>
-</section>
+      </section>
 
       <section class="writing">
         <div class="container">
           <div class="writing-header">
             <div>
-              <p class="writing-label">07 — Writing</p>
+              <p class="section-label">07 — Writing</p>
 
-              <h2 class="writing-heading">Notes from the workshop.</h2>
+              <h2 class="section-title">Notes from the workshop.</h2>
 
-              <p class="writing-text">
+              <p class="section-description">
                 Grouped by topic — engineering, AI, and the slow work of
                 building a career. One or two new pieces most months.
               </p>
             </div>
 
-            <a href="#" class="writing-link"> Explore more → </a>
+            <a href="#" class="section-link"> Explore more → </a>
           </div>
 
           <div class="writing-grid">
@@ -724,11 +703,11 @@
           <!-- LEFT -->
 
           <div class="testimonials-intro">
-            <h3 class="testimonials-label">08 — Testimonials</h3>
+            <h3 class="section-label">08 — Testimonials</h3>
 
-            <h2 class="testimonials-title">What people I've built with say.</h2>
+            <h2 class="section-title">What people I've built with say.</h2>
 
-            <p class="testimonials-description">
+            <p class="section-description">
               A few honest words from lecturers, hackathon teammates and
               collaborators. Kept exactly as they were written.
             </p>
@@ -796,11 +775,11 @@
 
       <section class="contact">
         <div class="container contact-container">
-          <p class="contact-label">09 — Contact</p>
+          <p class="section-label">09 — Contact</p>
 
-          <h2 class="contact-title">Have a problem worth solving?</h2>
+          <h2 class="section-title">Have a problem worth solving?</h2>
 
-          <p class="contact-text">
+          <p class="section-description">
             I read every message. Tell me what you're working on and what you'd
             like it to become.
           </p>

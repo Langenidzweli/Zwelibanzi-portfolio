@@ -2,19 +2,145 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=
-    , initial-scale=1.0"
-    />
-    <title>project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Contact</title>
+
     <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/about-page.css" />
+    <link rel="stylesheet" href="../css/project-page.css" />
   </head>
+
   <body>
     <div id="navbar"></div>
 
+    <section class="project-page">
+      <div class="container">
+        <!-- PAGE HEADER -->
+        <header class="project-header">
+          <span class="project-label"> Work · 2024 — 2026 </span>
+
+          <h1 class="section-title page-title">
+            Things I've built to answer a question.
+          </h1>
+
+          <p>
+            Personal projects, client work and experiments. Each one started
+            with something I wanted to understand more deeply.
+          </p>
+        </header>
+
+        <article class="project">
+          <!-- Project media -->
+
+          <div class="project-image">
+            <img src="../images/Who-I-Am.png" alt="Ledger" />
+
+            <div class="project-overlay">
+              <span class="project-year"> Project 01 · 2026 </span>
+
+              <h3 class="project-name">Ledger</h3>
+            </div>
+          </div>
+
+          <!-- Project details -->
+
+          <div class="project-content">
+            <h2 class="project-title">Ledger — A Personal Accounting Engine</h2>
+
+            <hr />
+
+            <div class="project-section">
+              <h4>Problem</h4>
+
+              <p>
+                Small operators keep books in spreadsheets that quietly go
+                wrong...
+              </p>
+            </div>
+
+            <div class="project-section">
+              <h4>Solution</h4>
+
+              <p>A double-entry bookkeeping API with...</p>
+            </div>
+
+            <div class="project-tags">
+              <div>
+                <h4>Tech Stack</h4>
+
+                <ul>
+                  <li>Java</li>
+                  <li>Spring Boot</li>
+                  <li>PostgreSQL</li>
+                  <li>Docker</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4>Challenges</h4>
+
+                <ul>
+                  <li>Idempotency</li>
+                  <li>Schema Design</li>
+                  <li>Reporting Queries</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="project-section">
+              <h4>Lessons Learned</h4>
+
+              <p>Writing an accounting engine forced me to...</p>
+            </div>
+
+            <div class="project-links">
+              <a
+                href="http://www.linkedin.com/in/dobie-zweli-langeni-134bb52a6"
+              >
+                <span class="project-icon">
+                  <img src="../images/icons/github.svg" alt="GitHub" />
+                </span>
+                GitHub
+              </a>
+
+              <a
+                href="http://www.linkedin.com/in/dobie-zweli-langeni-134bb52a6"
+              >
+                <span class="project-icon">
+                  <img
+                    src="../images/icons/external-link.svg"
+                    alt="External link"
+                  />
+                </span>
+                Live Demo
+              </a>
+
+              <a
+                href="http://www.linkedin.com/in/dobie-zweli-langeni-134bb52a6"
+              >
+                <span class="project-icon">
+                  <img
+                    src="../images/icons/file-text.svg"
+                    alt="Case study document"
+                  />
+                </span>
+                Read Case Study
+              </a>
+            </div>
+          </div>
+        </article>
+        <div class="projects-footer">
+          <p>
+            More case studies are on the way. If you'd like the story behind any
+            of these—the shape of the problem, the trade-offs—just
+            <a href="./contact-page.html" class="section-link">ask.</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
     <div id="footer"></div>
+
     <script src="../components/components.js"></script>
     <script src="../js/script.js"></script>
   </body>

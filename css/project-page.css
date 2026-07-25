@@ -1,5 +1,5 @@
 .project-page{
-    padding:12rem 0 8rem;
+    padding:clamp(5rem, 8vw, 8rem) 0 8rem;
 }
 
 .project-header{
@@ -19,10 +19,10 @@
 }
 
 .page-title{
-    font-size:clamp(4.8rem,8vw,7rem);
-    line-height:.92;
+    font-size:clamp(2.45rem, 4.6vw, 4.2rem);
+    line-height:.96;
     letter-spacing:-.05em;
-    margin-bottom:2rem;
+    margin-bottom:1.6rem;
 }
 
 .project-header p{
@@ -31,6 +31,43 @@
     font-size:1.15rem;
     line-height:2;
     color:var(--text-light);
+}
+
+@media (max-width: 1024px) {
+    .project-page {
+        padding: 8rem 0 6rem;
+    }
+
+    .project-header {
+        margin-bottom: 4rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-title {
+        font-size: clamp(2.35rem, 7vw, 3.25rem);
+        line-height: 1.02;
+        margin-bottom: 1.3rem;
+    }
+
+    .project-header p {
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+}
+
+@media (max-width: 480px) {
+    .project-page {
+        padding: 6rem 0 4.5rem;
+    }
+
+    .project-header {
+        margin-bottom: 3rem;
+    }
+
+    .page-title {
+        font-size: clamp(1.9rem, 8vw, 2.45rem);
+    }
 }
 
 /*=========================================

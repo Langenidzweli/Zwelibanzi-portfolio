@@ -3,7 +3,7 @@
 =========================================*/
 
 .about-page{
-    padding:var(--section-spacing-xl) 0;
+    padding:clamp(4.5rem, 7vw, 8rem) 0;
 }
 
 
@@ -18,9 +18,9 @@
 .about-title{
     max-width:920px;
     margin-top:var(--space-2);
-    margin-bottom:var(--section-spacing-lg);
-    font-size:clamp(3.6rem, 6vw, 5.8rem);
-    line-height:1.05;
+    margin-bottom:clamp(2.6rem, 5vw, 4.5rem);
+    font-size:clamp(2.7rem, 4.8vw, 4.4rem);
+    line-height:1.04;
     letter-spacing:-.04em;
     color:var(--heading-color);
 }
@@ -285,7 +285,7 @@
     }
 
     .about-title{
-        margin-bottom:4rem;
+        margin-bottom:3rem;
     }
 
     .about-story{
@@ -306,8 +306,8 @@
     }
 
     .about-title{
-        font-size:clamp(3rem,12vw,4.5rem);
-        margin-bottom:3rem;
+        font-size:clamp(2.3rem, 8vw, 3.2rem);
+        margin-bottom:2.4rem;
     }
 
     .detail-row{

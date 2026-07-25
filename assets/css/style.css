@@ -38,7 +38,6 @@ main {
     flex: 1 0 auto;
     width: 100%;
     min-width: 0;
-    /* Reserve space for the fixed header so content never sits underneath it. */
     margin-top: var(--header-h);
 }
 
@@ -69,10 +68,10 @@ img {
 
     --bg: #111111;
     --text: #F8F8F8;
-    --text-light: #B5B5B5;
-    --text-muted: #7A7A7A;
+    --text-light: #D1D5DB;
+    --text-muted: #A1A1AA;
     --heading-color: #f5f0f2;
-    --label-color: #676163;
+    --label-color: #A3A3A3;
     --border-soft: #ffffff20;
     --border-subtle: var(--border-soft);
 
@@ -89,11 +88,9 @@ img {
 
     --header-h: 6rem;
 
-    /* Shared responsive tokens keep vertical rhythm consistent across sections. */
     --section-padding-tablet: 5rem;
     --section-padding-mobile: 3.5rem;
 
-    /* Shared spacing and typography tokens simplify future maintenance. */
     --section-spacing-xl: 10rem;
     --section-spacing-lg: 8rem;
     --transition-base: .3s ease;
@@ -117,7 +114,26 @@ img {
     --font-size-label-mobile: .68rem;
     --link-underline-color: #ffffff30;
 }
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg: #ffffff;
+        --surface: #f8f8f8;
+        --surface-elevated: #ffffff;
 
+        --text: #111111;
+        --text-light: #444444;
+        --text-muted: #666666;
+
+        --heading-color: #111111;
+        --label-color: #555555;
+
+        --border-soft: rgba(0,0,0,.1);
+        --border: #dddddd;
+        --border-strong: #bbbbbb;
+
+        --link-underline-color: rgba(0,0,0,.2);
+    }
+}
 /*=========================================
             UTILITIES
 =========================================*/
@@ -173,7 +189,6 @@ img {
     line-height: 1.9;
 }
 
-/* Shared component patterns keep repeated UI treatments consistent. */
 .card,
 :where(.skill-card, .services-card, .testimonial-card, .certificate) {
     border-color: var(--border-subtle);
@@ -231,7 +246,7 @@ img {
     align-items: flex-start;
 }
 
-/* Reduce the base type scale on smaller screens so rem-based sizing stays proportional. */
+/* Base type scale steps down on smaller screens so rem-based sizing stays proportional */
 
 @media (max-width: 1024px) {
     html {
@@ -339,14 +354,11 @@ img {
     width: auto;
 }
 
-/* Section dividers sit on the section itself so they span the full width of the page. */
-
 /*=========================================
             NAVIGATION
 =========================================*/
 
 .site-header {
-   /* Fixed header. main reserves its height using var(--header-h). */
     position: fixed;
     top: 0;
     left: 0;
@@ -402,6 +414,8 @@ img {
     border: none;
     border-radius: 0;
     padding: 0;
+    width: auto;
+    justify-content: flex-start;
     color: #f5f0f2;
 }
 
@@ -411,9 +425,9 @@ img {
     color: var(--accent);
 }
 
-/* The menu toggle is hidden on larger screens and revealed where space becomes limited. */
-
 .hamburger {
+    position: relative;
+    z-index: 96;
     display: none;
     flex-direction: column;
     justify-content: center;
@@ -438,7 +452,7 @@ img {
     transition: transform .3s ease, opacity .3s ease;
 }
 
-/* Convert the toggle into an X when the mobile menu is open. */
+/* Toggle animates into an X when the mobile menu is open */
 .hamburger[aria-expanded="true"] .hamburger-bar:nth-child(1) {
     transform: translateY(7px) rotate(45deg);
 }
@@ -451,7 +465,6 @@ img {
     transform: translateY(-7px) rotate(-45deg);
 }
 
-/* Dim the page beneath the mobile menu while it is open. */
 .nav-overlay {
     position: fixed;
     inset: 0;
@@ -467,12 +480,9 @@ img {
     pointer-events: auto;
 }
 
-/* Prevent background scrolling while the mobile navigation is open. */
 body.nav-open {
     overflow: hidden;
 }
-
-/* Navigation — responsive */
 
 @media (max-width: 1024px) {
     .hamburger {
@@ -531,6 +541,30 @@ body.nav-open {
     .nav-links {
         width: min(280px, 82vw);
         padding: 5.5rem 1.5rem 2rem;
+    }
+}
+
+@media (max-width: 380px) {
+    .navbar {
+        padding: 1.25rem 0;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .hamburger {
+        width: 40px;
+        height: 40px;
+    }
+
+    .nav-links {
+        width: min(260px, 86vw);
+        padding: 5rem 1.25rem 1.5rem;
+    }
+
+    .nav-links a {
+        font-size: .95rem;
     }
 }
 
@@ -599,11 +633,23 @@ body.nav-open {
 }
 
 .hero-btns .btn-secondary {
+    position: relative;
     background: transparent;
     border: none;
     border-radius: 0;
     padding: 0;
     color: var(--text-light);
+}
+
+.hero-btns .btn-secondary::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 1px;
+    background: var(--link-underline-color);
+    transition: background-color var(--transition-base);
 }
 
 .hero-btns .btn-secondary:hover {
@@ -612,9 +658,9 @@ body.nav-open {
     color: var(--accent);
 }
 
-/* (Intentionally left blank — hero-specific overrides removed.) */
-
-/* Keep button sizing proportional on smaller screens. */
+.hero-btns .btn-secondary:hover::after {
+    background: var(--accent);
+}
 
 @media (max-width: 1024px) {
     .btn {
@@ -625,10 +671,17 @@ body.nav-open {
 
 @media (max-width: 640px) {
     .btn {
-        width: 100%;
-        max-width: 320px;
-        padding: .75rem 1.5rem;
-        font-size: .88rem;
+        width: auto;
+        max-width: 100%;
+        padding: .7rem 1.35rem;
+        font-size: .85rem;
+    }
+}
+
+@media (max-width: 380px) {
+    .btn {
+        padding: .65rem 1.15rem;
+        font-size: .82rem;
     }
 }
 
@@ -637,8 +690,6 @@ body.nav-open {
 =========================================*/
 
 .hero {
-    /* height = full viewport MINUS the header above it, so header + hero
-       together equal exactly one screen. */
     height: calc(100vh - var(--header-h));
     height: calc(100dvh - var(--header-h));
     max-height: calc(100vh - var(--header-h));
@@ -652,7 +703,6 @@ body.nav-open {
 }
 
 .hero-container {
-    /* Flex fallback for older browsers. */
     display: flex;
     flex-wrap: wrap;
 
@@ -660,7 +710,6 @@ body.nav-open {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 4rem;
     align-items: center;
- /* Width is inherited from .container to keep all sections aligned. */
     height: 100%;
     max-height: 100%;
 }
@@ -677,7 +726,6 @@ body.nav-open {
 
 .hero-title {
     font-family: var(--heading-font);
-    /* Smaller vh cap leaves real room for paragraph, buttons and image. */
     font-size: min(clamp(2.6rem, 4vw, 4.4rem), 7vh);
     font-weight: 700;
     line-height: 1.05;
@@ -740,15 +788,13 @@ body.nav-open {
     object-fit: contain;
 }
 
-/* Stack the hero content vertically when space becomes limited. */
-
 @media (max-width: 640px) {
     .hero {
         height: auto;
         max-height: none;
         min-height: 100vh;
         min-height: 100dvh;
-        padding: 4rem 0;
+        padding: 3.5rem 0;
         overflow: visible;
     }
 
@@ -760,7 +806,7 @@ body.nav-open {
 
     .hero-container {
         grid-template-columns: 1fr;
-        gap: 3rem;
+        gap: 2.25rem;
     }
 
     .hero-content {
@@ -768,6 +814,7 @@ body.nav-open {
         align-items: flex-start;
         flex-basis: auto;
         width: 100%;
+        gap: .85rem;
     }
 
     .hero-image {
@@ -776,19 +823,19 @@ body.nav-open {
         flex-basis: auto;
         min-width: 0;
         width: 100%;
-        padding: 1rem;
+        padding: .75rem;
     }
 
     .hero-title {
         width: 100%;
-        font-size: 1.9rem;
+        font-size: 1.75rem;
         line-height: 1.18;
     }
 
     .hero-content p {
         max-width: 100%;
-        font-size: .88rem;
-        line-height: 1.65;
+        font-size: .85rem;
+        line-height: 1.6;
     }
 
     .hero-image img {
@@ -800,15 +847,30 @@ body.nav-open {
 
     .hero-btns {
         flex-direction: column;
-        align-items: stretch;
-        gap: .75rem;
+        align-items: flex-start;
+        gap: .65rem;
         width: 100%;
+        margin-top: .5rem;
     }
 
     .hero-btns .btn {
-        padding: .7rem 1.25rem;
-        font-size: .82rem;
+        padding: .68rem 1.2rem;
+        font-size: .8rem;
         max-width: 100%;
+    }
+}
+
+@media (max-width: 380px) {
+    .hero {
+        padding: 3rem 0;
+    }
+
+    .hero-title {
+        font-size: 1.55rem;
+    }
+
+    .hero-content p {
+        font-size: .82rem;
     }
 }
 
@@ -932,7 +994,16 @@ body.nav-open {
     margin-bottom: 2.5rem;
 }
 
-/* Collapse the about layout into a single column on smaller screens. */
+.about .section-link {
+    font-weight: 600;
+    color: var(--accent-hover);
+    transition: color var(--transition-base), transform var(--transition-base);
+}
+
+.about .section-link:hover {
+    color: var(--accent);
+    transform: translateX(3px);
+}
 
 @media (max-width: 1024px) {
     .about {
@@ -974,7 +1045,6 @@ body.nav-open {
 }
 
 .philosophy-right {
-   /* Shared alignment values for the belief layout. */
     --belief-number-w: 2.8rem;
     --belief-gap: 2rem;
 
@@ -1015,8 +1085,6 @@ body.nav-open {
     max-width: 700px;
 }
 
-/* Reduce spacing and sizing in the philosophy section on smaller screens. */
-
 @media (max-width: 1024px) {
     .philosophy {
         padding: var(--section-padding-tablet) 0;
@@ -1034,21 +1102,21 @@ body.nav-open {
     }
 
     .philosophy-right {
-        --belief-number-w: 1.75rem;
-        --belief-gap: 1rem;
+        --belief-number-w: 1.6rem;
+        --belief-gap: .85rem;
     }
 
     .belief {
-        padding: 1.5rem 0;
+        padding: 1.35rem 0;
     }
 
     .belief h3 {
-        font-size: 1.1rem;
+        font-size: 1.02rem;
     }
 
     .belief p {
-        font-size: .9rem;
-        line-height: 1.75;
+        font-size: .85rem;
+        line-height: 1.7;
     }
 }
 
@@ -1126,8 +1194,6 @@ body.nav-open {
     border-color: #ffffff14;
 }
 
-/* Stack skill cards into a single column where horizontal space is limited. */
-
 @media (max-width: 1024px) {
     .skills {
         padding: var(--section-padding-tablet) 0;
@@ -1141,6 +1207,10 @@ body.nav-open {
     .skills .section-description {
         max-width: 100%;
     }
+
+    .skill-card {
+        padding: 2rem;
+    }
 }
 
 @media (max-width: 640px) {
@@ -1153,7 +1223,7 @@ body.nav-open {
     }
 
     .skill-card {
-        padding: 1.75rem 0;
+        padding: 1.5rem 0;
         border-left: none;
     }
 
@@ -1166,25 +1236,29 @@ body.nav-open {
     }
 
     .skill-icon {
-        width: 36px;
-        height: 36px;
-        margin-bottom: 1rem;
+        width: 30px;
+        height: 30px;
+        margin-bottom: .85rem;
     }
 
     .skill-card h4 {
-        font-size: 1.15rem;
-        margin-bottom: .75rem;
+        font-size: 1.05rem;
+        margin-bottom: .6rem;
     }
 
     .skill-card p {
-        font-size: .9rem;
-        line-height: 1.7;
-        margin-bottom: 1.5rem;
+        font-size: .85rem;
+        line-height: 1.65;
+        margin-bottom: 1.1rem;
+    }
+
+    .tech-stack {
+        gap: .5rem;
     }
 
     .tech-stack li {
-        font-size: .65rem;
-        padding: .4rem .85rem;
+        font-size: .6rem;
+        padding: .32rem .7rem;
     }
 }
 
@@ -1224,13 +1298,7 @@ body.nav-open {
     flex-shrink: 0;
     margin-left: auto;
     align-self: flex-end;
-    position: static;
     margin-bottom: .2rem;
-}
-
-/* Hide the global underline for the "All work →" link in projects header */
-.projects-header .section-link::after {
-    display: none;
 }
 
 .projects .section-description {
@@ -1311,7 +1379,7 @@ body.nav-open {
 .project-tags {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
     margin: 2.5rem 0;
 }
 
@@ -1391,22 +1459,11 @@ body.nav-open {
     color: #111;
 }
 
-@media (max-width: 640px) {
-    .project-links a {
-        min-width: 7rem;
-        min-height: 2.2rem;
-        padding: .5rem 1rem;
+@media (max-width: 1024px) {
+    .project-tags li {
+        font-size: .78rem;
+        padding: .45rem .9rem;
     }
-
-    .project-links a .project-icon {
-        width: 16px;
-        height: 16px;
-        margin-right: .45rem;
-    }
-}
-
-.project-tags {
-    gap: 1.5rem;
 }
 
 @media (max-width: 640px) {
@@ -1435,42 +1492,76 @@ body.nav-open {
     }
 
     .project-title {
-        font-size: 1.35rem;
-        margin-bottom: 1.25rem;
+        font-size: 1.3rem;
+        margin-bottom: 1.1rem;
     }
 
     .project-name {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
 
     .project-year {
-        font-size: .65rem;
+        font-size: .62rem;
     }
 
-    .project-section p,
-    .project-tags li {
-        font-size: .88rem;
+    .project-section {
+        margin-bottom: 1.5rem;
+    }
+
+    .project-section p {
+        font-size: .85rem;
+        line-height: 1.7;
     }
 
     .project {
         grid-template-columns: 1fr;
-        gap: 2.5rem;
-        padding: 4rem 0;
+        gap: 2.25rem;
+        padding: 3.5rem 0;
     }
 
     .project-tags {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
-        margin: 1.75rem 0;
+        gap: 1.1rem;
+        margin: 1.5rem 0;
+    }
+
+    .project-tags li {
+        font-size: .68rem;
+        padding: .35rem .75rem;
+    }
+
+    .project-tags ul {
+        gap: .5rem;
+        margin-top: .6rem;
     }
 
     .project-links {
-        margin-top: 2rem;
+        margin-top: 1.75rem;
+        gap: .6rem;
     }
 
     .project-links a {
-        padding: .65rem 1.25rem;
-        font-size: .88rem;
+        min-width: 0;
+        min-height: 2rem;
+        padding: .45rem .9rem;
+        font-size: .78rem;
+    }
+
+    .project-links a .project-icon {
+        width: 14px;
+        height: 14px;
+        margin-right: .4rem;
+    }
+}
+
+@media (max-width: 380px) {
+    .project-title {
+        font-size: 1.15rem;
+    }
+
+    .project-links a {
+        padding: .4rem .75rem;
+        font-size: .72rem;
     }
 }
 
@@ -1499,9 +1590,7 @@ body.nav-open {
     flex-direction: column;
 }
 
-
 .timeline-item {
-   /* Shared left spacing for the timeline layout. */
     --tl-pad: 2.2rem;
 
     position: relative;
@@ -1539,7 +1628,6 @@ body.nav-open {
 .timeline-dot {
     position: absolute;
     top: 50%;
-    /* Center the marker on the timeline line. */
     left: calc(.3rem - var(--tl-pad) - 1px);
     width: 8px;
     height: 8px;
@@ -1559,7 +1647,6 @@ body.nav-open {
     color: var(--text-light);
     line-height: 1.9;
 }
-
 
 .learning-section {
     padding: 3rem 0;
@@ -1586,7 +1673,6 @@ body.nav-open {
     padding: .5rem 1rem;
     font-size: .78rem;
 }
-
 
 .certifications {
     padding-top: 3rem;
@@ -1625,8 +1711,6 @@ body.nav-open {
     line-height: 1.6;
 }
 
-/* Keep the education timeline readable when the layout becomes narrow. */
-
 @media (max-width: 1024px) {
     .education {
         padding: var(--section-padding-tablet) 0;
@@ -1652,22 +1736,53 @@ body.nav-open {
     }
 
     .timeline-item {
-        --tl-pad: 1.6rem;
-        padding: 1.4rem 0 1.4rem var(--tl-pad);
+        --tl-pad: 1.4rem;
+        padding: 1.2rem 0 1.2rem var(--tl-pad);
     }
 
     .timeline-item h3 {
-        font-size: 1.1rem;
-        margin-bottom: .6rem;
+        font-size: 1rem;
+        margin-bottom: .5rem;
     }
 
     .timeline-item p:last-child {
-        font-size: .9rem;
-        line-height: 1.75;
+        font-size: .85rem;
+        line-height: 1.65;
     }
 
     .timeline-year {
-        margin-bottom: .6rem;
+        margin-bottom: .5rem;
+    }
+
+    .timeline-year p {
+        font-size: .68rem;
+    }
+
+    .learning-section {
+        padding: 2rem 0;
+    }
+
+    .learning-title {
+        font-size: .68rem;
+        margin-bottom: 1rem;
+    }
+
+    .learning-tags {
+        gap: .6rem;
+    }
+
+    .learning-tags span {
+        font-size: .68rem;
+        padding: .38rem .75rem;
+    }
+
+    .certifications {
+        padding-top: 2rem;
+    }
+
+    .cert-title {
+        font-size: .68rem;
+        margin-bottom: 1.25rem;
     }
 
     .cert-grid {
@@ -1677,7 +1792,16 @@ body.nav-open {
 
     .certificate {
         grid-template-columns: 1fr;
-        gap: .4rem;
+        gap: .35rem;
+        padding: 1rem 0;
+    }
+
+    .certificate h4 {
+        font-size: .92rem;
+    }
+
+    .certificate p {
+        font-size: .8rem;
     }
 }
 
@@ -1770,8 +1894,6 @@ body.nav-open {
     color: var(--text);
 }
 
-/* Stack service cards into a single column on smaller screens. */
-
 @media (max-width: 1024px) {
     .services {
         padding: var(--section-padding-tablet) 0;
@@ -1780,6 +1902,11 @@ body.nav-open {
     .services-container {
         grid-template-columns: 1fr;
         gap: 2.5rem;
+    }
+
+    .services-card {
+        padding: 2rem;
+        min-height: 0;
     }
 }
 
@@ -1793,7 +1920,7 @@ body.nav-open {
     }
 
     .services-card {
-        padding: 1.75rem 0;
+        padding: 1.5rem 0;
         border-left: none;
         min-height: 0;
     }
@@ -1815,23 +1942,31 @@ body.nav-open {
     }
 
     .services-card h4 {
-        font-size: 1.05rem;
-        margin-bottom: .6rem;
+        font-size: 1rem;
+        margin-bottom: .5rem;
     }
 
     .services-card p {
-        font-size: .9rem;
-        line-height: 1.7;
+        font-size: .85rem;
+        line-height: 1.65;
     }
 
     .services-availability {
-        margin-top: 2rem;
-        padding-top: 1.5rem;
+        margin-top: 1.5rem;
+        padding-top: 1.25rem;
+    }
+
+    .services-availability h5 {
+        margin-bottom: 1rem;
+    }
+
+    .services-tags {
+        gap: .6rem;
     }
 
     .services-tags span {
-        padding: .55rem 1.1rem;
-        font-size: .82rem;
+        padding: .45rem .95rem;
+        font-size: .74rem;
     }
 }
 
@@ -1921,8 +2056,6 @@ body.nav-open {
     border-left: none;
 }
 
-/* Simplify the writing layout when the grid can no longer fit comfortably. */
-
 @media (max-width: 1024px) {
     .writing {
         padding: var(--section-padding-tablet) 0;
@@ -1955,17 +2088,27 @@ body.nav-open {
         padding: var(--section-padding-mobile) 0;
     }
 
+    .writing-header {
+        margin-bottom: 2rem;
+    }
+
     .writing-column h3 {
-        font-size: .7rem;
+        font-size: .65rem;
+        padding-top: 1rem;
+        margin-bottom: 1rem;
     }
 
     .writing-column a {
-        font-size: .92rem;
-        line-height: 1.6;
+        font-size: .85rem;
+        line-height: 1.55;
     }
 
     .writing-column li {
-        margin-bottom: 1rem;
+        margin-bottom: .85rem;
+    }
+
+    .arrow-label {
+        font-size: .68rem;
     }
 }
 
@@ -2044,8 +2187,6 @@ body.nav-open {
     letter-spacing: .04em;
 }
 
-/* Reduce testimonial card density on smaller screens. */
-
 @media (max-width: 1024px) {
     .testimonials {
         padding: var(--section-padding-tablet) 0;
@@ -2068,13 +2209,17 @@ body.nav-open {
 
     .testimonials-content {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1.75rem;
+    }
+
+    .testimonial-card {
+        padding-top: 1.5rem;
     }
 
     .testimonial-icon {
-        width: 24px;
-        height: 24px;
-        margin-bottom: .85rem;
+        width: 22px;
+        height: 22px;
+        margin-bottom: .7rem;
     }
 
     .testimonial-icon img {
@@ -2083,17 +2228,17 @@ body.nav-open {
     }
 
     .testimonial-text {
-        font-size: .9rem;
-        line-height: 1.75;
-        margin-bottom: 1.5rem;
+        font-size: .85rem;
+        line-height: 1.7;
+        margin-bottom: 1.25rem;
     }
 
     .testimonial-name {
-        font-size: .85rem;
+        font-size: .8rem;
     }
 
     .testimonial-role {
-        font-size: .75rem;
+        font-size: .7rem;
     }
 }
 
@@ -2150,8 +2295,6 @@ body.nav-open {
     background: var(--accent);
 }
 
-/* Keep the contact actions aligned and readable on smaller screens. */
-
 @media (max-width: 1024px) {
     .contact {
         padding: var(--section-padding-tablet) 0 0;
@@ -2163,6 +2306,10 @@ body.nav-open {
         padding: var(--section-padding-mobile) 0 0;
     }
 
+    .contact .section-description {
+        margin-bottom: 2rem;
+    }
+
     .contact-actions {
         flex-direction: column;
         align-items: flex-start;
@@ -2170,13 +2317,15 @@ body.nav-open {
     }
 
     .contact-actions .btn {
-        padding: .85rem 1.25rem;
+        padding: .8rem 1.2rem;
+        font-size: .85rem;
         white-space: normal;
         max-width: 100%;
     }
 
     .contact-actions .contact-email {
         max-width: 100%;
+        font-size: .88rem;
         overflow-wrap: anywhere;
     }
 }
@@ -2285,8 +2434,6 @@ body.nav-open {
     font-size: .8rem;
 }
 
-/* Footer layout adapts to a two-column grid on smaller screens. */
-
 @media (max-width: 1024px) {
     .footer-container {
         grid-template-columns: repeat(2, 1fr);
@@ -2313,17 +2460,37 @@ body.nav-open {
     }
 
     .footer-logo a {
-        font-size: 1.7rem;
+        font-size: 1.6rem;
+    }
+
+    .footer-column h4 {
+        font-size: .68rem;
+        margin-bottom: .6rem;
     }
 
     .footer-column a,
     .footer-column p,
     .footer-cta {
-        font-size: .9rem;
+        font-size: .85rem;
     }
 
     .footer-bottom {
-        margin-top: 2.5rem;
-        padding-top: 1.5rem;
+        margin-top: 2rem;
+        padding-top: 1.25rem;
+    }
+
+    .footer-bottom p {
+        font-size: .72rem;
+    }
+}
+
+@media (max-width: 380px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .footer-brand {
+        grid-column: auto;
     }
 }

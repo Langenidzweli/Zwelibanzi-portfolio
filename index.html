@@ -14,15 +14,28 @@
     />
   </head>
 
-  <body>
-    <header>
+  <body id="top">
+    <header class="site-header" id="siteHeader">
       <div class="container">
         <nav class="navbar">
-          <a href="#" class="logo"
+          <a href="#top" class="logo"
             >Zwelibanzi<span class="accent-dot">.</span></a
           >
 
-          <ul class="nav-links">
+          <button
+            type="button"
+            class="hamburger"
+            id="hamburger"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="nav-links"
+          >
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+          </button>
+
+          <ul class="nav-links" id="nav-links">
             <li><a href="#about">About</a></li>
             <li><a href="#work">Work</a></li>
             <li><a href="#services">Services</a></li>
@@ -34,6 +47,7 @@
         </nav>
       </div>
     </header>
+    <div class="nav-overlay" id="navOverlay"></div>
 
     <main>
       <section id="" class="hero">
@@ -838,7 +852,7 @@
         <div class="container footer-container">
           <div class="footer-column footer-brand">
             <h2 class="footer-logo">
-              Zwelibanzi<span class="accent-dot">.</span>
+              <a href="#top">Zwelibanzi<span class="accent-dot">.</span></a>
             </h2>
 
             <a href="mailto:langenidzweli@gmail.com" class="footer-cta">
@@ -877,5 +891,7 @@
         </div>
       </footer>
     </main>
+
+    <script src="./assets/js/main.js" defer></script>
   </body>
 </html>

@@ -38,6 +38,12 @@ main {
     flex: 1 0 auto;
     width: 100%;
     min-width: 0;
+    /* Header is position: fixed (see .site-header), so it no longer
+       pushes this down on its own — reserve that space explicitly. The
+       Hero section's own height already subtracts var(--header-h) from
+       100vh for the same reason, so header + this margin + Hero still
+       add up to exactly one screen. */
+    margin-top: var(--header-h);
 }
 
 img {
@@ -144,7 +150,7 @@ img {
 .project-tags h4,
 .footer-column h4 {
     font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-    font-size: .75rem;
+    font-size: 1.25rem;
     font-weight: 500;
     letter-spacing: .15em;
     text-transform: uppercase;
@@ -228,52 +234,34 @@ img {
     background: var(--accent);
 }
 
-/* Hairline divider that sits under a section's container, constrained to
-   the container width rather than the full viewport. */
-.about-container,
-.philosophy-container,
-.skills-container,
-.projects .container,
-.education-container,
-.services-container,
-.writing .container,
-.testimonials-container {
-    position: relative;
-}
-
-.about-container::after,
-.philosophy-container::after,
-.skills-container::after,
-.projects .container::after,
-.education-container::after,
-.services-container::after,
-.testimonials-container::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -2.25rem;
-    border-bottom: 1px solid var(--border-soft);
-}
-
-/* Divider constrained to the container width below Services and Writing */
-.services-container::after,
-.writing .container::after {
-    content: "";
-    display: block;
-    position: static;
-    width: 100%;
-    border-bottom: 1px solid var(--border-soft);
-    margin-top: 3rem;
-}
-
-.projects .container::after {
-    display: none;
-}
+/* Section dividers: a plain border-bottom on each <section> element
+   itself (added per-section below, next to that section's own rules).
+   Sections are full-width blocks, so this naturally spans edge to edge —
+   unlike the old approach, which drew the line under the *container*
+   (max-width: 1600px) and so never reached the true page edges on wider
+   screens. */
 
 /*=========================================
             NAVIGATION
 =========================================*/
+
+.site-header {
+    /* position: sticky looks equivalent but silently stops working here,
+       because html/body carry overflow-x: hidden (kept elsewhere in this
+       file to guard against accidental horizontal scroll on mobile) —
+       that forces a scroll container on the ancestor chain, and most
+       browsers then refuse to stick descendants to the viewport at all.
+       position: fixed isn't affected by that, so it's used instead; see
+       the matching `main { margin-top: var(--header-h); }` rule below,
+       which reserves the space the header no longer takes up in flow.
+       It stays visible at all times regardless of scroll direction. */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: var(--bg);
+}
 
 .navbar {
     display: flex;
@@ -282,7 +270,6 @@ img {
     min-height: var(--header-h);
     padding: 1.8rem 0;
     box-sizing: border-box;
-    flex-wrap: wrap;
 }
 
 .logo {
@@ -349,41 +336,127 @@ img {
     background: var(--accent);
 }
 
+/* Hamburger toggle — hidden on desktop, shown at the mobile/tablet
+   breakpoint below. Logo stays left, this sits at the far right. */
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid var(--border-subtle);
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.hamburger-bar {
+    display: block;
+    width: 18px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--text);
+    transition: transform .3s ease, opacity .3s ease;
+}
+
+/* Morph into an X when open */
+.hamburger[aria-expanded="true"] .hamburger-bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger[aria-expanded="true"] .hamburger-bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger[aria-expanded="true"] .hamburger-bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Dimmed backdrop behind the slide-in mobile panel */
+.nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .55);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s ease;
+    z-index: 90;
+}
+
+.nav-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Locks page scroll behind the open mobile panel (toggled by main.js) */
+body.nav-open {
+    overflow: hidden;
+}
+
 /* Navigation — responsive */
 
-@media (max-width: 640px) {
-    .navbar {
+@media (max-width: 1024px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        height: 100dvh;
+        width: min(320px, 80vw);
         flex-direction: column;
         align-items: flex-start;
-        gap: 1rem;
+        justify-content: flex-start;
+        gap: 0;
+        background: var(--bg);
+        border-left: 1px solid var(--border-soft);
+        padding: 6rem 2rem 2rem;
+        overflow-y: auto;
+        transform: translateX(100%);
+        transition: transform .35s ease;
+        z-index: 95;
+    }
+
+    .nav-links.open {
+        transform: translateX(0);
+    }
+
+    .nav-links li {
+        width: 100%;
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--border-soft);
+    }
+
+    .nav-links li:last-child {
+        border-bottom: none;
         padding-top: 1.5rem;
     }
 
-    .logo {
-        align-self: flex-start;
-    }
-
-    .nav-links {
-        justify-content: center;
-        gap: 1.2rem;
-        width: 100%;
+    .nav-links a {
+        font-size: 1.05rem;
     }
 }
 
-@media (min-width: 641px) and (max-width: 1024px) {
+@media (max-width: 640px) {
     .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1.5rem;
+        padding: 1.5rem 0;
     }
 
     .logo {
-        align-self: flex-start;
+        font-size: 1.7rem;
     }
 
     .nav-links {
-        gap: 2rem;
-        justify-content: center;
+        width: min(280px, 82vw);
+        padding: 5.5rem 1.5rem 2rem;
     }
 }
 
@@ -517,6 +590,7 @@ img {
     width: 100%;
     overflow: hidden;
     box-sizing: border-box;
+    border-bottom: 1px solid var(--border-soft);
 }
 
 .hero-container {
@@ -529,8 +603,12 @@ img {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 4rem;
     align-items: center;
-    width: 100%;
-    max-width: 100%;
+    /* NOTE: width/max-width are intentionally left to .container (100% /
+       1600px). This element also carries the .container class — setting
+       max-width here again previously overrode .container's cap (later
+       rule wins), so on ultrawide desktops the hero stretched past the
+       1600px column every other section respects, throwing its left/right
+       edges out of alignment with the rest of the page. */
     height: 100%;
     max-height: 100%;
 }
@@ -595,7 +673,11 @@ img {
     max-height: 100%;
     overflow: hidden;
     border-radius: 22px;
+    /* No bottom edge: with the section's own divider directly beneath the
+       Hero, a full border here reads as two parallel lines stacked close
+       together. Top/left/right keep the card framed. */
     border: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: none;
     background-color: transparent;
     padding: 1rem;
 }
@@ -780,6 +862,7 @@ img {
 
 .about {
     padding: 10rem 0;
+    border-bottom: 1px solid var(--border-soft);
 }
 
 .about-container {
@@ -831,6 +914,7 @@ img {
 
 .philosophy {
     padding: 10rem 0;
+    border-bottom: 1px solid var(--border-soft);
 }
 
 .philosophy-container {
@@ -930,6 +1014,7 @@ img {
 
 .skills {
     padding: 8rem 0;
+    border-bottom: 1px solid var(--border-soft);
 }
 
 .skills-container {
@@ -1071,6 +1156,7 @@ img {
 
 .projects {
     padding: 10rem 0;
+    border-bottom: 1px solid var(--border-soft);
 }
 
 .projects-header {
@@ -1312,6 +1398,7 @@ img {
 
 .education {
     padding: 8rem 0;
+    border-bottom: 1px solid var(--border-soft);
 }
 
 .education-container {
@@ -1525,6 +1612,7 @@ img {
 
 .services {
     padding: 8rem 0;
+    border-bottom: 1px solid var(--border-soft);
 }
 
 .services-container {
@@ -1679,6 +1767,7 @@ img {
 
 .writing {
     padding: 8rem 0;
+    border-bottom: 1px solid var(--border-soft);
 }
 
 .writing-header {
@@ -1825,6 +1914,7 @@ img {
 
 .testimonials {
     padding: 8rem 0;
+    border-bottom: 1px solid var(--border-soft);
 }
 
 .testimonials-container {
@@ -2038,9 +2128,20 @@ img {
 }
 
 .footer-logo {
+    margin-bottom: 2rem;
+}
+
+.footer-logo a {
+    display: inline-block;
     font-family: var(--heading-font);
     font-size: 2.2rem;
-    margin-bottom: 2rem;
+    color: var(--text);
+    text-decoration: none;
+    transition: color .3s ease;
+}
+
+.footer-logo a:hover {
+    color: var(--accent);
 }
 
 .footer-cta {
@@ -2126,8 +2227,11 @@ img {
     }
 
     .footer-logo {
-        font-size: 1.7rem;
         margin-bottom: 1.25rem;
+    }
+
+    .footer-logo a {
+        font-size: 1.7rem;
     }
 
     .footer-column a,

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Zwelibanzi | Software Engineer</title>
-    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
@@ -15,40 +15,7 @@
   </head>
 
   <body id="top">
-    <header class="site-header" id="siteHeader">
-      <div class="container">
-        <nav class="navbar">
-          <a href="#top" class="logo"
-            >Zwelibanzi<span class="accent-dot">.</span></a
-          >
-
-          <button
-            type="button"
-            class="hamburger"
-            id="hamburger"
-            aria-label="Toggle navigation menu"
-            aria-expanded="false"
-            aria-controls="nav-links"
-          >
-            <span class="hamburger-bar"></span>
-            <span class="hamburger-bar"></span>
-            <span class="hamburger-bar"></span>
-          </button>
-
-          <ul class="nav-links" id="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#work">Work</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#writing">Writing</a></li>
-            <li>
-              <a href="#contact" class="btn btn-secondary">Get in touch →</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-    <div class="nav-overlay" id="navOverlay"></div>
-
+    <div id="navbar"></div>
     <main>
       <section id="" class="hero">
         <div class="container hero-container">
@@ -67,21 +34,16 @@
               digital products, every build teaches me something new.
             </p>
             <div class="hero-btns">
-              <a href="#projects" class="btn btn-primary">Explore Projects →</a>
-              <a
-                href="./assets/documents/CV.pdf"
-                class="btn btn-secondary"
-                download
+              <a href="./pages/project-page.html" class="btn btn-primary"
+                >Explore Projects →</a
               >
-                Let's Build Together →
+              <a href="./documents/CV.pdf" class="btn btn-secondary" download>
+                Download CV →
               </a>
             </div>
           </div>
           <div class="hero-image">
-            <img
-              src="./assets/images/Hero.png"
-              alt="Portrait of Zwelibanzi Langeni"
-            />
+            <img src="./images/hero.png" alt="Portrait of Zwelibanzi Langeni" />
           </div>
         </div>
       </section>
@@ -107,7 +69,9 @@
               impatient with anything that hides how a system actually works.
             </p>
 
-            <a href="#" class="section-link"> More about me → </a>
+            <a href="./pages/about-page.html" class="section-link">
+              More about me →
+            </a>
           </div>
         </div>
       </section>
@@ -223,10 +187,7 @@
           <div class="skills-grid">
             <article class="skill-card">
               <div class="skill-icon">
-                <img
-                  src="./assets/images/icons/sparkles.svg"
-                  alt="sparkles Icon"
-                />
+                <img src="./images/icons/sparkles.svg" alt="sparkles Icon" />
               </div>
 
               <h4>AI Applications</h4>
@@ -247,7 +208,7 @@
 
             <article class="skill-card">
               <div class="skill-icon">
-                <img src="./assets/images/icons/server.svg" alt="server Icon" />
+                <img src="./images/icons/server.svg" alt="server Icon" />
               </div>
 
               <h4>Backend Systems</h4>
@@ -268,7 +229,7 @@
 
             <article class="skill-card">
               <div class="skill-icon">
-                <img src="./assets/images/icons/globe.svg" alt="globe Icon" />
+                <img src="./images/icons/globe.svg" alt="globe Icon" />
               </div>
 
               <h4>Web Applications</h4>
@@ -289,7 +250,7 @@
             <article class="skill-card">
               <div class="skill-icon">
                 <img
-                  src="./assets/images/icons/monitor-smartphone.svg"
+                  src="./images/icons/monitor-smartphone.svg"
                   alt="monitor-smartphone Icon"
                 />
               </div>
@@ -311,7 +272,7 @@
 
             <article class="skill-card">
               <div class="skill-icon">
-                <img src="./assets/images/icons/cog.svg" alt="cog Icon" />
+                <img src="./images/icons/cog.svg" alt="cog Icon" />
               </div>
 
               <h4>Automation</h4>
@@ -331,7 +292,7 @@
 
             <article class="skill-card">
               <div class="skill-icon">
-                <img src="./assets/images/icons/eye.svg" alt="eye Icon" />
+                <img src="./images/icons/eye.svg" alt="eye Icon" />
               </div>
 
               <h4>Computer Vision</h4>
@@ -368,7 +329,7 @@
                 through the work.
               </p>
             </div>
-            <a href="#" class="section-link"> All work → </a>
+            <a href="./pages/project-page.html" class="section-link"> All work → </a>
           </div>
 
           <!-- Featured project -->
@@ -377,7 +338,7 @@
             <!-- Project media -->
 
             <div class="project-image">
-              <img src="./assets/images/Who-I-Am.png" alt="Ledger" />
+              <img src="./images/Who-I-Am.png" alt="Ledger" />
 
               <div class="project-overlay">
                 <span class="project-year"> Project 01 · 2026 </span>
@@ -440,27 +401,27 @@
               </div>
 
               <div class="project-links">
-                <a href="#">
+                <a href="http://www.linkedin.com/in/dobie-zweli-langeni-134bb52a6">
                   <span class="project-icon">
-                    <img src="./assets/images/icons/github.svg" alt="GitHub" />
+                    <img src="./images/icons/github.svg" alt="GitHub" />
                   </span>
                   GitHub
                 </a>
 
-                <a href="#">
+                <a href="http://www.linkedin.com/in/dobie-zweli-langeni-134bb52a6">
                   <span class="project-icon">
                     <img
-                      src="./assets/images/icons/external-link.svg"
+                      src="./images/icons/external-link.svg"
                       alt="External link"
                     />
                   </span>
                   Live Demo
                 </a>
 
-                <a href="#">
+                <a href="http://www.linkedin.com/in/dobie-zweli-langeni-134bb52a6">
                   <span class="project-icon">
                     <img
-                      src="./assets/images/icons/file-text.svg"
+                      src="./images/icons/file-text.svg"
                       alt="Case study document"
                     />
                   </span>
@@ -622,7 +583,7 @@
               needs careful thinking rather than a template, we'll get along.
             </p>
 
-            <a href="#" class="section-link"> Full services → </a>
+            <a href="./pages/services-page.html" class="section-link"> Full services → </a>
           </div>
 
           <!-- Services details -->
@@ -697,7 +658,7 @@
               </p>
             </div>
 
-            <a href="#" class="section-link">
+            <a href="./pages/writing-page.html" class="section-link">
               Explore more <span class="arrow-label">→</span>
             </a>
           </div>
@@ -807,7 +768,7 @@
           <div class="testimonials-content">
             <article class="testimonial-card">
               <div class="testimonial-icon">
-                <img src="./assets/images/icons/quote.svg" alt="quote Icon" />
+                <img src="./images/icons/quote.svg" alt="quote Icon" />
               </div>
 
               <p class="testimonial-text">
@@ -823,7 +784,7 @@
 
             <article class="testimonial-card">
               <div class="testimonial-icon">
-                <img src="./assets/images/icons/quote.svg" alt="quote Icon" />
+                <img src="./images/icons/quote.svg" alt="quote Icon" />
               </div>
 
               <p class="testimonial-text">
@@ -839,7 +800,7 @@
 
             <article class="testimonial-card">
               <div class="testimonial-icon">
-                <img src="./assets/images/icons/quote.svg" alt="quote Icon" />
+                <img src="./images/icons/quote.svg" alt="quote Icon" />
               </div>
 
               <p class="testimonial-text">
@@ -854,7 +815,7 @@
 
             <article class="testimonial-card">
               <div class="testimonial-icon">
-                <img src="./assets/images/icons/quote.svg" alt="quote Icon" />
+                <img src="./images/icons/quote.svg" alt="quote Icon" />
               </div>
 
               <p class="testimonial-text">
@@ -882,7 +843,7 @@
           </p>
 
           <div class="contact-actions">
-            <a href="mailto:langenidzweli@gmail.com" class="btn btn-primary">
+            <a href="./pages/contact-page.html" class="btn btn-primary">
               Start a conversation →
             </a>
 
@@ -892,51 +853,10 @@
           </div>
         </div>
       </section>
-
-      <footer class="footer">
-        <div class="container footer-container">
-          <div class="footer-column footer-brand">
-            <h2 class="footer-logo">
-              <a href="#top">Zwelibanzi<span class="accent-dot">.</span></a>
-            </h2>
-
-            <a href="mailto:langenidzweli@gmail.com" class="footer-cta">
-              Start a conversation →
-            </a>
-          </div>
-
-          <div class="footer-column">
-            <h4>Navigation</h4>
-
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#services">Services</a>
-            <a href="#writing">Writing</a>
-            <a href="#contact">Contact</a>
-          </div>
-
-          <div class="footer-column">
-            <h4>Elsewhere</h4>
-
-            <a href="#">GitHub</a>
-            <a href="#">LinkedIn</a>
-            <a href="mailto:langenidzweli@gmail.com">Email</a>
-          </div>
-
-          <div class="footer-column">
-            <h4>Based in</h4>
-
-            <p>South Africa</p>
-            <p>Available worldwide</p>
-          </div>
-        </div>
-
-        <div class="container footer-bottom">
-          <p>© 2026 Zwelibanzi Langeni. All rights reserved.</p>
-        </div>
-      </footer>
+      <div id="footer"></div>
     </main>
 
-    <script src="./assets/js/script.js" defer></script>
+    <script src="./components/components.js"></script>
+    <script src="./js/script.js"></script>
   </body>
 </html>

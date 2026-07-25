@@ -1,22 +1,12 @@
 /**
- * main.js
- * -------
- * Hamburger menu — opens/closes the mobile nav panel, closes on overlay
- * click, nav-link click, Escape, or resizing back to desktop; locks page
- * scroll while open.
- *
- * The header itself is just position: fixed in CSS and stays visible at
- * all times while scrolling — no show/hide logic needed here.
- *
- * No build step, no dependencies — plain DOM APIs only.
+ * Handles the mobile navigation menu and its related interactions.
+ * Built with vanilla JavaScript and no external dependencies.
  */
 
 (function () {
   "use strict";
 
-  /* ---------------------------------------------------------------- */
-  /*  Hamburger / mobile nav panel                                    */
-  /* ---------------------------------------------------------------- */
+  /* Mobile navigation */
 
   const hamburger = document.getElementById("hamburger");
   const navLinks = document.getElementById("nav-links");
@@ -49,12 +39,12 @@
     hamburger.addEventListener("click", toggleMenu);
     navOverlay.addEventListener("click", closeMenu);
 
-    // Close the panel whenever a nav link is followed (anchor jump).
+    // Close the menu after anchor navigation so the overlay does not linger.
     navLinks.querySelectorAll("a").forEach(function (link) {
       link.addEventListener("click", closeMenu);
     });
 
-    // Close on Escape for keyboard users.
+    // Support keyboard users with Escape handling.
     document.addEventListener("keydown", function (event) {
       if (event.key === "Escape" && navLinks.classList.contains("open")) {
         closeMenu();
@@ -62,9 +52,7 @@
       }
     });
 
-    // If the viewport is resized past the mobile/tablet breakpoint while
-    // the panel is open, close it so it doesn't linger as a hidden
-    // fixed-position element with stale state.
+    // Reset the menu when the layout moves back to desktop view.
     const mq = window.matchMedia("(min-width: 1025px)");
     const handleBreakpointChange = function (e) {
       if (e.matches) {
@@ -74,7 +62,7 @@
     if (typeof mq.addEventListener === "function") {
       mq.addEventListener("change", handleBreakpointChange);
     } else if (typeof mq.addListener === "function") {
-      // Safari < 14 fallback
+      // Support older Safari versions that still use addListener().
       mq.addListener(handleBreakpointChange);
     }
   }

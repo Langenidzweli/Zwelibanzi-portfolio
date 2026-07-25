@@ -87,7 +87,7 @@
       </section>
 
       <section class="about">
-        <!-- Refactored: standardized shared section utility classes for consistent typography -->
+        <!-- About section -->
         <div class="container about-container">
           <div class="about-left">
             <span class="section-label">01 — Who I am</span>
@@ -114,7 +114,7 @@
 
       <section class="philosophy">
         <div class="container philosophy-container">
-          <!-- Left -->
+          <!-- Philosophy overview -->
           <div class="philosophy-left">
             <span class="section-label"> 02 — What I believe </span>
 
@@ -126,7 +126,7 @@
             </p>
           </div>
 
-          <!-- Right -->
+          <!-- Beliefs -->
           <div class="philosophy-right">
             <article class="belief">
               <div class="belief-heading">
@@ -205,7 +205,7 @@
 
       <section class="skills">
         <div class="container skills-container">
-          <!-- LEFT SIDE -->
+          <!-- Skills overview -->
 
           <div class="skills-intro">
             <h3 class="section-label">03 — What I build</h3>
@@ -218,11 +218,16 @@
             </p>
           </div>
 
-          <!-- RIGHT SIDE -->
+          <!-- Skill cards -->
 
           <div class="skills-grid">
             <article class="skill-card">
-              <div class="skill-icon"></div>
+              <div class="skill-icon">
+                <img
+                  src="./assets/images/icons/sparkles.svg"
+                  alt="sparkles Icon"
+                />
+              </div>
 
               <h4>AI Applications</h4>
 
@@ -241,7 +246,9 @@
             </article>
 
             <article class="skill-card">
-              <div class="skill-icon"></div>
+              <div class="skill-icon">
+                <img src="./assets/images/icons/server.svg" alt="server Icon" />
+              </div>
 
               <h4>Backend Systems</h4>
 
@@ -260,7 +267,9 @@
             </article>
 
             <article class="skill-card">
-              <div class="skill-icon"></div>
+              <div class="skill-icon">
+                <img src="./assets/images/icons/globe.svg" alt="globe Icon" />
+              </div>
 
               <h4>Web Applications</h4>
 
@@ -278,7 +287,12 @@
             </article>
 
             <article class="skill-card">
-              <div class="skill-icon"></div>
+              <div class="skill-icon">
+                <img
+                  src="./assets/images/icons/monitor-smartphone.svg"
+                  alt="monitor-smartphone Icon"
+                />
+              </div>
 
               <h4>Desktop Applications</h4>
 
@@ -296,7 +310,9 @@
             </article>
 
             <article class="skill-card">
-              <div class="skill-icon"></div>
+              <div class="skill-icon">
+                <img src="./assets/images/icons/cog.svg" alt="cog Icon" />
+              </div>
 
               <h4>Automation</h4>
 
@@ -314,7 +330,9 @@
             </article>
 
             <article class="skill-card">
-              <div class="skill-icon"></div>
+              <div class="skill-icon">
+                <img src="./assets/images/icons/eye.svg" alt="eye Icon" />
+              </div>
 
               <h4>Computer Vision</h4>
 
@@ -336,7 +354,7 @@
 
       <section class="projects">
         <div class="container">
-          <!-- SECTION INTRO -->
+          <!-- Project overview -->
 
           <div class="projects-header">
             <div>
@@ -353,10 +371,10 @@
             <a href="#" class="section-link"> All work → </a>
           </div>
 
-          <!-- PROJECT -->
+          <!-- Featured project -->
 
           <article class="project">
-            <!-- LEFT -->
+            <!-- Project media -->
 
             <div class="project-image">
               <img src="./assets/images/Who-I-Am.png" alt="Ledger" />
@@ -368,7 +386,7 @@
               </div>
             </div>
 
-            <!-- RIGHT -->
+            <!-- Project details -->
 
             <div class="project-content">
               <h2 class="project-title">
@@ -422,11 +440,32 @@
               </div>
 
               <div class="project-links">
-                <a href="#">GitHub</a>
+                <a href="#">
+                  <span class="project-icon">
+                    <img src="./assets/images/icons/github.svg" alt="GitHub" />
+                  </span>
+                  GitHub
+                </a>
 
-                <a href="#">Live Demo</a>
+                <a href="#">
+                  <span class="project-icon">
+                    <img
+                      src="./assets/images/icons/external-link.svg"
+                      alt="External link"
+                    />
+                  </span>
+                  Live Demo
+                </a>
 
-                <a href="#">Case Study</a>
+                <a href="#">
+                  <span class="project-icon">
+                    <img
+                      src="./assets/images/icons/file-text.svg"
+                      alt="Case study document"
+                    />
+                  </span>
+                  Read Case Study
+                </a>
               </div>
             </div>
           </article>
@@ -435,7 +474,7 @@
 
       <section class="education">
         <div class="container education-container">
-          <!-- LEFT -->
+          <!-- Education overview -->
           <div class="education-intro">
             <p class="section-label">05 — Education & Continuous Learning</p>
 
@@ -448,10 +487,8 @@
             </p>
           </div>
 
-          <!-- RIGHT -->
+          <!-- Education timeline -->
           <div class="education-content">
-            <!-- Timeline -->
-
             <div class="timeline-item">
               <div class="timeline-year">
                 <span class="timeline-dot"></span>
@@ -508,7 +545,7 @@
               </p>
             </div>
 
-            <!-- Learning -->
+            <!-- Learning focus -->
 
             <div class="learning-section">
               <p class="learning-title">Current learning</p>
@@ -573,7 +610,7 @@
 
       <section class="services">
         <div class="container services-container">
-          <!-- LEFT -->
+          <!-- Services overview -->
 
           <div class="services-intro">
             <h3 class="section-label">06 — Services</h3>
@@ -588,7 +625,7 @@
             <a href="#" class="section-link"> Full services → </a>
           </div>
 
-          <!-- RIGHT -->
+          <!-- Services details -->
 
           <div class="services-content">
             <div class="services-grid">
@@ -672,8 +709,8 @@
               <ul>
                 <li>
                   <a href="#"
-                    ><span class="arrow-label">→</span> Building REST APIs
-                    that don't rot</a
+                    ><span class="arrow-label">→</span> Building REST APIs that
+                    don't rot</a
                   >
                 </li>
 
@@ -686,8 +723,8 @@
 
                 <li>
                   <a href="#"
-                    ><span class="arrow-label">→</span> Small Java tips I
-                    wish I'd known earlier</a
+                    ><span class="arrow-label">→</span> Small Java tips I wish
+                    I'd known earlier</a
                   >
                 </li>
               </ul>
@@ -726,22 +763,22 @@
               <ul>
                 <li>
                   <a href="#"
-                    ><span class="arrow-label">→</span> Lessons from
-                    university, so far</a
+                    ><span class="arrow-label">→</span> Lessons from university,
+                    so far</a
                   >
                 </li>
 
                 <li>
                   <a href="#"
-                    ><span class="arrow-label">→</span> How I learn a new
-                    area of software</a
+                    ><span class="arrow-label">→</span> How I learn a new area
+                    of software</a
                   >
                 </li>
 
                 <li>
                   <a href="#"
-                    ><span class="arrow-label">→</span> Mistakes I've made,
-                    in public</a
+                    ><span class="arrow-label">→</span> Mistakes I've made, in
+                    public</a
                   >
                 </li>
               </ul>
@@ -752,7 +789,7 @@
 
       <section class="testimonials">
         <div class="container testimonials-container">
-          <!-- LEFT -->
+          <!-- Testimonials overview -->
 
           <div class="testimonials-intro">
             <h3 class="section-label">08 — Testimonials</h3>
@@ -765,11 +802,13 @@
             </p>
           </div>
 
-          <!-- RIGHT -->
+          <!-- Testimonials list -->
 
           <div class="testimonials-content">
             <article class="testimonial-card">
-              <div class="testimonial-icon"></div>
+              <div class="testimonial-icon">
+                <img src="./assets/images/icons/quote.svg" alt="quote Icon" />
+              </div>
 
               <p class="testimonial-text">
                 "Zwelibanzi asks the questions most students skip — the ones
@@ -783,7 +822,9 @@
             </article>
 
             <article class="testimonial-card">
-              <div class="testimonial-icon"></div>
+              <div class="testimonial-icon">
+                <img src="./assets/images/icons/quote.svg" alt="quote Icon" />
+              </div>
 
               <p class="testimonial-text">
                 "He's the teammate who ends up rewriting the fragile part
@@ -797,7 +838,9 @@
             </article>
 
             <article class="testimonial-card">
-              <div class="testimonial-icon"></div>
+              <div class="testimonial-icon">
+                <img src="./assets/images/icons/quote.svg" alt="quote Icon" />
+              </div>
 
               <p class="testimonial-text">
                 "Careful, curious and calm under pressure. When something broke
@@ -810,7 +853,9 @@
             </article>
 
             <article class="testimonial-card">
-              <div class="testimonial-icon"></div>
+              <div class="testimonial-icon">
+                <img src="./assets/images/icons/quote.svg" alt="quote Icon" />
+              </div>
 
               <p class="testimonial-text">
                 "Rare mix of mathematical rigor and taste. His code reads like
@@ -892,6 +937,6 @@
       </footer>
     </main>
 
-    <script src="./assets/js/main.js" defer></script>
+    <script src="./assets/js/script.js" defer></script>
   </body>
 </html>

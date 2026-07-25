@@ -38,11 +38,7 @@ main {
     flex: 1 0 auto;
     width: 100%;
     min-width: 0;
-    /* Header is position: fixed (see .site-header), so it no longer
-       pushes this down on its own — reserve that space explicitly. The
-       Hero section's own height already subtracts var(--header-h) from
-       100vh for the same reason, so header + this margin + Hero still
-       add up to exactly one screen. */
+    /* Reserve space for the fixed header so content never sits underneath it. */
     margin-top: var(--header-h);
 }
 
@@ -57,7 +53,12 @@ a,
 button,
 .btn,
 img {
-    transition: all .3s ease;
+    transition:
+        color var(--transition-base),
+        background-color var(--transition-base),
+        border-color var(--transition-base),
+        transform var(--transition-base),
+        opacity var(--transition-base);
 }
 
 /*=========================================
@@ -66,45 +67,55 @@ img {
 
 :root {
 
-    /* Colors */
     --bg: #111111;
     --text: #F8F8F8;
     --text-light: #B5B5B5;
     --text-muted: #7A7A7A;
     --heading-color: #f5f0f2;
     --label-color: #676163;
-    --border-soft: #ffffff14;
+    --border-soft: #ffffff20;
     --border-subtle: var(--border-soft);
 
-    /* Accent */
     --accent: #CDA15C;
     --accent-hover: #D9B77A;
 
-    /* Optional colors for future use */
     --surface: #181818;
     --surface-elevated: #202020;
     --border: #2C2C2C;
     --border-strong: #424242;
 
-    /* Typography */
     --heading-font: "Montserrat", sans-serif;
     --body-font: "Inter", sans-serif;
 
-    /* Layout */
-    /* Approximate rendered height of <header> */
     --header-h: 6rem;
 
-    /* Responsive breakpoints (referenced in comments only — CSS custom
-       properties cannot be used inside @media conditions) */
-    /* mobile:  max-width 640px
-       tablet:  641px – 1024px
-       laptop:  1025px – 1440px
-       desktop: 1441px+ */
-
-    /* Shared responsive scaling tokens, used to keep vertical rhythm
-       consistent across sections at each breakpoint. */
+    /* Shared responsive tokens keep vertical rhythm consistent across sections. */
     --section-padding-tablet: 5rem;
     --section-padding-mobile: 3.5rem;
+
+    /* Shared spacing and typography tokens simplify future maintenance. */
+    --section-spacing-xl: 10rem;
+    --section-spacing-lg: 8rem;
+    --transition-base: .3s ease;
+    --space-1: .5rem;
+    --space-2: 1rem;
+    --space-3: 1.5rem;
+    --space-4: 2rem;
+    --space-5: 2.5rem;
+    --space-6: 3rem;
+    --space-7: 4rem;
+    --space-8: 5rem;
+    --space-9: 6rem;
+    --font-size-xs: .72rem;
+    --font-size-sm: .8rem;
+    --font-size-md: .9rem;
+    --font-size-lg: 1rem;
+    --font-size-xl: 1.1rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 2rem;
+    --font-size-label: .75rem;
+    --font-size-label-mobile: .68rem;
+    --link-underline-color: #ffffff30;
 }
 
 /*=========================================
@@ -121,13 +132,13 @@ img {
 
 .section-label {
     display: block;
-    font-size: .75rem;
+    font-size: var(--font-size-label);
     font-weight: 500;
     letter-spacing: .15em;
     text-transform: uppercase;
     color: var(--label-color);
     font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--space-3);
 }
 
 .section-title {
@@ -136,7 +147,7 @@ img {
     line-height: 1.1;
     font-weight: 600;
     color: var(--heading-color);
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--space-3);
 }
 
 .section-label,
@@ -162,16 +173,85 @@ img {
     line-height: 1.9;
 }
 
-/* Utilities — responsive
-   A big share of "everything feels too large on mobile" comes down to the
-   base type scale, so shrink the root font-size at smaller breakpoints —
-   every rem-based size (headings, buttons, paddings, gaps, tags) scales
-   down with it — then trim the handful of clamp()/utility sizes that
-   don't respond to that on their own. */
+/* Shared component patterns keep repeated UI treatments consistent. */
+.card,
+:where(.skill-card, .services-card, .testimonial-card, .certificate) {
+    border-color: var(--border-subtle);
+}
+
+.tag,
+.pill,
+:where(.tech-stack li, .services-tags span, .learning-tags span, .project-tags li) {
+    border: 1px solid var(--border-subtle);
+    border-radius: 999px;
+    padding: .45rem 1rem;
+    font-size: var(--font-size-xs);
+    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-weight: 600;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--label-color);
+    transition: border-color var(--transition-base), color var(--transition-base), background-color var(--transition-base);
+}
+
+:where(.section-link, .contact-email, .footer-cta) {
+    display: inline-block;
+    color: var(--text);
+    text-decoration: none;
+    position: relative;
+    transition:
+        color var(--transition-base),
+        background-color var(--transition-base),
+        border-color var(--transition-base),
+        transform var(--transition-base);
+}
+
+:where(.section-link, .contact-email, .footer-cta)::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 1px;
+    background: var(--link-underline-color);
+    transition: background-color var(--transition-base);
+}
+
+:where(.section-link, .contact-email, .footer-cta):hover {
+    color: var(--accent);
+}
+
+:where(.section-link, .contact-email, .footer-cta):hover::after {
+    background: var(--accent);
+}
+
+.section-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Reduce the base type scale on smaller screens so rem-based sizing stays proportional. */
 
 @media (max-width: 1024px) {
     html {
         font-size: 15px;
+    }
+
+    .about,
+    .philosophy,
+    .skills,
+    .projects,
+    .education,
+    .services,
+    .writing,
+    .testimonials,
+    .contact {
+        padding: var(--section-padding-tablet) 0;
+    }
+
+    .contact {
+        padding: var(--section-padding-tablet) 0 0;
     }
 }
 
@@ -181,7 +261,7 @@ img {
     }
 
     .section-label {
-        font-size: .68rem;
+        font-size: var(--font-size-label-mobile);
         margin-bottom: 1rem;
     }
 
@@ -198,6 +278,22 @@ img {
     .section-link {
         font-size: .88rem;
     }
+
+    .about,
+    .philosophy,
+    .skills,
+    .projects,
+    .education,
+    .services,
+    .writing,
+    .testimonials,
+    .contact {
+        padding: var(--section-padding-mobile) 0;
+    }
+
+    .contact {
+        padding: var(--section-padding-mobile) 0 0;
+    }
 }
 
 @media (max-width: 380px) {
@@ -207,54 +303,50 @@ img {
 }
 
 .section-link {
-    display: inline-block;
     font-size: .95rem;
     color: #f5f0f2;
-    text-decoration: none;
-    position: relative;
-    transition: .3s;
 }
 
-.section-link::after {
+:where(.nav-links .btn.btn-secondary) {
+    position: relative;
+    text-decoration: none;
+}
+
+:where(.nav-links .btn.btn-secondary)::after {
     content: "";
     position: absolute;
     left: 0;
     bottom: -4px;
     width: 100%;
     height: 1px;
-    background: var(--border-subtle);
-    transition: background-color .3s ease;
+    background: var(--link-underline-color);
+    transition: background-color var(--transition-base);
+}
+.hero,
+.about,
+.philosophy,
+.skills,
+.projects,
+.education,
+.services,
+.writing,
+.testimonials {
+    border-bottom: 1px solid var(--border-soft);
 }
 
-.section-link:hover {
-    color: var(--accent);
+.hero .btn-secondary {
+    display: inline-flex;
+    width: auto;
 }
 
-.section-link:hover::after {
-    background: var(--accent);
-}
-
-/* Section dividers: a plain border-bottom on each <section> element
-   itself (added per-section below, next to that section's own rules).
-   Sections are full-width blocks, so this naturally spans edge to edge —
-   unlike the old approach, which drew the line under the *container*
-   (max-width: 1600px) and so never reached the true page edges on wider
-   screens. */
+/* Section dividers sit on the section itself so they span the full width of the page. */
 
 /*=========================================
             NAVIGATION
 =========================================*/
 
 .site-header {
-    /* position: sticky looks equivalent but silently stops working here,
-       because html/body carry overflow-x: hidden (kept elsewhere in this
-       file to guard against accidental horizontal scroll on mobile) —
-       that forces a scroll container on the ancestor chain, and most
-       browsers then refuse to stick descendants to the viewport at all.
-       position: fixed isn't affected by that, so it's used instead; see
-       the matching `main { margin-top: var(--header-h); }` rule below,
-       which reserves the space the header no longer takes up in flow.
-       It stays visible at all times regardless of scroll direction. */
+   /* Fixed header. main reserves its height using var(--header-h). */
     position: fixed;
     top: 0;
     left: 0;
@@ -311,19 +403,6 @@ img {
     border-radius: 0;
     padding: 0;
     color: #f5f0f2;
-    text-decoration: none;
-    position: relative;
-}
-
-.nav-links .btn.btn-secondary::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -4px;
-    width: 100%;
-    height: 1px;
-    background: var(--border-subtle);
-    transition: background-color .3s ease;
 }
 
 .nav-links .btn.btn-secondary:hover {
@@ -332,12 +411,7 @@ img {
     color: var(--accent);
 }
 
-.nav-links .btn.btn-secondary:hover::after {
-    background: var(--accent);
-}
-
-/* Hamburger toggle — hidden on desktop, shown at the mobile/tablet
-   breakpoint below. Logo stays left, this sits at the far right. */
+/* The menu toggle is hidden on larger screens and revealed where space becomes limited. */
 
 .hamburger {
     display: none;
@@ -364,7 +438,7 @@ img {
     transition: transform .3s ease, opacity .3s ease;
 }
 
-/* Morph into an X when open */
+/* Convert the toggle into an X when the mobile menu is open. */
 .hamburger[aria-expanded="true"] .hamburger-bar:nth-child(1) {
     transform: translateY(7px) rotate(45deg);
 }
@@ -377,7 +451,7 @@ img {
     transform: translateY(-7px) rotate(-45deg);
 }
 
-/* Dimmed backdrop behind the slide-in mobile panel */
+/* Dim the page beneath the mobile menu while it is open. */
 .nav-overlay {
     position: fixed;
     inset: 0;
@@ -393,7 +467,7 @@ img {
     pointer-events: auto;
 }
 
-/* Locks page scroll behind the open mobile panel (toggled by main.js) */
+/* Prevent background scrolling while the mobile navigation is open. */
 body.nav-open {
     overflow: hidden;
 }
@@ -530,19 +604,6 @@ body.nav-open {
     border-radius: 0;
     padding: 0;
     color: var(--text-light);
-    text-decoration: none;
-    position: relative;
-}
-
-.hero-btns .btn-secondary::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -4px;
-    width: 100%;
-    height: 1px;
-    background: var(--border-subtle);
-    transition: background-color .3s ease;
 }
 
 .hero-btns .btn-secondary:hover {
@@ -551,11 +612,9 @@ body.nav-open {
     color: var(--accent);
 }
 
-.hero-btns .btn-secondary:hover::after {
-    background: var(--accent);
-}
+/* (Intentionally left blank — hero-specific overrides removed.) */
 
-/* Buttons — responsive */
+/* Keep button sizing proportional on smaller screens. */
 
 @media (max-width: 1024px) {
     .btn {
@@ -590,12 +649,10 @@ body.nav-open {
     width: 100%;
     overflow: hidden;
     box-sizing: border-box;
-    border-bottom: 1px solid var(--border-soft);
 }
 
 .hero-container {
-    /* Fallback for browsers without Grid support: stacks the same way the
-       mobile breakpoint does, instead of overflowing. */
+    /* Flex fallback for older browsers. */
     display: flex;
     flex-wrap: wrap;
 
@@ -603,12 +660,7 @@ body.nav-open {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 4rem;
     align-items: center;
-    /* NOTE: width/max-width are intentionally left to .container (100% /
-       1600px). This element also carries the .container class — setting
-       max-width here again previously overrode .container's cap (later
-       rule wins), so on ultrawide desktops the hero stretched past the
-       1600px column every other section respects, throwing its left/right
-       edges out of alignment with the rest of the page. */
+ /* Width is inherited from .container to keep all sections aligned. */
     height: 100%;
     max-height: 100%;
 }
@@ -673,9 +725,6 @@ body.nav-open {
     max-height: 100%;
     overflow: hidden;
     border-radius: 22px;
-    /* No bottom edge: with the section's own divider directly beneath the
-       Hero, a full border here reads as two parallel lines stacked close
-       together. Top/left/right keep the card framed. */
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-bottom: none;
     background-color: transparent;
@@ -691,7 +740,7 @@ body.nav-open {
     object-fit: contain;
 }
 
-/* Hero — responsive */
+/* Stack the hero content vertically when space becomes limited. */
 
 @media (max-width: 640px) {
     .hero {
@@ -756,7 +805,6 @@ body.nav-open {
         width: 100%;
     }
 
-    /* Called out specifically: the hero CTAs read oversized on phones */
     .hero-btns .btn {
         padding: .7rem 1.25rem;
         font-size: .82rem;
@@ -861,8 +909,7 @@ body.nav-open {
 =========================================*/
 
 .about {
-    padding: 10rem 0;
-    border-bottom: 1px solid var(--border-soft);
+    padding: var(--section-spacing-xl) 0;
 }
 
 .about-container {
@@ -885,7 +932,7 @@ body.nav-open {
     margin-bottom: 2.5rem;
 }
 
-/* About — responsive */
+/* Collapse the about layout into a single column on smaller screens. */
 
 @media (max-width: 1024px) {
     .about {
@@ -913,8 +960,7 @@ body.nav-open {
 =========================================*/
 
 .philosophy {
-    padding: 10rem 0;
-    border-bottom: 1px solid var(--border-soft);
+    padding: var(--section-spacing-xl) 0;
 }
 
 .philosophy-container {
@@ -928,9 +974,7 @@ body.nav-open {
 }
 
 .philosophy-right {
-    /* Number-column width + heading gap, in one place, so the heading and
-       the paragraph below it always line up under the same offset — at
-       every breakpoint — instead of two hand-tuned numbers drifting apart. */
+   /* Shared alignment values for the belief layout. */
     --belief-number-w: 2.8rem;
     --belief-gap: 2rem;
 
@@ -971,7 +1015,7 @@ body.nav-open {
     max-width: 700px;
 }
 
-/* Philosophy — responsive */
+/* Reduce spacing and sizing in the philosophy section on smaller screens. */
 
 @media (max-width: 1024px) {
     .philosophy {
@@ -1013,8 +1057,7 @@ body.nav-open {
 =========================================*/
 
 .skills {
-    padding: 8rem 0;
-    border-bottom: 1px solid var(--border-soft);
+    padding: var(--section-spacing-lg) 0;
 }
 
 .skills-container {
@@ -1038,22 +1081,26 @@ body.nav-open {
     border-left: 1px solid var(--border-subtle);
 }
 
-/* remove first row border */
 .skill-card:nth-child(-n+2) {
     border-top: none;
 }
 
-/* remove left border on first column */
 .skill-card:nth-child(2n+1) {
     border-left: none;
 }
 
 .skill-icon {
-    width: 52px;
-    height: 52px;
-    border: 1px solid var(--border-subtle);
+    width: 32px;
+    height: 32px;
+    border: none;
     border-radius: 50%;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.skill-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .skill-card h4 {
@@ -1076,18 +1123,10 @@ body.nav-open {
 }
 
 .tech-stack li {
-    border: 1px solid #ffffff14;
-    border-radius: 100px;
-    padding: .45rem 1rem;
-    font-size: .72rem;
-    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-    font-weight: 600;
-    letter-spacing: .15em;
-    text-transform: uppercase;
-    color: var(--label-color);
+    border-color: #ffffff14;
 }
 
-/* Skills — responsive */
+/* Stack skill cards into a single column where horizontal space is limited. */
 
 @media (max-width: 1024px) {
     .skills {
@@ -1118,7 +1157,6 @@ body.nav-open {
         border-left: none;
     }
 
-    /* On a single column, every card gets a top border except the first */
     .skill-card:nth-child(-n+2) {
         border-top: 1px solid var(--border-subtle);
     }
@@ -1128,9 +1166,9 @@ body.nav-open {
     }
 
     .skill-icon {
-        width: 42px;
-        height: 42px;
-        margin-bottom: 1.1rem;
+        width: 36px;
+        height: 36px;
+        margin-bottom: 1rem;
     }
 
     .skill-card h4 {
@@ -1155,20 +1193,29 @@ body.nav-open {
 =========================================*/
 
 .projects {
-    padding: 10rem 0;
-    border-bottom: 1px solid var(--border-soft);
+    padding: var(--section-spacing-xl) 0;
 }
 
-.projects-header {
+.projects-header,
+.writing-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    gap: 2rem;
     max-width: 100%;
-    margin-bottom: 3rem;
 }
 
-.projects-header > div {
+.projects-header {
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+}
+
+.writing-header {
+    gap: var(--space-7);
+    margin-bottom: var(--space-8);
+}
+
+.projects-header > div,
+.writing-header > div {
     flex: 1;
     min-width: 0;
 }
@@ -1179,6 +1226,11 @@ body.nav-open {
     align-self: flex-end;
     position: static;
     margin-bottom: .2rem;
+}
+
+/* Hide the global underline for the "All work →" link in projects header */
+.projects-header .section-link::after {
+    display: none;
 }
 
 .projects .section-description {
@@ -1286,51 +1338,75 @@ body.nav-open {
 }
 
 .project-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 8.5rem;
+    min-height: 2.35rem;
     border: 1px solid var(--border-subtle);
-    padding: .8rem 1.5rem;
+    padding: .55rem 1.2rem;
     border-radius: 999px;
     text-decoration: none;
     color: white;
+    line-height: 1.2;
 }
 
-.project-links a:hover {
-    background: white;
-    color: black;
+.project-links a .project-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    margin-right: .5rem;
+    flex-shrink: 0;
+}
+
+.project-links a .project-icon img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+}
+
+.project-links a:hover,
+.project-links a:last-child:hover {
+    background: transparent;
+    border-color: #D9B77A;
+    color: #D9B77A;
+}
+
+.project-links a:hover .project-icon,
+.project-links a:last-child:hover .project-icon {
+    color: #D9B77A;
+}
+
+.project-links a:hover .project-icon img,
+.project-links a:last-child:hover .project-icon img {
+    filter: invert(76%) sepia(23%) saturate(653%) hue-rotate(1deg) brightness(100%) contrast(95%);
 }
 
 .project-links a:last-child {
-    background: var(--btn-primary-bg);
-    border-color: var(--btn-primary-bg);
-    color: var(--btn-primary-color);
+    background: #fff;
+    border-color: #fff;
+    color: #111;
 }
 
-.project-links a:last-child:hover {
-    background: var(--btn-primary-hover-bg);
-    border-color: var(--btn-primary-hover-bg);
-    color: var(--btn-primary-color);
+@media (max-width: 640px) {
+    .project-links a {
+        min-width: 7rem;
+        min-height: 2.2rem;
+        padding: .5rem 1rem;
+    }
+
+    .project-links a .project-icon {
+        width: 16px;
+        height: 16px;
+        margin-right: .45rem;
+    }
 }
 
-/* Projects — responsive */
-
-@media (max-width: 1024px) {
-    .projects {
-        padding: var(--section-padding-tablet) 0;
-    }
-
-    .project {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-        padding: 3.5rem 0;
-    }
-
-    .project-image {
-        height: auto;
-        aspect-ratio: 4 / 3;
-    }
-
-    .project-tags {
-        gap: 1.5rem;
-    }
+.project-tags {
+    gap: 1.5rem;
 }
 
 @media (max-width: 640px) {
@@ -1376,6 +1452,12 @@ body.nav-open {
         font-size: .88rem;
     }
 
+    .project {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        padding: 4rem 0;
+    }
+
     .project-tags {
         grid-template-columns: 1fr;
         gap: 1.5rem;
@@ -1397,8 +1479,7 @@ body.nav-open {
 =========================================*/
 
 .education {
-    padding: 8rem 0;
-    border-bottom: 1px solid var(--border-soft);
+    padding: var(--section-spacing-lg) 0;
 }
 
 .education-container {
@@ -1418,12 +1499,9 @@ body.nav-open {
     flex-direction: column;
 }
 
-/* Timeline */
 
 .timeline-item {
-    /* Single source of truth for the item's left inset — the trunk line
-       and the dot's offset both derive from it, so they can't drift out
-       of sync when this value changes at a breakpoint. */
+   /* Shared left spacing for the timeline layout. */
     --tl-pad: 2.2rem;
 
     position: relative;
@@ -1461,8 +1539,7 @@ body.nav-open {
 .timeline-dot {
     position: absolute;
     top: 50%;
-    /* place the dot so its center aligns with the vertical line
-       (account for timeline-item's own left padding) */
+    /* Center the marker on the timeline line. */
     left: calc(.3rem - var(--tl-pad) - 1px);
     width: 8px;
     height: 8px;
@@ -1483,7 +1560,6 @@ body.nav-open {
     line-height: 1.9;
 }
 
-/* Learning */
 
 .learning-section {
     padding: 3rem 0;
@@ -1511,7 +1587,6 @@ body.nav-open {
     font-size: .78rem;
 }
 
-/* Certifications */
 
 .certifications {
     padding-top: 3rem;
@@ -1550,7 +1625,7 @@ body.nav-open {
     line-height: 1.6;
 }
 
-/* Education — responsive */
+/* Keep the education timeline readable when the layout becomes narrow. */
 
 @media (max-width: 1024px) {
     .education {
@@ -1611,8 +1686,7 @@ body.nav-open {
 =========================================*/
 
 .services {
-    padding: 8rem 0;
-    border-bottom: 1px solid var(--border-soft);
+    padding: var(--section-spacing-lg) 0;
 }
 
 .services-container {
@@ -1696,7 +1770,7 @@ body.nav-open {
     color: var(--text);
 }
 
-/* Services — responsive */
+/* Stack service cards into a single column on smaller screens. */
 
 @media (max-width: 1024px) {
     .services {
@@ -1766,16 +1840,7 @@ body.nav-open {
 =========================================*/
 
 .writing {
-    padding: 8rem 0;
-    border-bottom: 1px solid var(--border-soft);
-}
-
-.writing-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 4rem;
-    margin-bottom: 5rem;
+    padding: var(--section-spacing-lg) 0;
 }
 
 .writing .section-description {
@@ -1838,9 +1903,6 @@ body.nav-open {
     color: var(--accent);
 }
 
-/* Arrow glyphs (in the "Explore more →" link and each writing-column
-   link) styled to match .section-label: same mono face, size, weight and
-   color, independent of the surrounding link text — on every breakpoint. */
 .arrow-label {
     display: inline-block;
     font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -1854,13 +1916,12 @@ body.nav-open {
     color: var(--accent);
 }
 
-/* User request: remove all borders within the writing grid */
 .writing-grid .writing-column {
     border-top: none;
     border-left: none;
 }
 
-/* Writing — responsive */
+/* Simplify the writing layout when the grid can no longer fit comfortably. */
 
 @media (max-width: 1024px) {
     .writing {
@@ -1913,8 +1974,7 @@ body.nav-open {
 =========================================*/
 
 .testimonials {
-    padding: 8rem 0;
-    border-bottom: 1px solid var(--border-soft);
+    padding: var(--section-spacing-lg) 0;
 }
 
 .testimonials-container {
@@ -1947,11 +2007,21 @@ body.nav-open {
 }
 
 .testimonial-icon {
-    width: 60px;
-    height: 60px;
-    border: 1px dashed var(--border-subtle);
+    width: 28px;
+    height: 28px;
+    border: none;
     border-radius: 50%;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.testimonial-icon img {
+    width: 80%;
+    height: 80%;
+    display: block;
+    object-fit: contain;
 }
 
 .testimonial-text {
@@ -1974,7 +2044,7 @@ body.nav-open {
     letter-spacing: .04em;
 }
 
-/* Testimonials — responsive */
+/* Reduce testimonial card density on smaller screens. */
 
 @media (max-width: 1024px) {
     .testimonials {
@@ -2002,9 +2072,14 @@ body.nav-open {
     }
 
     .testimonial-icon {
-        width: 46px;
-        height: 46px;
-        margin-bottom: 1.25rem;
+        width: 24px;
+        height: 24px;
+        margin-bottom: .85rem;
+    }
+
+    .testimonial-icon img {
+        width: 90%;
+        height: 90%;
     }
 
     .testimonial-text {
@@ -2027,7 +2102,7 @@ body.nav-open {
 =========================================*/
 
 .contact {
-    padding: 10rem 0 0;
+    padding: var(--section-spacing-xl) 0 0;
 }
 
 .contact-container {
@@ -2075,7 +2150,7 @@ body.nav-open {
     background: var(--accent);
 }
 
-/* Contact — responsive */
+/* Keep the contact actions aligned and readable on smaller screens. */
 
 @media (max-width: 1024px) {
     .contact {
@@ -2091,7 +2166,18 @@ body.nav-open {
     .contact-actions {
         flex-direction: column;
         align-items: flex-start;
-        gap: 1.25rem;
+        gap: 1rem;
+    }
+
+    .contact-actions .btn {
+        padding: .85rem 1.25rem;
+        white-space: normal;
+        max-width: 100%;
+    }
+
+    .contact-actions .contact-email {
+        max-width: 100%;
+        overflow-wrap: anywhere;
     }
 }
 
@@ -2199,11 +2285,7 @@ body.nav-open {
     font-size: .8rem;
 }
 
-/* Footer — responsive
-   Two columns at both tablet and mobile: Brand spans the full width as
-   its own row, then Navigation / Elsewhere share a row, then Based In
-   sits alone on the last row — 2 columns, 3 rows, instead of stacking
-   into four long rows. */
+/* Footer layout adapts to a two-column grid on smaller screens. */
 
 @media (max-width: 1024px) {
     .footer-container {

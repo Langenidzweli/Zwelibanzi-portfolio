@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Projects</title>
+    <link rel="icon" type="image/png" href="../images/logo.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,7 +25,7 @@
         <header class="project-header">
           <span class="project-label">Work · 2024 — 2026</span>
 
-          <h1 class="section-title page-hero-title page-title">
+          <h1 class="section-title  page-title">
             Things I've built to answer a question.
           </h1>
 
@@ -35,59 +36,75 @@
         </header>
 
         <article class="project">
+          <!-- Project media -->
           <div class="project-image">
-            <img src="../images/Who-I-Am.png" alt="Ledger" />
+            <a href="../pages/projects/virtual-guard.html" class="project-image">
+              <img src="../images/virtual-guard-hero.png" alt="Virtual Guard" />
 
-            <div class="project-overlay">
-              <span class="project-year">Project 01 · 2026</span>
-              <h3 class="project-name">Ledger</h3>
-            </div>
+              <div class="project-overlay">
+                <span class="project-year">Project 01 · 2026</span>
+                <h3 class="project-name">Virtual Guard</h3>
+              </div>
+            </a>
           </div>
 
+          <!-- Project details -->
           <div class="project-content">
-            <h2 class="project-title">Ledger — A Personal Accounting Engine</h2>
-
+            <h2 class="project-title">
+              <a href="../pages/projects/virtual-guard.html">
+                Virtual Guard — An AI-Powered Retail Surveillance Platform
+              </a>
+            </h2>
             <hr />
 
             <div class="project-section">
               <h4>Problem</h4>
               <p>
-                Small operators keep books in spreadsheets that quietly go
-                wrong...
+                Retail security teams monitor multiple CCTV cameras
+                simultaneously, making it difficult to detect suspicious
+                behaviour as it occurs. As a result, important incidents may be
+                missed or identified too late.
               </p>
             </div>
 
             <div class="project-section">
               <h4>Solution</h4>
-              <p>A double-entry bookkeeping API with...</p>
+              <p>
+                Monitoring multiple CCTV cameras makes it difficult to detect
+                suspicious behaviour in real time, increasing the risk of missed
+                incidents.
+              </p>
             </div>
 
             <div class="project-tags">
               <div>
                 <h4>Tech Stack</h4>
-
                 <ul>
-                  <li>Java</li>
+                  <li>React</li>
                   <li>Spring Boot</li>
+                  <li>Python + YOLO</li>
                   <li>PostgreSQL</li>
-                  <li>Docker</li>
                 </ul>
               </div>
 
               <div>
-                <h4>Challenges</h4>
-
+                <h4>Highlights</h4>
                 <ul>
-                  <li>Idempotency</li>
-                  <li>Schema Design</li>
-                  <li>Reporting Queries</li>
+                  <li>Camera Monitoring</li>
+                  <li>Store Map</li>
+                  <li>AI Analysis</li>
+                  <li>Incident Reports</li>
                 </ul>
               </div>
             </div>
 
             <div class="project-section">
               <h4>Lessons Learned</h4>
-              <p>Writing an accounting engine forced me to...</p>
+              <p>
+                Virtual Guard challenged me to think beyond machine learning by
+                combining frontend development, backend engineering, computer
+                vision, and system design into a complete software solution.
+              </p>
             </div>
 
             <div class="project-links">
@@ -112,9 +129,7 @@
                 Live Demo
               </a>
 
-              <a
-                href="http://www.linkedin.com/in/dobie-zweli-langeni-134bb52a6"
-              >
+              <a href="../pages/projects/virtual-guard.html">
                 <span class="project-icon">
                   <img
                     src="../images/icons/file-text.svg"
@@ -126,14 +141,6 @@
             </div>
           </div>
         </article>
-
-        <div class="projects-footer">
-          <p>
-            More case studies are on the way. If you'd like the story behind any
-            of these—the shape of the problem, the trade-offs—just
-            <a href="./contact-page.html" class="section-link">ask.</a>
-          </p>
-        </div>
       </div>
     </section>
 

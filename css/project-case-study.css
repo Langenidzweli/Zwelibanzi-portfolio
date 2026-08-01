@@ -1,0 +1,555 @@
+/*==================================================
+                PROJECT CASE STUDY
+==================================================*/
+
+.project-hero{
+    padding:clamp(5rem,8vw,8rem) 0 4rem;
+}
+
+.project-hero .container{
+    /* Respect the global container (centered max width with side padding) */
+    max-width:1600px;
+    margin: 0 auto;
+    padding: 0 4%;
+}
+
+/* Keep hero copy constrained and left-aligned inside the container */
+.project-hero-inner{
+    max-width:900px;
+    margin-left:0;
+    margin-right:auto;
+}
+
+/* Reusable inner wrapper for left-aligned section content */
+.content-inner{
+    max-width:900px;
+    margin-left:0;
+    margin-right:auto;
+}
+
+.back-link{
+    display:inline-flex;
+    align-items:center;
+    gap:.5rem;
+    margin-bottom:2rem;
+    color:var(--text-light);
+    text-decoration:none;
+    transition:.3s;
+}
+
+.back-link:hover{
+    color:var(--text-color);
+}
+
+.project-title{
+    margin-top:var(--space-2);
+    margin-bottom:1.5rem;
+
+    max-width:900px;
+
+    font-size:clamp(2.8rem,5vw,4.5rem);
+
+    line-height:1.02;
+
+    letter-spacing:-.05em;
+
+    color:var(--heading-color);
+}
+
+.project-summary{
+
+    max-width:760px;
+
+    font-size:1rem;
+
+    line-height:1.9;
+
+    color:var(--text-light);
+
+    margin-bottom:2.5rem;
+}
+
+.project-meta{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:.8rem;
+
+    color:var(--label-color);
+
+    font-size:.95rem;
+
+    margin-bottom:2rem;
+}
+
+.project-actions{
+
+    display:flex;
+
+    gap:1rem;
+
+    flex-wrap:wrap;
+}
+
+.project-actions a{
+
+    padding:.8rem 1.4rem;
+
+    border:1px solid var(--border-soft);
+
+    border-radius:999px;
+
+    text-decoration:none;
+
+    color:var(--text-color);
+
+    transition:.3s;
+}
+
+.project-actions a:hover{
+
+    border-color:#D9B77A;
+
+    color:#D9B77A;
+}
+
+
+/*==================================================
+                HERO IMAGE
+==================================================*/
+
+.project-banner{
+
+    padding-bottom:6rem;
+}
+
+.project-banner img{
+
+    width:100%;
+
+    display:block;
+
+    border-radius:24px;
+}
+
+
+/*==================================================
+                GENERAL SECTIONS
+==================================================*/
+
+.project-overview,
+.project-details,
+.project-features,
+.project-stack,
+.project-architecture,
+.project-gallery,
+.project-challenges,
+.project-lessons,
+.project-future,
+.related-projects{
+
+    padding-bottom:6rem;
+}
+
+/* Reduce vertical gaps for later project sections to tighten layout */
+.project-challenges,
+.project-lessons,
+.project-future {
+    padding-bottom:3rem;
+}
+
+
+/* Ensure these section containers span the global page container so
+   their inner `.content-inner` elements can be left-aligned consistently */
+.project-overview .container,
+.project-challenges .container,
+.project-lessons .container,
+.project-future .container{
+
+    max-width:1600px;
+    margin: 0 auto;
+    padding: 0 4%;
+}
+
+/* Make the overview container respect the global page container so the
+   `.content-inner` can left-align within the same page offsets as the hero. */
+.project-overview .container{
+    max-width:1600px;
+    margin: 0 auto;
+    padding: 0 4%;
+}
+
+.project-overview p,
+.project-challenges p,
+.project-lessons p,
+.project-future p{
+
+    margin-top:2rem;
+    /* Slightly smaller paragraphs for denser project pages */
+    font-size:1rem;
+
+    line-height:2;
+
+    color:var(--text-light);
+}
+
+/* Ensure other project section paragraphs match the reduced size */
+.project-architecture p,
+.project-gallery p,
+.project-details p,
+.project-stack p{
+    font-size:1rem;
+}
+
+
+/*==================================================
+                DETAILS GRID
+==================================================*/
+
+.details-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:2rem;
+}
+
+.details-grid article{
+
+    padding:2rem;
+
+    border:1px solid var(--border-soft);
+
+    border-radius:18px;
+}
+
+.details-grid h3{
+
+    margin-bottom:1rem;
+
+    font-size:1.2rem;
+}
+
+.details-grid p{
+
+    line-height:1.8;
+
+    color:var(--text-light);
+}
+
+
+/*==================================================
+                FEATURES
+==================================================*/
+
+.features-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:1.25rem;
+
+    margin-top:2rem;
+}
+
+.features-grid article{
+
+    padding:1.5rem;
+
+    border:1px solid var(--border-soft);
+
+    border-radius:16px;
+
+    text-align:center;
+
+    font-weight:500;
+
+    transition:.3s;
+}
+
+.features-grid article:hover{
+
+    /* Hover effects removed for static presentation */
+    border-color:var(--border-soft);
+
+    transform:none;
+}
+
+
+/*==================================================
+                TECH STACK
+==================================================*/
+
+.stack-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:2rem;
+
+    margin-top:2rem;
+}
+
+.stack-grid div{
+
+    border:1px solid var(--border-soft);
+
+    border-radius:18px;
+
+    padding:2rem;
+}
+
+.stack-grid h4{
+
+    margin-bottom:1rem;
+}
+
+.stack-grid ul{
+
+    list-style:none;
+
+    padding:0;
+
+    margin:0;
+}
+
+.stack-grid li{
+
+    color:var(--text-light);
+
+    margin-bottom:.7rem;
+}
+
+
+/*==================================================
+                ARCHITECTURE
+==================================================*/
+
+.project-architecture img{
+
+    width:100%;
+
+    display:block;
+
+    margin-top:2rem;
+
+    border-radius:20px;
+
+    border:1px solid var(--border-soft);
+}
+
+
+/*==================================================
+                GALLERY
+==================================================*/
+
+.gallery-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:1.5rem;
+
+    margin-top:2rem;
+}
+
+.gallery-grid img{
+
+    width:100%;
+
+    display:block;
+
+    border-radius:18px;
+}
+
+
+/*==================================================
+                FUTURE
+==================================================*/
+
+.project-future ul{
+
+    margin-top:2rem;
+
+    padding-left:1.2rem;
+}
+
+.project-future li{
+
+    margin-bottom:1rem;
+
+    color:var(--text-light);
+
+    line-height:1.8;
+}
+
+
+/*==================================================
+                RELATED PROJECTS
+==================================================*/
+
+.related-grid{
+
+    margin-top:2rem;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:2rem;
+}
+
+
+/*==================================================
+                NAVIGATION
+==================================================*/
+
+.project-navigation{
+
+    padding-bottom:8rem;
+}
+
+.project-navigation .container{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    border-top:1px solid var(--border-soft);
+
+    padding-top:2rem;
+}
+
+.project-navigation a{
+
+    color:var(--text-color);
+
+    text-decoration:none;
+
+    transition:.3s;
+}
+
+.project-navigation a:hover{
+
+    color:#D9B77A;
+}
+
+
+/*==================================================
+                TABLET
+==================================================*/
+
+@media(max-width:1024px){
+
+    .details-grid{
+
+        grid-template-columns:1fr;
+    }
+
+    .features-grid{
+
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .stack-grid{
+
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .related-grid{
+
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+
+/*==================================================
+                MOBILE
+==================================================*/
+
+@media(max-width:768px){
+
+    .project-hero{
+
+        padding:var(--section-padding-mobile) 0 3rem;
+    }
+
+    .project-title{
+
+        font-size:clamp(2.2rem,9vw,3.3rem);
+    }
+
+    .project-summary{
+
+        font-size:1.05rem;
+
+        line-height:1.9;
+    }
+
+    .project-actions{
+
+        flex-direction:column;
+    }
+
+    .project-actions a{
+
+        width:100%;
+
+        text-align:center;
+    }
+
+    .features-grid,
+    .stack-grid,
+    .gallery-grid,
+    .related-grid{
+
+        grid-template-columns:1fr;
+    }
+
+    .project-navigation .container{
+
+        flex-direction:column;
+
+        gap:1.5rem;
+
+        align-items:flex-start;
+    }
+
+    /* reduce section gaps on smaller screens */
+    .project-challenges,
+    .project-lessons,
+    .project-future {
+        padding-bottom:2rem;
+    }
+}
+
+
+/*==================================================
+                SMALL MOBILE
+==================================================*/
+
+@media(max-width:480px){
+
+    .project-title{
+
+        font-size:2rem;
+    }
+
+    .details-grid article{
+
+        padding:1.5rem;
+    }
+
+    .stack-grid div{
+
+        padding:1.5rem;
+    }
+}

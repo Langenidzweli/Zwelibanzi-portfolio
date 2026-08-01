@@ -3,36 +3,254 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Writing</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Montserrat:wght@100..900&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="icon" type="image/png" href="../images/logo.png">
+
     <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/writing-page.css" />
   </head>
+
   <body>
     <div id="navbar"></div>
 
     <main>
+      <!-- =========================================
+                  HERO
+      ========================================== -->
+
       <section class="writing-page">
         <div class="container">
-          <header class="page-hero">
-            <span class="section-label">Writing</span>
-            <h1 class="section-title page-hero-title writing-page-title">
-              Notes on building, learning, and thinking clearly.
+          <header class="writing-header">
+            <span class="section-label"> Writing </span>
+
+            <h1 class="section-title  writing-title">
+              Notes from the workshop.
             </h1>
-            <p class="page-hero-copy">
-              I write about the quieter parts of software work: systems,
-              trade-offs, and the habits that make strong products possible.
+
+            <p class="writing-intro">
+              Occasional essays on software engineering, backend architecture,
+              artificial intelligence, and the slow accumulation of things I'm
+              learning as I build.
             </p>
           </header>
+        </div>
+      </section>
+
+      <!-- =========================================
+                  FILTERS
+      ========================================== -->
+
+      <section class="writing-filters">
+        <div class="container">
+          <div class="filter-bar">
+            <!-- Categories -->
+
+            <div class="filter">
+              <button class="filter-button">
+                All Categories
+
+                <span>⌄</span>
+              </button>
+
+              <div class="filter-dropdown">
+                <a href="#">
+                  Backend
+                  <span>(8)</span>
+                </a>
+
+                <a href="#">
+                  AI
+                  <span>(5)</span>
+                </a>
+
+                <a href="#">
+                  Computer Vision
+                  <span>(2)</span>
+                </a>
+
+                <a href="#">
+                  Career
+                  <span>(4)</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Topics -->
+
+            <div class="filter">
+              <button class="filter-button">
+                All Topics
+
+                <span>⌄</span>
+              </button>
+
+              <div class="filter-dropdown">
+                <a href="#">
+                  Spring Boot
+                  <span>(4)</span>
+                </a>
+
+                <a href="#">
+                  Java
+                  <span>(7)</span>
+                </a>
+
+                <a href="#">
+                  PostgreSQL
+                  <span>(3)</span>
+                </a>
+
+                <a href="#">
+                  Docker
+                  <span>(2)</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Tags -->
+
+            <div class="filter">
+              <button class="filter-button">
+                All Tags
+
+                <span>⌄</span>
+              </button>
+
+              <div class="filter-dropdown">
+                <a href="#">
+                  REST API
+                  <span>(4)</span>
+                </a>
+
+                <a href="#">
+                  Architecture
+                  <span>(6)</span>
+                </a>
+
+                <a href="#">
+                  Security
+                  <span>(2)</span>
+                </a>
+
+                <a href="#">
+                  Design
+                  <span>(5)</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================
+                  ARTICLES
+      ========================================== -->
+
+      <section class="articles">
+        <div class="container">
+          <div class="articles-grid">
+            <!-- ARTICLE -->
+
+            <article class="article-card">
+              <a href="./article-page.html">
+                <img src="../images/article-1.jpg" alt="Article" />
+
+                <div class="article-content">
+                  <span class="article-category"> Backend </span>
+
+                  <h3>Designing APIs that survive version three.</h3>
+
+                  <p>
+                    Thoughts on API versioning, consistency and building
+                    software that grows with your users.
+                  </p>
+
+                  <div class="article-meta">
+                    <span>8 min read</span>
+
+                    <span>•</span>
+
+                    <span>May 2026</span>
+                  </div>
+                </div>
+              </a>
+            </article>
+
+            <article class="article-card">
+              <a href="./article-page.html">
+                <img src="../images/article-2.jpg" alt="" />
+
+                <div class="article-content">
+                  <span class="article-category">
+                    Artificial Intelligence
+                  </span>
+
+                  <h3>What makes software feel intelligent?</h3>
+
+                  <p>
+                    Building AI that actually improves products instead of
+                    becoming a gimmick.
+                  </p>
+
+                  <div class="article-meta">
+                    <span>9 min read</span>
+
+                    <span>•</span>
+
+                    <span>April 2026</span>
+                  </div>
+                </div>
+              </a>
+            </article>
+
+            <article class="article-card">
+              <a href="./article-page.html">
+                <img src="../images/article-3.jpg" alt="" />
+
+                <div class="article-content">
+                  <span class="article-category"> Spring Boot </span>
+
+                  <h3>Building maintainable backend systems.</h3>
+
+                  <p>
+                    Architecture decisions that make projects easier to extend
+                    over time.
+                  </p>
+
+                  <div class="article-meta">
+                    <span>7 min read</span>
+
+                    <span>•</span>
+
+                    <span>March 2026</span>
+                  </div>
+                </div>
+              </a>
+            </article>
+
+            <!-- Continue adding more -->
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================
+                  PAGINATION
+      ========================================== -->
+
+      <section class="pagination">
+        <div class="container">
+          <button>Previous</button>
+
+          <span> Page 1 of 5 </span>
+
+          <button>Next</button>
         </div>
       </section>
     </main>
 
     <div id="footer"></div>
+
     <script src="../components/components.js"></script>
     <script src="../js/script.js"></script>
   </body>

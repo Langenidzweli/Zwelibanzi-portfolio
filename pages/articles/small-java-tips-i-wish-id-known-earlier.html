@@ -1,0 +1,1046 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>Small Java Tips I Wish I'd Known Earlier | Zwelibanzi Langeni</title>
+
+        <link rel="icon" type="image/png" href="../../images/logo.png" />
+
+        <link rel="stylesheet" href="../../css/style.css" />
+        <link rel="stylesheet" href="../../css/article-page.css" />
+    </head>
+
+    <body>
+        <a class="skip-link" href="#main-content">Skip to content</a>
+
+        <div id="navbar"></div>
+
+        <main id="main-content">
+            <section class="article-page">
+                <div class="container">
+                    <div class="article-layout">
+                        <!-- ===================================================
+LEFT COLUMN
+=================================================== -->
+
+                        <div class="article-main">
+                            <!-- Hero -->
+
+                            <header class="article-header">
+                                <div class="article-category">
+                                    <span class="section-label">Java</span>
+                                    <span class="article-date">July 2026</span>
+                                </div>
+
+                                <h1 class="article-title">
+                                    Small Java Tips I Wish I'd Known Earlier
+                                </h1>
+
+                                <p class="article-description">
+                                    A collection of tiny, practical Java
+                                    lessons that took me years to discover —
+                                    each one made my code cleaner, safer, and
+                                    more expressive.
+                                </p>
+
+                                <div class="article-meta">
+                                    <div class="author">
+                                        <div class="author-avatar">Z</div>
+
+                                        <div>
+                                            <h4>Zwelibanzi Langeni</h4>
+
+                                            <span>10 min read</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="article-share">
+                                        <a href="#">LinkedIn</a>
+
+                                        <a href="#">X</a>
+
+                                        <a href="#">Copy Link</a>
+                                    </div>
+                                </div>
+                            </header>
+
+                            <!-- Hero Image -->
+
+                            <figure class="article-cover">
+                                <img
+                                    src="../../images/Small Java Tips I Wish I'd Known Earlier.jpg"
+                                    alt="A collection of small Java puzzle pieces fitting together to form a clean, modern application"
+                                />
+                            </figure>
+
+                            <!-- Article -->
+
+                            <article class="article-body">
+                                <h2 id="the-tip-that-changed-everything">
+                                    The Tip That Changed Everything
+                                </h2>
+
+                                <p>
+                                    I've been writing Java professionally for
+                                    over eight years, and I still have moments
+                                    where I discover a language feature or
+                                    library method that makes me slap my
+                                    forehead and mutter, "Why didn't I know
+                                    about this earlier?" It's humbling, but it's
+                                    also one of the things I love most about
+                                    this language — there's always something new
+                                    to learn.
+                                </p>
+
+                                <p>
+                                    This article is a collection of those small
+                                    epiphanies. Not the big architectural
+                                    patterns or heavyweight frameworks, but the
+                                    tiny, everyday tips that have quietly made
+                                    my code safer, more readable, and more
+                                    enjoyable to write. I wish someone had
+                                    shared them with me on day one.
+                                </p>
+
+                                <p>
+                                    Some of these are trivial. Some are
+                                    controversial. But all of them have saved me
+                                    from bugs, headaches, or wasted time. I hope
+                                    they do the same for you.
+                                </p>
+
+                                <h2 id="stop-using-for-strings">
+                                    Stop Using <code>==</code> for Strings (and
+                                    other rookie mistakes)
+                                </h2>
+
+                                <p>
+                                    I have to start here because this one
+                                    haunted me for far too long. In my first
+                                    year, I used <code>==</code> to compare
+                                    strings all the time, and I couldn't figure
+                                    out why my conditionals sometimes worked and
+                                    sometimes didn't. I remember spending three
+                                    hours debugging a login feature before
+                                    someone pointed out that I needed
+                                    <code>.equals()</code>.
+                                </p>
+
+                                <p>
+                                    The rule is simple: use
+                                    <code>.equals()</code> for content
+                                    comparison, <code>==</code> for reference
+                                    comparison. But there's a nuance I didn't
+                                    learn until later — always call
+                                    <code>.equals()</code> on the known
+                                    non-null object, or use
+                                    <code>Objects.equals()</code>.
+                                </p>
+
+                                <pre><code>// Bad — fragile and error-prone
+                                    if (userInput == "admin") { ... }
+
+                                    // Better — but still throws NPE if userInput is
+                                    null
+                                    if (userInput.equals("admin")) { ... }
+
+                                    // Best — null-safe
+                                    if (Objects.equals(userInput, "admin")) { ...
+                                    }</code></pre>
+
+                                <p>
+                                    I now use <code>Objects.equals()</code>
+                                    instinctively. It's a tiny habit that has
+                                    eliminated an entire class of
+                                    <code>NullPointerException</code>s from my
+                                    code. The same goes for
+                                    <code>Objects.hash()</code> and
+                                    <code>Objects.toString()</code>. Java's
+                                    <code>Objects</code> utility is underrated.
+                                </p>
+
+                                <p>
+                                    Another rookie mistake I made was using
+                                    <code>StringBuilder</code> when simple
+                                    concatenation would do. The compiler
+                                    optimises simple concatenation into
+                                    <code>StringBuilder</code> for you. Only use
+                                    it explicitly when you're building strings
+                                    in a loop or conditionally.
+                                </p>
+
+                                <h2 id="the-power-of-optional">
+                                    The Power of <code>Optional</code> (Don't
+                                    ignore it)
+                                </h2>
+
+                                <p>
+                                    When <code>Optional</code> was introduced in
+                                    Java 8, I dismissed it as over-engineered
+                                    boilerplate. I continued returning
+                                    <code>null</code> from methods and checking
+                                    for <code>null</code> everywhere. It wasn't
+                                    until I inherited a codebase with rampant
+                                    <code>null</code> checks that I realised the
+                                    problem wasn't the
+                                    <code>NullPointerException</code>s — it was
+                                    that I had no idea which methods could
+                                    return <code>null</code> and which
+                                    couldn't.
+                                </p>
+
+                                <p>
+                                    <code>Optional</code> solves this by making
+                                    the possibility of absence explicit in the
+                                    type signature. If a method returns
+                                    <code>Optional&lt;User&gt;</code>, I know
+                                    the user might not exist. If it returns
+                                    <code>User</code>, I know it's guaranteed to
+                                    be non-null.
+                                </p>
+
+                                <pre><code>public Optional&lt;User&gt;
+                                    findUserByEmail(String email) {
+                                    return repository.findByEmail(email);
+                                    }
+
+                                    // Usage
+                                    findUserByEmail("alice@example.com")
+                                    .ifPresent(user -> sendWelcomeEmail(user));
+                                    </code></pre>
+
+                                <p>
+                                    The real power of <code>Optional</code> is
+                                    in the fluent API it provides:
+                                    <code>map()</code>, <code>flatMap()</code>,
+                                    <code>filter()</code>, <code>orElse()</code>,
+                                    and <code>orElseThrow()</code>. These let
+                                    you chain operations safely without
+                                    littering your code with
+                                    <code>if (x != null)</code> blocks.
+                                </p>
+
+                                <p>
+                                    One tip I wish I'd known: don't use
+                                    <code>Optional</code> for fields or method
+                                    parameters. It wasn't designed for that, and
+                                    it adds unnecessary overhead. Use it for
+                                    return types only, and preferably for
+                                    methods that might legitimately have no
+                                    value to return.
+                                </p>
+
+                                <h2 id="why-i-started-using-record-for-dtos">
+                                    Why I Started Using <code>record</code> for
+                                    DTOs
+                                </h2>
+
+                                <p>
+                                    I've written thousands of lines of boilerplate
+                                    DTO classes — constructors, getters, setters,
+                                    <code>toString()</code>, <code>hashCode()</code>,
+                                    and <code>equals()</code>. I used Lombok for
+                                    a while, and while it helped, it always felt
+                                    like a crutch. Then records arrived in Java
+                                    14, and my world changed.
+                                </p>
+
+                                <p>
+                                    A <code>record</code> is a transparent
+                                    carrier for immutable data. It gives you the
+                                    constructor, accessors, and the
+                                    <code>equals()</code>/<code>hashCode()</code>/
+                                    <code>toString()</code> trio for free. No
+                                    boilerplate, no magic annotations.
+                                </p>
+
+                                <pre><code>public record UserResponse(Long id, String
+                                    email, String displayName) {}
+
+                                    // Usage
+                                    UserResponse user = new UserResponse(1L,
+                                    "alice@example.com", "Alice");
+                                    System.out.println(user.email()); //
+                                    accessor, not getEmail()
+                                    System.out.println(user); //
+                                    UserResponse[id=1, email=..., displayName=...]
+                                    </code></pre>
+
+                                <p>
+                                    I now use records for all my DTOs, request
+                                    objects, and response objects. They're
+                                    perfect for API layers where the data is
+                                    just a dumb carrier between the controller
+                                    and the service. If I need mutability, I use
+                                    a regular class, but most of the time,
+                                    immutability is what I want.
+                                </p>
+
+                                <p>
+                                    The only downside is that records don't
+                                    support custom constructors with validation
+                                    out of the box — but you can add a compact
+                                    constructor for validation:
+                                </p>
+
+                                <pre><code>public record CreateUserRequest(String
+                                    email, String password) {
+                                    public CreateUserRequest {
+                                    if (email == null || !email.contains("@")) {
+                                    throw new IllegalArgumentException("Invalid
+                                    email");
+                                    }
+                                    if (password == null || password.length()
+                                    &lt; 8) {
+                                    throw new
+                                    IllegalArgumentException("Password too short");
+                                    }
+                                    }
+                                    }</code></pre>
+
+                                <p>
+                                    This has made my code significantly cleaner
+                                    and my tests simpler. I wish records had
+                                    existed when I started.
+                                </p>
+
+                                <h2 id="stream-api-the-hidden-gems">
+                                    <code>Stream</code> API: The Hidden Gems
+                                </h2>
+
+                                <p>
+                                    I jumped on the Stream API early, but I used
+                                    it clumsily. I'd chain <code>map()</code>,
+                                    <code>filter()</code>, and
+                                    <code>collect()</code> endlessly without
+                                    thinking about performance or readability.
+                                    Over time, I discovered some gem-like
+                                    methods that I'd overlooked.
+                                </p>
+
+                                <p>
+                                    <strong><code>takeWhile()</code> and
+                                    <code>dropWhile()</code></strong>
+                                    — I used to process streams with
+                                    <code>filter()</code> and then break
+                                    manually. These methods let me take or drop
+                                    elements while a condition holds, which is
+                                    perfect for sorted streams.
+                                </p>
+
+                                <pre><code>// Get all users until we hit an inactive
+                                    one
+                                    users.stream()
+                                    .sorted(Comparator.comparing(User::joinDate))
+                                    .takeWhile(User::isActive)
+                                    .forEach(System.out::println);
+                                    </code></pre>
+
+                                <p>
+                                    <strong><code>toList()</code> vs
+                                    <code>toUnmodifiableList()</code></strong>
+                                    — I used to collect into a mutable list and
+                                    then wrap it in
+                                    <code>Collections.unmodifiableList()</code>.
+                                    Now I just use
+                                    <code>.collect(Collectors.toUnmodifiableList())</code>
+                                    or, even better, the static
+                                    <code>Stream.toList()</code> in Java 16+
+                                    which returns an unmodifiable list.
+                                </p>
+
+                                <p>
+                                    <strong><code>flatMap()</code> for nested
+                                    collections</strong>
+                                    — I used to write nested loops to flatten
+                                    lists of lists. <code>flatMap()</code> does
+                                    it in one line:
+                                </p>
+
+                                <pre><code>List&lt;List&lt;Order&gt;&gt;
+                                    ordersByCustomer = ...;
+                                    List&lt;Order&gt; allOrders =
+                                    ordersByCustomer.stream()
+                                    .flatMap(List::stream)
+                                    .toList();
+                                    </code></pre>
+
+                                <p>
+                                    The Stream API is deep. I still discover new
+                                    ways to use it. The key is to use it
+                                    judiciously — a complex stream chain is
+                                    sometimes less readable than a simple for
+                                    loop. When in doubt, I ask myself: "Will I
+                                    understand this in six months?"
+                                </p>
+
+                                <h2 id="exception-handling-catch-what-you-can-handle">
+                                    Exception Handling: Catch What You Can
+                                    Handle
+                                </h2>
+
+                                <p>
+                                    I used to catch <code>Exception</code>
+                                    everywhere. I thought I was being safe. In
+                                    reality, I was swallowing critical errors
+                                    and making debugging a nightmare. The
+                                    turning point came when I spent days chasing
+                                    a bug that was hidden behind a blanket
+                                    <code>catch</code> block that logged
+                                    nothing.
+                                </p>
+
+                                <p>
+                                    Here's the rule I now follow:
+                                    <strong>catch only the exceptions you can
+                                    reasonably handle</strong>. If you can't
+                                    recover from it, let it propagate and let a
+                                    global exception handler deal with it.
+                                </p>
+
+                                <pre><code>// Bad — swallows everything
+                                    try {
+                                    processOrder(order);
+                                    } catch (Exception e) {
+                                    // Nothing — bugs are now invisible
+                                    }
+
+                                    // Better — catch specific exceptions
+                                    try {
+                                    processOrder(order);
+                                    } catch (OrderNotFoundException e) {
+                                    log.warn("Order not found: {}", order.id(),
+                                    e);
+                                    // Return a 404 to the client
+                                    } catch (PaymentDeclinedException e) {
+                                    log.info("Payment declined for order: {}",
+                                    order.id());
+                                    // Notify the user to try a different card
+                                    } // Other exceptions propagate to the global
+                                    handler
+                                    </code></pre>
+
+                                <p>
+                                    In Spring Boot, I use
+                                    <code>@ControllerAdvice</code> to handle
+                                    exceptions globally. This keeps my
+                                    controllers clean and ensures consistent
+                                    error responses.
+                                </p>
+
+                                <p>
+                                    Another tip: use
+                                    <strong>try-with-resources</strong> for
+                                    anything that implements
+                                    <code>AutoCloseable</code>. I used to write
+                                    ugly <code>finally</code> blocks to close
+                                    streams and connections. Now I let the
+                                    compiler do it for me.
+                                </p>
+
+                                <h2 id="builder-and-value-from-lombok">
+                                    <code>@Builder</code> and <code>@Value</code>
+                                    from Lombok (and when to avoid them)
+                                </h2>
+
+                                <p>
+                                    Lombok is divisive. Some developers love it;
+                                    others hate the magic. I've found a middle
+                                    ground. <code>@Builder</code> is genuinely
+                                    useful for classes with many optional
+                                    parameters. It's much cleaner than telescoping
+                                    constructors.
+                                </p>
+
+                                <pre><code>@Builder
+                                    @Value // immutable
+                                    public class SearchCriteria {
+                                    String query;
+                                    int limit;
+                                    int offset;
+                                    List&lt;String&gt; categories;
+                                    boolean includeInactive;
+                                    }
+
+                                    // Usage
+                                    SearchCriteria criteria = SearchCriteria.builder()
+                                    .query("java")
+                                    .limit(10)
+                                    .categories(List.of("tutorial", "blog"))
+                                    .build();
+                                    </code></pre>
+
+                                <p>
+                                    The <code>@Value</code> annotation makes the
+                                    class immutable, which aligns with my
+                                    preference for immutability. However, I've
+                                    learned to use Lombok sparingly in libraries
+                                    or public APIs because it introduces a
+                                    compile-time dependency that might not be
+                                    available to users. For application code, it's
+                                    a huge productivity boost.
+                                </p>
+
+                                <p>
+                                    One trick I wish I'd known:
+                                    <code>@Builder</code> works perfectly with
+                                    records in Java 17, so I often skip Lombok
+                                    entirely for simple DTOs and use records
+                                    with a custom builder pattern if needed.
+                                    Less magic means fewer surprises.
+                                </p>
+
+                                <h2 id="use-list-of-over-new-arraylist">
+                                    Use <code>List.of()</code> over
+                                    <code>new ArrayList&lt;&gt;()</code> for
+                                    immutability
+                                </h2>
+
+                                <p>
+                                    For years, I created empty lists with
+                                    <code>new ArrayList&lt;&gt;()</code> and
+                                    populated them later. Then I'd return them
+                                    and risk accidental modification by the
+                                    caller. Java 9 introduced
+                                    <code>List.of()</code>, which returns an
+                                    immutable list.
+                                </p>
+
+                                <pre><code>// Mutable — dangerous if returned to a
+                                    caller
+                                    List&lt;String&gt; names = new
+                                    ArrayList&lt;&gt;();
+                                    names.add("Alice");
+                                    return names; // Caller can add/remove
+
+                                    // Immutable — safe
+                                    List&lt;String&gt; names = List.of("Alice",
+                                    "Bob", "Charlie");
+                                    // or empty
+                                    List&lt;String&gt; empty = List.of();
+                                    </code></pre>
+
+                                <p>
+                                    If I need a mutable list, I use
+                                    <code>new ArrayList&lt;&gt;()</code>, but
+                                    for constants, configurations, or any list
+                                    that shouldn't change,
+                                    <code>List.of()</code> is my go-to. The same
+                                    applies to <code>Set.of()</code> and
+                                    <code>Map.of()</code>.
+                                </p>
+
+                                <p>
+                                    The performance is slightly better too,
+                                    because the immutable implementations are
+                                    compact and optimised. Small wins compound
+                                    over time.
+                                </p>
+
+                                <h2 id="the-var-keyword-friend-or-foe">
+                                    The <code>var</code> Keyword: Friend or Foe?
+                                </h2>
+
+                                <p>
+                                    When Java 10 introduced <code>var</code>, I
+                                    was sceptical. I thought it would lead to
+                                    unreadable code. I was half right. If used
+                                    recklessly, <code>var</code> obscures the
+                                    type and makes the code harder to
+                                    understand. But used thoughtfully, it
+                                    reduces redundancy and highlights the
+                                    intent.
+                                </p>
+
+                                <p>
+                                    My rule is: use <code>var</code> when the
+                                    type is obvious from the right-hand side.
+                                    For example:
+                                </p>
+
+                                <pre><code>// Obvious type
+                                    var users = userService.findAll(); // returns
+                                    List&lt;User&gt;
+
+                                    // Obvious type
+                                    var user = new User("alice@example.com");
+
+                                    // Not obvious — avoid
+                                    var result = process(); // What does this
+                                    return?
+                                    </code></pre>
+
+                                <p>
+                                    I also avoid <code>var</code> in method
+                                    signatures and for primitives. It's a
+                                    readability tool, not a type-erasure tool.
+                                    When used correctly, it makes code less
+                                    cluttered and more focused on the logic
+                                    rather than the ceremony.
+                                </p>
+
+                                <p>
+                                    One pattern I love: using <code>var</code>
+                                    with try-with-resources:
+                                </p>
+
+                                <pre><code>try (var reader = new
+                                    BufferedReader(new FileReader(file))) {
+                                    // reader type is obvious
+                                    }
+                                    </code></pre>
+
+                                <h2 id="test-with-junit-5-not-just-assertions">
+                                    Test with JUnit 5 — Not Just Assertions
+                                </h2>
+
+                                <p>
+                                    I used JUnit 3 and 4 for years, writing test
+                                    methods with <code>@Test</code> and using
+                                    <code>Assert</code> statically. When JUnit 5
+                                    came out, I switched, but I only scratched
+                                    the surface. The real power is in the
+                                    extension model.
+                                </p>
+
+                                <p>
+                                    <strong>Parameterised tests</strong> are a
+                                    game-changer. Instead of writing multiple
+                                    test methods, I write one that runs with
+                                    different inputs:
+                                </p>
+
+                                <pre><code>@ParameterizedTest
+                                    @CsvSource({
+                                    "alice@example.com, true",
+                                    "bob, false",
+                                    "null, false"
+                                    })
+                                    void isValidEmail_returnsExpected(String email,
+                                    boolean expected) {
+                                    assertEquals(expected, EmailValidator.isValid(email));
+                                    }
+                                    </code></pre>
+
+                                <p>
+                                    I also love <strong>dynamic tests</strong>
+                                    and <strong>test factories</strong> for
+                                    generating tests at runtime. And the
+                                    <strong>assertions</strong> have improved
+                                    massively — <code>assertThat()</code> from
+                                    AssertJ is my favourite, but JUnit 5's built-in
+                                    <code>assertAll()</code> for grouped
+                                    assertions is excellent.
+                                </p>
+
+                                <pre><code>@Test
+                                    void userHasCorrectFields() {
+                                    User user = createUser();
+                                    assertAll(
+                                    () -> assertEquals("Alice",
+                                    user.getName()),
+                                    () -> assertEquals("alice@example.com",
+                                    user.getEmail()),
+                                    () -> assertTrue(user.isActive())
+                                    );
+                                    }
+                                    </code></pre>
+
+                                <p>
+                                    Writing good tests is a skill, and JUnit 5
+                                    gives you the tools to write expressive,
+                                    maintainable tests. I wish I'd invested in
+                                    learning it fully years ago.
+                                </p>
+
+                                <h2 id="small-habits-big-impact">
+                                    Small Habits, Big Impact
+                                </h2>
+
+                                <p>
+                                    These tips are tiny, but collectively they've
+                                    transformed the way I write Java. I write
+                                    fewer bugs, I spend less time debugging, and
+                                    I enjoy the language more. The journey of
+                                    learning Java never ends, and that's
+                                    wonderful.
+                                </p>
+
+                                <p>
+                                    I've also learned to be humble. Every time I
+                                    think I've mastered something, I discover a
+                                    new trick or a better way. That's the sign of
+                                    a vibrant ecosystem. I stay curious by
+                                    reading release notes, following Java
+                                    champions, and, most importantly, reading
+                                    other people's code.
+                                </p>
+
+                                <p>
+                                    The best advice I can give is: don't stop
+                                    learning. Pick one new thing each week — a
+                                    method, an annotation, a pattern — and try it
+                                    in a side project. Over time, these small
+                                    improvements compound into mastery.
+                                </p>
+
+                                <blockquote>
+                                    "The language is just the vessel; the craft
+                                    is in how you use it."
+                                </blockquote>
+
+                                <h2 id="final-thoughts">Final Thoughts</h2>
+
+                                <p>
+                                    I started this article with a confession — I
+                                    made many of these mistakes. I used
+                                    <code>==</code> for strings, I ignored
+                                    <code>Optional</code>, I over-engineered
+                                    DTOs, and I caught <code>Exception</code>
+                                    far too often. Each mistake taught me
+                                    something valuable, and each correction made
+                                    me a better developer.
+                                </p>
+
+                                <p>
+                                    If I could go back and give my younger self
+                                    one piece of advice, it would be this:
+                                    <strong>the details matter</strong>. It's
+                                    not just about making the code work; it's
+                                    about making it work well, for a long time,
+                                    in the hands of many people. The small tips
+                                    I've shared here are small individually, but
+                                    together they represent a philosophy of care
+                                    and craftsmanship.
+                                </p>
+
+                                <p>
+                                    I hope these tips save you some of the
+                                    headaches I experienced. More importantly, I
+                                    hope they inspire you to keep exploring,
+                                    keep asking questions, and keep enjoying the
+                                    journey. Java is a rich language with a
+                                    wonderful community, and there's always more
+                                    to discover.
+                                </p>
+
+                                <p>
+                                    Now go forth and write some Java — and maybe
+                                    use <code>Objects.equals()</code> for good
+                                    measure.
+                                </p>
+                            </article>
+
+                            <!-- Related Articles -->
+
+                            <section class="related-posts">
+                                <h2>Related Articles</h2>
+
+                                <div class="related-grid">
+                                    <article class="related-card">
+                                        <a href="#">
+                                            <img
+                                                src="../../images/hero.png"
+                                                alt="Java code with streams and lambdas highlighted"
+                                            />
+
+                                            <div class="related-card-content">
+                                                <div class="related-meta">
+                                                    JAVA
+                                                    <span
+                                                        class="meta-separator"
+                                                        >•</span
+                                                    >
+                                                    8 min read
+                                                </div>
+                                                <h3>
+                                                    Java Streams: From
+                                                    Confusion to Confidence
+                                                </h3>
+                                                <p class="related-date">
+                                                    JUN 18, 2026
+                                                </p>
+                                                <p>
+                                                    How I went from fearing
+                                                    streams to using them daily
+                                                    — and the common pitfalls
+                                                    that almost tripped me up.
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </article>
+
+                                    <article class="related-card">
+                                        <a href="#">
+                                            <img
+                                                src="../../images/Introduction.webp"
+                                                alt="Optional class in Java highlighted in an IDE"
+                                            />
+
+                                            <div class="related-card-content">
+                                                <div class="related-meta">
+                                                    JAVA
+                                                    <span
+                                                        class="meta-separator"
+                                                        >•</span
+                                                    >
+                                                    7 min read
+                                                </div>
+                                                <h3>
+                                                    Mastering Optional in Java:
+                                                    Beyond the Basics
+                                                </h3>
+                                                <p class="related-date">
+                                                    MAY 25, 2026
+                                                </p>
+                                                <p>
+                                                    The advanced techniques that
+                                                    finally made
+                                                    <code>Optional</code> an
+                                                    indispensable tool in my
+                                                    Java toolbox.
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </article>
+
+                                    <article class="related-card">
+                                        <a href="#">
+                                            <img
+                                                src="../../images/virtual-guard.png"
+                                                alt="Lombok annotations and plain Java code side by side"
+                                            />
+
+                                            <div class="related-card-content">
+                                                <div class="related-meta">
+                                                    TOOLS
+                                                    <span
+                                                        class="meta-separator"
+                                                        >•</span
+                                                    >
+                                                    6 min read
+                                                </div>
+                                                <h3>
+                                                    Lombok: The Good, The Bad,
+                                                    and The Ugly
+                                                </h3>
+                                                <p class="related-date">
+                                                    APR 30, 2026
+                                                </p>
+                                                <p>
+                                                    My honest take on Project
+                                                    Lombok — what I love, what I
+                                                    avoid, and how I use it
+                                                    without regrets.
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </article>
+                                </div>
+                            </section>
+                        </div>
+
+                        <!-- ===================================================
+RIGHT COLUMN
+=================================================== -->
+
+                        <aside class="article-sidebar">
+                            <div class="sidebar-sticky">
+                                <!-- TOC -->
+
+                                <section class="toc">
+                                    <h3>Table of Contents</h3>
+
+                                    <nav>
+                                        <a href="#the-tip-that-changed-everything">
+                                            The Tip That Changed Everything
+                                        </a>
+
+                                        <a href="#stop-using-for-strings">
+                                            Stop Using <code>==</code> for
+                                            Strings
+                                        </a>
+
+                                        <a href="#the-power-of-optional">
+                                            The Power of
+                                            <code>Optional</code>
+                                        </a>
+
+                                        <a
+                                            href="#why-i-started-using-record-for-dtos"
+                                        >
+                                            Why I Started Using
+                                            <code>record</code> for DTOs
+                                        </a>
+
+                                        <a href="#stream-api-the-hidden-gems">
+                                            <code>Stream</code> API: The Hidden
+                                            Gems
+                                        </a>
+
+                                        <a
+                                            href="#exception-handling-catch-what-you-can-handle"
+                                        >
+                                            Exception Handling: Catch What You
+                                            Can Handle
+                                        </a>
+
+                                        <a
+                                            href="#builder-and-value-from-lombok"
+                                        >
+                                            <code>@Builder</code> and
+                                            <code>@Value</code> from Lombok
+                                        </a>
+
+                                        <a
+                                            href="#use-list-of-over-new-arraylist"
+                                        >
+                                            Use <code>List.of()</code> over
+                                            <code>new ArrayList</code>
+                                        </a>
+
+                                        <a href="#the-var-keyword-friend-or-foe">
+                                            The <code>var</code> Keyword:
+                                            Friend or Foe?
+                                        </a>
+
+                                        <a
+                                            href="#test-with-junit-5-not-just-assertions"
+                                        >
+                                            Test with JUnit 5 — Not Just
+                                            Assertions
+                                        </a>
+
+                                        <a
+                                            href="#small-habits-big-impact"
+                                        >
+                                            Small Habits, Big Impact
+                                        </a>
+
+                                        <a href="#final-thoughts">
+                                            Final Thoughts
+                                        </a>
+                                    </nav>
+                                </section>
+
+                                <!-- Newsletter -->
+
+                                <section class="newsletter-box">
+                                    <h3>Newsletter</h3>
+
+                                    <p>
+                                        Subscribe for new articles and
+                                        tutorials.
+                                    </p>
+
+                                    <form id="newsletter-form" novalidate>
+                                        <input
+                                            id="newsletter-email"
+                                            name="email"
+                                            type="email"
+                                            autocomplete="email"
+                                            placeholder="Your email"
+                                            required
+                                        />
+
+                                        <button type="submit">
+                                            Subscribe
+                                        </button>
+
+                                        <p
+                                            id="newsletter-status"
+                                            class="form-status"
+                                            aria-live="polite"
+                                        ></p>
+                                    </form>
+                                </section>
+
+                                <!-- Popular -->
+
+                                <section class="popular-posts">
+                                    <h3>Popular Articles</h3>
+
+                                    <div class="popular-list">
+                                        <a href="#" class="popular-card">
+                                            <img
+                                                src="/images/icons/business.jpg"
+                                                alt="Java code with try-catch blocks"
+                                            />
+                                            <div class="popular-content">
+                                                <div class="popular-meta">
+                                                    JAVA — JUL 1, 2026
+                                                </div>
+                                                <h4>
+                                                    Exception Handling Done Right
+                                                    in Java
+                                                </h4>
+                                            </div>
+                                        </a>
+
+                                        <a href="#" class="popular-card">
+                                            <img
+                                                src="/images/icons/fashion.jpg"
+                                                alt="Immutable data structures diagram"
+                                            />
+                                            <div class="popular-content">
+                                                <div class="popular-meta">
+                                                    DESIGN — JUN 12, 2026
+                                                </div>
+                                                <h4>
+                                                    Why I Make Almost
+                                                    Everything Immutable Now
+                                                </h4>
+                                            </div>
+                                        </a>
+
+                                        <a href="#" class="popular-card">
+                                            <img
+                                                src="/images/icons/technology.jpg"
+                                                alt="Testing pyramid with JUnit"
+                                            />
+                                            <div class="popular-content">
+                                                <div class="popular-meta">
+                                                    TESTING — MAY 5, 2026
+                                                </div>
+                                                <h4>
+                                                    JUnit 5: 5 Features I Can't
+                                                    Live Without
+                                                </h4>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </section>
+
+                                <!-- Categories -->
+
+                                <section class="categories">
+                                    <h3>Categories</h3>
+
+                                    <div class="category-list">
+                                        <a href="#">Backend</a>
+
+                                        <a href="#">Java</a>
+
+                                        <a href="#">Spring Boot</a>
+
+                                        <a href="#">AI</a>
+
+                                        <a href="#">System Design</a>
+                                    </div>
+                                </section>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <div id="footer"></div>
+
+        <script src="../../components/components.js" defer></script>
+        <script src="../../js/script.js" defer></script>
+        <script src="../../js/article.js" defer></script>
+    </body>
+</html>

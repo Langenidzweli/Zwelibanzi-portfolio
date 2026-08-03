@@ -1,0 +1,1016 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>My AI Journey — What Actually Stuck | Zwelibanzi Langeni</title>
+
+        <link rel="icon" type="image/png" href="../../images/logo.png" />
+
+        <link rel="stylesheet" href="../../css/style.css" />
+        <link rel="stylesheet" href="../../css/article-page.css" />
+    </head>
+
+    <body>
+        <a class="skip-link" href="#main-content">Skip to content</a>
+
+        <div id="navbar"></div>
+
+        <main id="main-content">
+            <section class="article-page">
+                <div class="container">
+                    <div class="article-layout">
+                        <!-- ===================================================
+LEFT COLUMN
+=================================================== -->
+
+                        <div class="article-main">
+                            <!-- Hero -->
+
+                            <header class="article-header">
+                                <div class="article-category">
+                                    <span class="section-label">AI</span>
+                                    <span class="article-date">August 2026</span>
+                                </div>
+
+                                <h1 class="article-title">
+                                    My AI Journey — What Actually Stuck
+                                </h1>
+
+                                <p class="article-description">
+                                    A candid reflection on the hype, the
+                                    failures, and the few principles that
+                                    survived the noise — and still guide how I
+                                    build with AI today.
+                                </p>
+
+                                <div class="article-meta">
+                                    <div class="author">
+                                        <div class="author-avatar">Z</div>
+
+                                        <div>
+                                            <h4>Zwelibanzi Langeni</h4>
+
+                                            <span>11 min read</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="article-share">
+                                        <a href="#">LinkedIn</a>
+
+                                        <a href="#">X</a>
+
+                                        <a href="#">Copy Link</a>
+                                    </div>
+                                </div>
+                            </header>
+
+                            <!-- Hero Image -->
+
+                            <figure class="article-cover">
+                                <img
+                                    src="../../images//My AI Journey — What Actually Stuck.png"
+                                    alt="A developer's desk with AI papers, code, and a coffee cup — messy but thoughtful"
+                                />
+                            </figure>
+
+                            <!-- Article -->
+
+                            <article class="article-body">
+                                <h2 id="the-hype-and-the-hangover">
+                                    The Hype and the Hangover
+                                </h2>
+
+                                <p>
+                                    I got into AI the way most backend engineers
+                                    do — through a combination of genuine
+                                    curiosity and terrible FOMO. It was 2022,
+                                    and every blog post, every conference talk,
+                                    and every LinkedIn feed screamed the same
+                                    message: if you weren't building neural
+                                    networks, you were being left behind. So I
+                                    bought the courses, installed the libraries,
+                                    and spent weekends copying code from
+                                    tutorials.
+                                </p>
+
+                                <p>
+                                    The first year was a blur of
+                                    half-understood concepts. I could train a
+                                    model, but I couldn't explain why it worked.
+                                    I could tune hyperparameters, but I didn't
+                                    know what the parameters actually
+                                    controlled. I could deploy a Flask API with
+                                    a model endpoint, but I had no idea how to
+                                    monitor it or handle drift. I was writing
+                                    code that ran, but I wasn't building
+                                    anything I truly understood.
+                                </p>
+
+                                <p>
+                                    The turning point came when a senior
+                                    engineer asked me, "If you had to rebuild
+                                    this system without PyTorch, could you?" I
+                                    couldn't. That question haunted me. It made
+                                    me realise that I had been learning recipes,
+                                    not principles. I had been chasing the next
+                                    shiny tool instead of building a foundation.
+                                    So I stopped. I went back to basics. And
+                                    that's when the real learning began.
+                                </p>
+
+                                <p>
+                                    This article is about what actually stuck
+                                    from that journey — the frameworks, the
+                                    habits, the mental models that I still use
+                                    every day, years after the initial hype
+                                    faded. It's not about the latest model or
+                                    the hottest library. It's about the small,
+                                    stubborn truths that survived the noise.
+                                </p>
+
+                                <h2 id="my-first-real-win-a-model-that-saw-patterns-i-couldnt">
+                                    My First Real Win: A Model That Saw
+                                    Patterns I Couldn't
+                                </h2>
+
+                                <p>
+                                    My first real project was a classification
+                                    model for a manufacturing client. They had
+                                    thousands of images of circuit boards and
+                                    wanted to detect defects. I had just
+                                    completed a computer vision course, and I
+                                    was eager to build a deep learning model
+                                    from scratch.
+                                </p>
+
+                                <p>
+                                    The first few attempts were miserable. I
+                                    overfit on the validation set. I used the
+                                    wrong loss function. I spent days
+                                    hyperparameter tuning with no improvement.
+                                    Then I realised I had skipped the most
+                                    important step: understanding the data.
+                                </p>
+
+                                <p>
+                                    I spent a week with the production team,
+                                    watching them inspect boards. I learned what
+                                    "good" versus "bad" actually looked like in
+                                    practice. I discovered that some defects
+                                    were subtle and required expert
+                                    annotation. I built a data pipeline that
+                                    balanced the classes and incorporated
+                                    expert feedback. The model that emerged
+                                    wasn't the most complex, but it was the
+                                    first one that actually worked in
+                                    production.
+                                </p>
+
+                                <p>
+                                    That experience taught me a lesson I've
+                                    never forgotten: <strong>the model is a
+                                    reflection of the data, not a replacement for
+                                    understanding</strong>. The best algorithm in
+                                    the world won't save you if your data is
+                                    noisy, biased, or incomplete. From that
+                                    point on, I committed to spending at least
+                                    as much time on data as on modelling.
+                                </p>
+
+                                <p>
+                                    Here's the data preprocessing pipeline I
+                                    ended up using — simple, but effective:
+                                </p>
+
+                                <pre><code>import pandas as pd
+                                    import numpy as np
+                                    from sklearn.model_selection import
+                                    train_test_split
+                                    from sklearn.preprocessing import
+                                    StandardScaler
+
+                                    def preprocess_data(df, target_col):
+                                    # Handle missing values
+                                    df = df.fillna(df.median())
+
+                                    # Remove near-constant features
+                                    threshold = 0.95
+                                    high_cardinality = []
+                                    for col in df.columns:
+                                    if df[col].nunique() / len(df) > threshold:
+                                    high_cardinality.append(col)
+                                    df = df.drop(columns=high_cardinality)
+
+                                    # Encode categorical variables
+                                    categorical_cols = df.select_dtypes(include=
+                                    ['object']).columns
+                                    df = pd.get_dummies(df, columns=
+                                    categorical_cols, drop_first=True)
+
+                                    # Split features and target
+                                    X = df.drop(columns=[target_col])
+                                    y = df[target_col]
+
+                                    # Train-test split
+                                    X_train, X_test, y_train, y_test =
+                                    train_test_split(X, y, test_size=0.2,
+                                    random_state=42)
+
+                                    # Scale features
+                                    scaler = StandardScaler()
+                                    X_train = scaler.fit_transform(X_train)
+                                    X_test = scaler.transform(X_test)
+
+                                    return X_train, X_test, y_train, y_test,
+                                    scaler</code></pre>
+
+                                <p>
+                                    It wasn't fancy, but it was robust. And
+                                    because I understood every step, I could
+                                    debug issues when they arose. That's the
+                                    difference between a model that works and a
+                                    model that works consistently.
+                                </p>
+
+                                <h2 id="data-quality-the-lesson-that-refuses-to-leave">
+                                    Data Quality: The Lesson That Refuses to
+                                    Leave
+                                </h2>
+
+                                <p>
+                                    I spent months building a natural language
+                                    processing model to classify customer
+                                    support tickets. I used a state-of-the-art
+                                    transformer, fine-tuned it on a dataset of
+                                    past tickets, and got impressive accuracy
+                                    metrics. Then I deployed it, and the
+                                    performance dropped by 30%. The data in
+                                    production had different distributions:
+                                    longer text, new product names, and a
+                                    completely different vocabulary.
+                                </p>
+
+                                <p>
+                                    I had committed the sin of assuming that my
+                                    training data was a perfect sample of the
+                                    real world. It never is. That project
+                                    taught me the importance of
+                                    <strong>continuous data monitoring and
+                                    retraining</strong>.
+                                </p>
+
+                                <p>
+                                    I started building a data versioning and
+                                    monitoring system. I used DVC to version my
+                                    datasets, and I wrote scripts that tracked
+                                    distributions over time. When a drift was
+                                    detected, the system would trigger a retrain
+                                    or alert the team.
+                                </p>
+
+                                <p>
+                                    The most useful piece of code I wrote was a
+                                    simple distribution comparison function:
+                                </p>
+
+                                <pre><code>import numpy as np
+                                    from scipy.stats import ks_2samp
+
+                                    def detect_drift(old_data, new_data,
+                                    threshold=0.05):
+                                    drift_report = {}
+                                    for col in old_data.columns:
+                                    if old_data[col].dtype in ['float64',
+                                    'int64']:
+                                    stat, p_value = ks_2samp(old_data[col].dropna(),
+                                    new_data[col].dropna())
+                                    drift_report[col] = {
+                                    'p_value': p_value,
+                                    'drift': p_value &lt; threshold
+                                    }
+                                    return drift_report</code></pre>
+
+                                <p>
+                                    This simple check saved my team from
+                                    deploying models that would fail
+                                    catastrophically. Data quality isn't sexy,
+                                    but it's the single most important factor in
+                                    AI success. I wish I had learned that before
+                                    I learned about attention mechanisms.
+                                </p>
+
+                                <h2 id="pytorch-vs-tensorflow-the-choice-that-didnt-matter">
+                                    PyTorch vs. TensorFlow: The Choice That
+                                    Didn't Matter
+                                </h2>
+
+                                <p>
+                                    I wasted months of my life arguing with
+                                    colleagues about which framework was better.
+                                    I was team PyTorch. They were team
+                                    TensorFlow. We both had strong opinions and
+                                    weak evidence. In the end, the choice didn't
+                                    matter. Both frameworks are excellent. Both
+                                    have great documentation and active
+                                    communities. What matters is that you pick
+                                    one and learn it deeply.
+                                </p>
+
+                                <p>
+                                    I stuck with PyTorch, not because it's
+                                    objectively superior, but because it clicked
+                                    with the way I think about computation
+                                    graphs. The imperative style felt more
+                                    natural for debugging, and the Pythonic API
+                                    made me feel at home.
+                                </p>
+
+                                <p>
+                                    Here's the training loop that I've reused in
+                                    dozens of projects — it's boring, but it
+                                    works:
+                                </p>
+
+                                <pre><code>import torch
+                                    import torch.nn as nn
+                                    from torch.utils.data import DataLoader
+
+                                    def train_model(model, train_loader,
+                                    val_loader, epochs, lr=0.001):
+                                    device = torch.device('cuda' if
+                                    torch.cuda.is_available() else 'cpu')
+                                    model.to(device)
+
+                                    criterion = nn.CrossEntropyLoss()
+                                    optimizer = torch.optim.Adam(model.parameters(),
+                                    lr=lr)
+                                    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
+                                    optimizer, patience=3, factor=0.5
+                                    )
+
+                                    best_val_loss = float('inf')
+                                    for epoch in range(epochs):
+                                    model.train()
+                                    train_loss = 0.0
+                                    for X, y in train_loader:
+                                    X, y = X.to(device), y.to(device)
+                                    optimizer.zero_grad()
+                                    outputs = model(X)
+                                    loss = criterion(outputs, y)
+                                    loss.backward()
+                                    optimizer.step()
+                                    train_loss += loss.item()
+
+                                    # Validation
+                                    model.eval()
+                                    val_loss = 0.0
+                                    with torch.no_grad():
+                                    for X, y in val_loader:
+                                    X, y = X.to(device), y.to(device)
+                                    outputs = model(X)
+                                    loss = criterion(outputs, y)
+                                    val_loss += loss.item()
+
+                                    val_loss /= len(val_loader)
+                                    scheduler.step(val_loss)
+
+                                    if val_loss &lt; best_val_loss:
+                                    best_val_loss = val_loss
+                                    torch.save(model.state_dict(),
+                                    'best_model.pt')
+
+                                    print(f"Epoch {epoch+1}: Train Loss =
+                                    {train_loss/len(train_loader):.4f}, Val Loss
+                                    = {val_loss:.4f}")
+
+                                    return model</code></pre>
+
+                                <p>
+                                    This loop is almost identical to the one in
+                                    every PyTorch tutorial. But that's the
+                                    point. The fundamentals are stable. Once
+                                    you internalise the patterns, switching
+                                    between frameworks becomes trivial. The real
+                                    skill is not the syntax; it's the ability to
+                                    design experiments, debug training dynamics,
+                                    and build robust systems.
+                                </p>
+
+                                <h2 id="from-notebook-to-nightmare-engineering-my-first-ai-product">
+                                    From Notebook to Nightmare: Engineering My
+                                    First AI Product
+                                </h2>
+
+                                <p>
+                                    My first AI product was a disaster. I built
+                                    a beautiful Jupyter notebook with
+                                    comprehensive analysis, visualisations, and
+                                    a trained model. I was proud of it. Then my
+                                    manager asked me to turn it into a
+                                    production service. I had no idea where to
+                                    start.
+                                </p>
+
+                                <p>
+                                    The notebook was a mess. Cells had to be run
+                                    in a specific order, and I had hard-coded
+                                    paths and manual preprocessing steps. I
+                                    spent two weeks rewriting the entire
+                                    pipeline as a Python package, writing unit
+                                    tests, and configuring a Docker container.
+                                    It was painful, but it taught me the value
+                                    of engineering discipline.
+                                </p>
+
+                                <p>
+                                    I adopted a simple structure that I still
+                                    use:
+                                </p>
+
+                                <pre><code>ai_service/
+                                    ├── data/
+                                    │   ├── loader.py
+                                    │   └── preprocess.py
+                                    ├── features/
+                                    │   └── build.py
+                                    ├── models/
+                                    │   ├── train.py
+                                    │   └── predict.py
+                                    ├── api/
+                                    │   ├── app.py
+                                    │   └── schemas.py
+                                    ├── tests/
+                                    │   ├── test_data.py
+                                    │   └── test_model.py
+                                    ├── config.yaml
+                                    └── requirements.txt</code></pre>
+
+                                <p>
+                                    I also learned to use
+                                    <strong>MLflow</strong> for tracking
+                                    experiments and <strong>DVC</strong> for
+                                    data versioning. These tools felt like
+                                    overkill at first, but they saved me
+                                    countless hours when I needed to reproduce a
+                                    result or debug a regression. The notebook
+                                    is for exploration; the package is for
+                                    production. Never confuse the two.
+                                </p>
+
+                                <h2 id="the-deployment-that-taught-me-resiliency">
+                                    The Deployment That Taught Me Resiliency
+                                </h2>
+
+                                <p>
+                                    Deploying an AI model is not like deploying
+                                    a web service. The model is a black box that
+                                    can fail in unpredictable ways. I learned
+                                    this when my first deployed model started
+                                    returning nonsense predictions after a
+                                    library update. The service crashed, and I
+                                    spent hours trying to figure out why the
+                                    inference was slower than expected.
+                                </p>
+
+                                <p>
+                                    I now build deployment pipelines with
+                                    multiple safeguards. I use
+                                    <strong>PyTorch's TorchScript</strong> or
+                                    <strong>ONNX</strong> to serialise models in
+                                    a platform-agnostic format. I containerise
+                                    everything with Docker and orchestrate with
+                                    Kubernetes. But the most important part is
+                                    the health checks and fallbacks.
+                                </p>
+
+                                <p>
+                                    Here's my standard FastAPI deployment
+                                    pattern:
+                                </p>
+
+                                <pre><code>from fastapi import FastAPI, HTTPException
+                                    import torch
+                                    import numpy as np
+                                    from pydantic import BaseModel
+                                    import logging
+
+                                    app = FastAPI()
+                                    logger = logging.getLogger(__name__)
+
+                                    # Model loading with fallback
+                                    try:
+                                    model = torch.jit.load('model.pt')
+                                    model.eval()
+                                    logger.info("Model loaded successfully")
+                                    except Exception as e:
+                                    logger.error(f"Failed to load model: {e}")
+                                    # Load a fallback rule-based model
+                                    model = None
+
+                                    class PredictRequest(BaseModel):
+                                    features: list
+
+                                    @app.post("/predict")
+                                    async def predict(request: PredictRequest):
+                                    if model is None:
+                                    # Fallback to rule-based logic
+                                    return {"prediction": 0, "fallback": True}
+
+                                    try:
+                                    input_tensor =
+                                    torch.tensor(request.features).float().unsqueeze(0)
+                                    with torch.no_grad():
+                                    output = model(input_tensor)
+                                    prediction = torch.argmax(output,
+                                    dim=1).item()
+                                    return {"prediction": prediction,
+                                    "fallback": False}
+                                    except Exception as e:
+                                    logger.error(f"Prediction failed: {e}")
+                                    # Graceful degradation
+                                    return {"prediction": 0, "fallback": True,
+                                    "error": str(e)}
+
+                                    @app.get("/health")
+                                    async def health():
+                                    return {"status": "ok", "model_loaded": model
+                                    is not None}</code></pre>
+
+                                <p>
+                                    This pattern has saved me more times than I
+                                    can count. The fallback isn't perfect, but
+                                    it's better than a 500 error. Resilience is
+                                    not about preventing failure; it's about
+                                    failing gracefully.
+                                </p>
+
+                                <h2 id="the-math-that-actually-stuck">
+                                    The Math That Actually Stuck
+                                </h2>
+
+                                <p>
+                                    I'm not a mathematician. I took calculus and
+                                    linear algebra, but I forgot most of it. For
+                                    a long time, I felt like a fraud because I
+                                    couldn't derive the backpropagation
+                                    equations from first principles. But over
+                                    time, I realised that I didn't need to be a
+                                    mathematician to be a good ML engineer. I
+                                    needed to understand enough to make
+                                    decisions.
+                                </p>
+
+                                <p>
+                                    The concepts that actually stuck with me
+                                    are:
+                                </p>
+
+                                <ul>
+                                    <li>
+                                        <strong>Gradients and optimisation:</strong>
+                                        I understand that gradient descent is
+                                        just walking downhill. The learning rate
+                                        is the step size. Momentum helps smooth
+                                        the path. I don't need to calculate the
+                                        Hessian, but I need to know what
+                                        <code>lr</code> and
+                                        <code>momentum</code> do.
+                                    </li>
+                                    <li>
+                                        <strong>Bias-variance trade-off:</strong>
+                                        Underfitting vs overfitting is a
+                                        fundamental tension. Regularisation,
+                                        early stopping, and ensemble methods are
+                                        all ways to navigate this trade-off.
+                                    </li>
+                                    <li>
+                                        <strong>Probability and loss
+                                        functions:</strong> Cross-entropy is for
+                                        classification. Mean squared error is for
+                                        regression. The choice of loss function
+                                        encodes your assumptions about the data
+                                        and the problem.
+                                    </li>
+                                </ul>
+
+                                <p>
+                                    I don't write proofs. I write code. And I've
+                                    found that the code-level understanding of
+                                    these concepts is sufficient for 95% of the
+                                    problems I encounter. The math is a tool,
+                                    not a gatekeeper.
+                                </p>
+
+                                <h2 id="principles-over-frameworks-what-i-carry-forward">
+                                    Principles Over Frameworks: What I Carry
+                                    Forward
+                                </h2>
+
+                                <p>
+                                    After years of building AI systems, I've
+                                    distilled my learning into a few principles
+                                    that I carry into every project:
+                                </p>
+
+                                <ul>
+                                    <li>
+                                        <strong>Start with the simplest
+                                        thing that could work.</strong> Logistic
+                                        regression before neural networks.
+                                        Linear regression before gradient
+                                        boosting. You'll learn more and waste
+                                        less time.
+                                    </li>
+                                    <li>
+                                        <strong>Know your data better than you
+                                        know your model.</strong> Visualise it.
+                                    </li>
+                                </ul>
+
+                                <blockquote>
+                                    "The only thing that sticks is the curiosity
+                                    to keep asking better questions."
+                                </blockquote>
+
+                                <ul>
+                                    <li>
+                                        <strong>Test everything.</strong> Unit
+                                        tests for data transformations.
+                                        Integration tests for the pipeline.
+                                        Validation tests for the model. If you
+                                        can't test it, you can't trust it.
+                                    </li>
+                                    <li>
+                                        <strong>Document your assumptions.</strong>
+                                        Why did you choose this feature? Why
+                                        this model? Why this metric? The
+                                        documentation is for your future self.
+                                    </li>
+                                    <li>
+                                        <strong>Build systems, not
+                                        artefacts.</strong> A trained model is
+                                        not a product. A deployable service with
+                                        monitoring, alerting, and retraining is
+                                        a product.
+                                    </li>
+                                </ul>
+
+                                <p>
+                                    These principles are boring. They don't have
+                                    catchy names or flashy demos. But they have
+                                    saved me from every major failure I've
+                                    experienced. I've stopped chasing the next
+                                    big thing and started building solid
+                                    foundations. And it's been surprisingly
+                                    rewarding.
+                                </p>
+
+                                <h2 id="final-thoughts">Final Thoughts</h2>
+
+                                <p>
+                                    My AI journey has been a series of
+                                    highs and lows. I've celebrated models that
+                                    exceeded expectations and spent sleepless
+                                    nights debugging mysterious losses. I've
+                                    been humbled by the complexity of real-world
+                                    data and exhilarated by the elegance of a
+                                    well-designed system.
+                                </p>
+
+                                <p>
+                                    What actually stuck is not the code I wrote
+                                    or the frameworks I used. It's the mindset
+                                    — the habit of questioning my assumptions,
+                                    the discipline of testing everything, and
+                                    the humility to start with the simple
+                                    solution. These are the things that have
+                                    made me a better engineer, regardless of the
+                                    technology stack.
+                                </p>
+
+                                <p>
+                                    I still don't know everything about AI. I
+                                    probably never will. And that's okay. The
+                                    field moves fast, but the fundamentals move
+                                    slowly. By investing in the fundamentals, I
+                                    feel ready for whatever comes next.
+                                </p>
+
+                                <p>
+                                    If you're on a similar journey, my advice is
+                                    simple: don't be afraid to go slow. The
+                                    slow path is the one that leads to real
+                                    understanding. And real understanding is the
+                                    only thing that can't be automated away.
+                                </p>
+
+                                <p>
+                                    I'm still on that path, and I wouldn't have
+                                    it any other way.
+                                </p>
+                            </article>
+
+                            <!-- Related Articles -->
+
+                            <section class="related-posts">
+                                <h2>Related Articles</h2>
+
+                                <div class="related-grid">
+                                    <article class="related-card">
+                                        <a href="#">
+                                            <img
+                                                src="../../images/hero.png"
+                                                alt="A trust scale balancing AI predictions with human judgment"
+                                            />
+
+                                            <div class="related-card-content">
+                                                <div class="related-meta">
+                                                    AI
+                                                    <span
+                                                        class="meta-separator"
+                                                        >•</span
+                                                    >
+                                                    9 min read
+                                                </div>
+                                                <h3>
+                                                    Building Trustworthy AI
+                                                    Systems: Lessons from the
+                                                    Field
+                                                </h3>
+                                                <p class="related-date">
+                                                    JUL 22, 2026
+                                                </p>
+                                                <p>
+                                                    How I learned to design AI
+                                                    systems that earn user
+                                                    confidence through
+                                                    transparency, explainability,
+                                                    and robust fallbacks.
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </article>
+
+                                    <article class="related-card">
+                                        <a href="#">
+                                            <img
+                                                src="../../images/Introduction.webp"
+                                                alt="Generative AI puzzle pieces coming together"
+                                            />
+
+                                            <div class="related-card-content">
+                                                <div class="related-meta">
+                                                    AI
+                                                    <span
+                                                        class="meta-separator"
+                                                        >•</span
+                                                    >
+                                                    8 min read
+                                                </div>
+                                                <h3>
+                                                    The Rise of Generative AI:
+                                                    What Backend Engineers Need
+                                                    to Know
+                                                </h3>
+                                                <p class="related-date">
+                                                    JUN 05, 2026
+                                                </p>
+                                                <p>
+                                                    Separating the hype from the
+                                                    practical — how to
+                                                    integrate LLMs into your
+                                                    services without breaking
+                                                    your architecture.
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </article>
+
+                                    <article class="related-card">
+                                        <a href="#">
+                                            <img
+                                                src="../../images/virtual-guard.png"
+                                                alt="Fine-tuning a model vs prompt engineering graphic"
+                                            />
+
+                                            <div class="related-card-content">
+                                                <div class="related-meta">
+                                                    ML
+                                                    <span
+                                                        class="meta-separator"
+                                                        >•</span
+                                                    >
+                                                    10 min read
+                                                </div>
+                                                <h3>
+                                                    Why Fine-Tuning Beats Prompt
+                                                    Engineering Every Time
+                                                </h3>
+                                                <p class="related-date">
+                                                    MAY 18, 2026
+                                                </p>
+                                                <p>
+                                                    A data-driven comparison of
+                                                    two popular approaches, and
+                                                    why I almost always reach
+                                                    for fine-tuning when
+                                                    performance matters.
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </article>
+                                </div>
+                            </section>
+                        </div>
+
+                        <!-- ===================================================
+RIGHT COLUMN
+=================================================== -->
+
+                        <aside class="article-sidebar">
+                            <div class="sidebar-sticky">
+                                <!-- TOC -->
+
+                                <section class="toc">
+                                    <h3>Table of Contents</h3>
+
+                                    <nav>
+                                        <a href="#the-hype-and-the-hangover">
+                                            The Hype and the Hangover
+                                        </a>
+
+                                        <a
+                                            href="#my-first-real-win-a-model-that-saw-patterns-i-couldnt"
+                                        >
+                                            My First Real Win: A Model That Saw
+                                            Patterns I Couldn't
+                                        </a>
+
+                                        <a
+                                            href="#data-quality-the-lesson-that-refuses-to-leave"
+                                        >
+                                            Data Quality: The Lesson That
+                                            Refuses to Leave
+                                        </a>
+
+                                        <a
+                                            href="#pytorch-vs-tensorflow-the-choice-that-didnt-matter"
+                                        >
+                                            PyTorch vs. TensorFlow: The Choice
+                                            That Didn't Matter
+                                        </a>
+
+                                        <a
+                                            href="#from-notebook-to-nightmare-engineering-my-first-ai-product"
+                                        >
+                                            From Notebook to Nightmare:
+                                            Engineering My First AI Product
+                                        </a>
+
+                                        <a
+                                            href="#the-deployment-that-taught-me-resiliency"
+                                        >
+                                            The Deployment That Taught Me
+                                            Resiliency
+                                        </a>
+
+                                        <a
+                                            href="#the-math-that-actually-stuck"
+                                        >
+                                            The Math That Actually Stuck
+                                        </a>
+
+                                        <a
+                                            href="#principles-over-frameworks-what-i-carry-forward"
+                                        >
+                                            Principles Over Frameworks: What I
+                                            Carry Forward
+                                        </a>
+
+                                        <a href="#final-thoughts">
+                                            Final Thoughts
+                                        </a>
+                                    </nav>
+                                </section>
+
+                                <!-- Newsletter -->
+
+                                <section class="newsletter-box">
+                                    <h3>Newsletter</h3>
+
+                                    <p>
+                                        Subscribe for new articles and
+                                        tutorials.
+                                    </p>
+
+                                    <form id="newsletter-form" novalidate>
+                                        <input
+                                            id="newsletter-email"
+                                            name="email"
+                                            type="email"
+                                            autocomplete="email"
+                                            placeholder="Your email"
+                                            required
+                                        />
+
+                                        <button type="submit">
+                                            Subscribe
+                                        </button>
+
+                                        <p
+                                            id="newsletter-status"
+                                            class="form-status"
+                                            aria-live="polite"
+                                        ></p>
+                                    </form>
+                                </section>
+
+                                <!-- Popular -->
+
+                                <section class="popular-posts">
+                                    <h3>Popular Articles</h3>
+
+                                    <div class="popular-list">
+                                        <a href="#" class="popular-card">
+                                            <img
+                                                src="/images/icons/business.jpg"
+                                                alt="LLM production pipeline diagram"
+                                            />
+                                            <div class="popular-content">
+                                                <div class="popular-meta">
+                                                    AI — AUG 1, 2026
+                                                </div>
+                                                <h4>
+                                                    Productionizing LLMs Without
+                                                    the Buzzwords
+                                                </h4>
+                                            </div>
+                                        </a>
+
+                                        <a href="#" class="popular-card">
+                                            <img
+                                                src="/images/icons/fashion.jpg"
+                                                alt="Python libraries for AI"
+                                            />
+                                            <div class="popular-content">
+                                                <div class="popular-meta">
+                                                    PYTHON — JUL 15, 2026
+                                                </div>
+                                                <h4>
+                                                    My Favorite Python Libraries
+                                                    for AI in 2026
+                                                </h4>
+                                            </div>
+                                        </a>
+
+                                        <a href="#" class="popular-card">
+                                            <img
+                                                src="/images/icons/technology.jpg"
+                                                alt="Data version control diagram"
+                                            />
+                                            <div class="popular-content">
+                                                <div class="popular-meta">
+                                                    ML OPS — JUN 28, 2026
+                                                </div>
+                                                <h4>
+                                                    Data Versioning: The Unsung
+                                                    Hero of ML
+                                                </h4>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </section>
+
+                                <!-- Categories -->
+
+                                <section class="categories">
+                                    <h3>Categories</h3>
+
+                                    <div class="category-list">
+                                        <a href="#">Backend</a>
+
+                                        <a href="#">Java</a>
+
+                                        <a href="#">Spring Boot</a>
+
+                                        <a href="#">AI</a>
+
+                                        <a href="#">System Design</a>
+                                    </div>
+                                </section>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <div id="footer"></div>
+
+        <script src="../../components/components.js" defer></script>
+        <script src="../../js/script.js" defer></script>
+        <script src="../../js/article.js" defer></script>
+    </body>
+</html>

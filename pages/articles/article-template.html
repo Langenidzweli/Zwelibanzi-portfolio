@@ -1,339 +1,318 @@
 <!doctype html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Article Title | Zwelibanzi Langeni</title>
+    <title>template | Zwelibanzi Langeni</title>
 
-    <!-- Browser Tab Logo -->
-    <link rel="icon" type="image/png" href="../../images/logo.png">
+    <link rel="icon" type="image/png" href="../../images/logo.png" />
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/article-page.css">
-</head>
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/article-page.css" />
+  </head>
 
-<body>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
 
     <div id="navbar"></div>
 
-    <main>
+    <main id="main-content">
+      <section class="article-page">
+        <div class="container">
+          <div class="article-layout">
+            <!-- ===================================================
+LEFT COLUMN
+=================================================== -->
 
-        <!-- =========================================
-                    ARTICLE HERO
-        ========================================== -->
+            <div class="article-main">
+              <!-- Hero -->
 
-        <section class="article-hero">
+              <header class="article-header">
+                <div class="article-category">
+                  <span class="section-label">Backend</span>
+                  <span class="article-date">May 2026</span>
+                </div>
 
-            <div class="container">
-
-                <a href="../writing-page.html" class="back-link">
-                    ← Back to Writing
-                </a>
-
-                <span class="section-label">
-                    Backend
-                </span>
-
-                <h1 class="section-title article-title">
-                    Designing APIs that survive version three.
-                </h1>
+                <h1 class="article-title">Building REST APIs That Don't Rot</h1>
 
                 <p class="article-description">
-                    Building APIs that remain simple, predictable and maintainable
-                    as products evolve.
+                  Building APIs that remain maintainable, scalable and easy to
+                  evolve as products grow.
                 </p>
 
                 <div class="article-meta">
-                    <span>May 2026</span>
-                    <span>•</span>
-                    <span>8 min read</span>
-                    <span>•</span>
-                    <span>By Zwelibanzi Langeni</span>
+                  <div class="author">
+                    <div class="author-avatar">Z</div>
+
+                    <div>
+                      <h4>Zwelibanzi Langeni</h4>
+
+                      <span>8 min read</span>
+                    </div>
+                  </div>
+
+                  <div class="article-share">
+                    <a href="#">LinkedIn</a>
+
+                    <a href="#">X</a>
+
+                    <a href="#">Copy Link</a>
+                  </div>
                 </div>
+              </header>
 
-                <div class="article-share">
+              <!-- Hero Image -->
 
-                    <span>Share</span>
-
-                    <a
-                        id="linkedin-share"
-                        href="#"
-                        aria-label="Share on LinkedIn">
-                        LinkedIn
-                    </a>
-
-                    <a
-                        id="x-share"
-                        href="#"
-                        aria-label="Share on X">
-                        X
-                    </a>
-
-                    <a
-                        id="copy-link"
-                        href="#"
-                        aria-label="Copy article link">
-                        Copy Link
-                    </a>
-
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- =========================================
-                    HERO IMAGE
-        ========================================== -->
-
-        <section class="article-image">
-
-            <div class="container">
-
+              <figure class="article-cover">
                 <img
-                    src="../../images/articles/api-design.jpg"
-                    alt="Article cover image">
+                  src="../../images/virtual-guard-hero.png"
+                  alt="REST API article cover"
+                />
+              </figure>
 
-            </div>
+              <!-- Article -->
 
-        </section>
+              <article class="article-body">
+                <h2 id="introduction">Introduction</h2>
 
-        <!-- =========================================
-                    ARTICLE CONTENT
-        ========================================== -->
+                <p>Your introduction...</p>
 
-        <section class="article-content">
+                <h2 id="problem">Why APIs Become Difficult to Maintain</h2>
 
-            <div class="container">
+                <p>Content...</p>
 
-                <div class="article-layout">
+                <blockquote>
+                  Great software is usually boring software.
+                </blockquote>
 
-                    <!-- Main Article -->
+                <h2 id="solution">Designing Maintainable APIs</h2>
 
-                    <article class="article-body">
+                <p>Content...</p>
 
-                        <h2 id="introduction">Introduction</h2>
-
-                        <p>
-                            Replace this with your article introduction...
-                        </p>
-
-                        <h2 id="problem">The Problem</h2>
-
-                        <p>
-                            Your content goes here...
-                        </p>
-
-                        <blockquote>
-                            Great software is usually boring software.
-                        </blockquote>
-
-                        <h2 id="solution">
-                            Designing the Solution
-                        </h2>
-
-                        <p>
-                            More article content...
-                        </p>
-
-<pre><code>// Example code block
-
+                <pre><code>
 @RestController
 
-public class UserController {
+public class UserController{
 
 }
 </code></pre>
 
-                        <h2 id="conclusion">
-                            Conclusion
-                        </h2>
+                <h2 id="testing">Testing & Documentation</h2>
 
-                        <p>
-                            Wrap up your article here.
-                        </p>
+                <p>Content...</p>
 
-                    </article>
+                <h2 id="conclusion">Conclusion</h2>
 
-                    <!-- Sidebar -->
+                <p>Wrap up...</p>
+              </article>
 
-                    <aside class="article-sidebar">
+              <!-- Related Articles -->
 
-                        <div class="toc">
-
-                            <h3>Table of Contents</h3>
-
-                            <nav>
-
-                                <a href="#introduction">
-                                    Introduction
-                                </a>
-
-                                <a href="#problem">
-                                    The Problem
-                                </a>
-
-                                <a href="#solution">
-                                    Designing the Solution
-                                </a>
-
-                                <a href="#conclusion">
-                                    Conclusion
-                                </a>
-
-                            </nav>
-
-                        </div>
-
-                    </aside>
-
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- =========================================
-                    NEWSLETTER
-        ========================================== -->
-
-        <section class="newsletter">
-
-            <div class="container">
-
-                <div class="newsletter-box">
-
-                    <span class="section-label">
-                        Newsletter
-                    </span>
-
-                    <h2>
-                        New articles, occasionally.
-                    </h2>
-
-                    <p>
-                        I don't write every week. Only when I think something is
-                        worth sharing.
-                    </p>
-
-                    <form id="newsletter-form">
-
-                        <input
-                            id="newsletter-email"
-                            type="email"
-                            placeholder="Email address"
-                            required>
-
-                        <button type="submit">
-                            Subscribe →
-                        </button>
-
-                    </form>
-
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- =========================================
-                    RELATED POSTS
-        ========================================== -->
-
-        <section class="related-posts">
-
-            <div class="container">
-
-                <span class="section-label">
-                    Related Articles
-                </span>
+              <section class="related-posts">
+                <h2>Related Articles</h2>
 
                 <div class="related-grid">
+                  <article class="related-card">
+                    <a href="#">
+                      <img
+                        src="../../images/hero.png"
+                        alt="Building Maintainable Backend Systems"
+                      />
 
-                    <article class="related-card">
+                      <div class="related-card-content">
+                        <div class="related-meta">
+                          TECHNOLOGY <span class="meta-separator">•</span> 7 min
+                          read
+                        </div>
+                        <h3>Self-Driving Cars: Everything You Need to Know</h3>
+                        <p class="related-date">SEP 12, 2023</p>
+                        <p>
+                          The automotive industry is experiencing a
+                          revolutionary transformation with the advent of
+                          self-driving cars.
+                        </p>
+                      </div>
+                    </a>
+                  </article>
 
-                        <a href="./spring-boot-guide.html">
+                  <article class="related-card">
+                    <a href="#">
+                      <img
+                        src="../../images/Introduction.webp"
+                        alt="Small Java Tips"
+                      />
 
-                            <img
-                                src="../../images/articles/spring.jpg"
-                                alt="Spring Boot article">
+                      <div class="related-card-content">
+                        <div class="related-meta">
+                          BUSINESS <span class="meta-separator">•</span> 6 min
+                          read
+                        </div>
+                        <h3>
+                          The Importance of Corporate Social Responsibility
+                        </h3>
+                        <p class="related-date">SEP 10, 2023</p>
+                        <p>
+                          Businesses are increasingly expected to operate with a
+                          sense of social responsibility that extends beyond
+                          profit maximization.
+                        </p>
+                      </div>
+                    </a>
+                  </article>
 
-                            <h3>
-                                Building maintainable backend systems.
-                            </h3>
+                  <article class="related-card">
+                    <a href="#">
+                      <img
+                        src="../../images/virtual-guard.png"
+                        alt="Computer Vision"
+                      />
 
-                        </a>
-
-                    </article>
-
-                    <article class="related-card">
-
-                        <a href="./ai-agents.html">
-
-                            <img
-                                src="../../images/articles/ai.jpg"
-                                alt="Artificial Intelligence article">
-
-                            <h3>
-                                What makes software feel intelligent?
-                            </h3>
-
-                        </a>
-
-                    </article>
-
-                    <article class="related-card">
-
-                        <a href="./computer-vision.html">
-
-                            <img
-                                src="../../images/articles/vision.jpg"
-                                alt="Computer Vision article">
-
-                            <h3>
-                                Computer vision beyond the demo.
-                            </h3>
-
-                        </a>
-
-                    </article>
-
+                      <div class="related-card-content">
+                        <div class="related-meta">
+                          LIFESTYLE <span class="meta-separator">•</span> 4 min
+                          read
+                        </div>
+                        <h3>Mindful Living: Finding Balance in a Busy World</h3>
+                        <p class="related-date">SEP 8, 2023</p>
+                        <p>
+                          In our fast-paced world, finding moments of peace and
+                          balance has become more challenging than ever.
+                        </p>
+                      </div>
+                    </a>
+                  </article>
                 </div>
-
+              </section>
             </div>
 
-        </section>
+            <!-- ===================================================
+RIGHT COLUMN
+=================================================== -->
 
-        <!-- =========================================
-                    ARTICLE NAVIGATION
-        ========================================== -->
+            <aside class="article-sidebar">
+              <div class="sidebar-sticky">
+                <!-- TOC -->
 
-        <section class="article-navigation">
+                <section class="toc">
+                  <h3>Table of Contents</h3>
 
-            <div class="container">
+                  <nav>
+                    <a href="#introduction">Introduction</a>
 
-                <a href="./previous-article.html">
-                    ← Previous Article
-                </a>
+                    <a href="#problem">
+                      Why APIs Become Difficult to Maintain
+                    </a>
 
-                <a href="./next-article.html">
-                    Next Article →
-                </a>
+                    <a href="#solution"> Designing Maintainable APIs </a>
 
-            </div>
+                    <a href="#testing"> Testing & Documentation </a>
 
-        </section>
+                    <a href="#conclusion"> Conclusion </a>
+                  </nav>
+                </section>
 
+                <!-- Newsletter -->
+
+                <section class="newsletter-box">
+                  <h3>Newsletter</h3>
+
+                  <p>Subscribe for new articles and tutorials.</p>
+
+                  <form id="newsletter-form" novalidate>
+                    <input
+                      id="newsletter-email"
+                      name="email"
+                      type="email"
+                      autocomplete="email"
+                      placeholder="Your email"
+                      required
+                    />
+
+                    <button type="submit">Subscribe</button>
+
+                    <p
+                      id="newsletter-status"
+                      class="form-status"
+                      aria-live="polite"
+                    ></p>
+                  </form>
+                </section>
+
+                <!-- Popular -->
+
+                <section class="popular-posts">
+                  <h3>Popular Articles</h3>
+
+                  <div class="popular-list">
+                    <a href="#" class="popular-card">
+                      <img
+                        src="/images/icons/business.jpg"
+                        alt="Corporate Social Responsibility"
+                      />
+                      <div class="popular-content">
+                        <div class="popular-meta">BUSINESS — SEP 12, 2023</div>
+                        <h4>
+                          The Importance of Corporate Social Responsibility
+                        </h4>
+                      </div>
+                    </a>
+
+                    <a href="#" class="popular-card">
+                      <img
+                        src="/images/icons/fashion.jpg"
+                        alt="Fashion and Celebrity Culture"
+                      />
+                      <div class="popular-content">
+                        <div class="popular-meta">FASHION — SEP 10, 2023</div>
+                        <h4>
+                          Fashion and Celebrity Culture: The Influence of
+                          Celebrities on Style Trends
+                        </h4>
+                      </div>
+                    </a>
+
+                    <a href="#" class="popular-card">
+                      <img
+                        src="/images/icons/technology.jpg"
+                        alt="Self-Driving Cars"
+                      />
+                      <div class="popular-content">
+                        <div class="popular-meta">TECHNOLOGY — SEP 6, 2023</div>
+                        <h4>Self-Driving Cars: Everything You Need to Know</h4>
+                      </div>
+                    </a>
+                  </div>
+                </section>
+
+                <!-- Categories -->
+
+                <section class="categories">
+                  <h3>Categories</h3>
+
+                  <div class="category-list">
+                    <a href="#">Backend</a>
+
+                    <a href="#">Java</a>
+
+                    <a href="#">Spring Boot</a>
+
+                    <a href="#">AI</a>
+
+                    <a href="#">System Design</a>
+                  </div>
+                </section>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
     </main>
 
     <div id="footer"></div>
 
-    <!-- JavaScript -->
     <script src="../../components/components.js" defer></script>
     <script src="../../js/script.js" defer></script>
     <script src="../../js/article.js" defer></script>
-
-</body>
+  </body>
 </html>

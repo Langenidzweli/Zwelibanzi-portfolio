@@ -1,0 +1,924 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>Building Intelligent Systems That Earn Their Place | Zwelibanzi Langeni</title>
+
+        <link rel="icon" type="image/png" href="../../images/logo.png" />
+
+        <link rel="stylesheet" href="../../css/style.css" />
+        <link rel="stylesheet" href="../../css/article-page.css" />
+    </head>
+
+    <body>
+        <a class="skip-link" href="#main-content">Skip to content</a>
+
+        <div id="navbar"></div>
+
+        <main id="main-content">
+            <section class="article-page">
+                <div class="container">
+                    <div class="article-layout">
+                        <!-- ===================================================
+LEFT COLUMN
+=================================================== -->
+
+                        <div class="article-main">
+                            <!-- Hero -->
+
+                            <header class="article-header">
+                                <div class="article-category">
+                                    <span class="section-label">System Design</span>
+                                    <span class="article-date">August 2026</span>
+                                </div>
+
+                                <h1 class="article-title">
+                                    Building Intelligent Systems That Earn Their Place
+                                </h1>
+
+                                <p class="article-description">
+                                    A pragmatic guide to designing AI-powered systems that users actually rely on — 
+                                    not because the models are perfect, but because the system is trustworthy, 
+                                    observable, and doesn't get in the way.
+                                </p>
+
+                                <div class="article-meta">
+                                    <div class="author">
+                                        <div class="author-avatar">Z</div>
+
+                                        <div>
+                                            <h4>Zwelibanzi Langeni</h4>
+
+                                            <span>12 min read</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="article-share">
+                                        <a href="#">LinkedIn</a>
+
+                                        <a href="#">X</a>
+
+                                        <a href="#">Copy Link</a>
+                                    </div>
+                                </div>
+                            </header>
+
+                            <!-- Hero Image -->
+
+                            <figure class="article-cover">
+                                <img
+                                    src="../../images/Building Intelligent.png"
+                                    alt="A well-used toolbox with AI gears and user feedback loops — building trust through reliable systems"
+                                />
+                            </figure>
+
+                            <!-- Article -->
+
+                            <article class="article-body">
+                                <h2 id="the-intelligent-system-that-nobody-wanted">
+                                    The Intelligent System That Nobody Wanted
+                                </h2>
+
+                                <p>
+                                    A few years ago, I built what I thought was
+                                    a brilliant recommendation engine. It was
+                                    powered by a state-of-the-art collaborative
+                                    filtering model, served predictions in under
+                                    50 milliseconds, and achieved an impressive
+                                    RMSE on our test set. I presented it to the
+                                    product team with pride. They looked at the
+                                    dashboard, nodded politely, and asked,
+                                    "Does it actually help our users find what
+                                    they're looking for?"
+                                </p>
+
+                                <p>
+                                    I didn't have a good answer. The model was
+                                    intelligent, but it hadn't earned its place.
+                                    It was a solution in search of a problem. It
+                                    added complexity to the codebase, consumed
+                                    significant compute resources, and —
+                                    crucially — our users barely noticed it. The
+                                    click-through rates were flat. The support
+                                    tickets didn't drop. The "intelligence" was
+                                    invisible.
+                                </p>
+
+                                <p>
+                                    That experience haunted me. I had focused on
+                                    the wrong metrics. I had built a model, not
+                                    a system. And a model without a system is
+                                    just a fancy script. Over the next few
+                                    years, I rebuilt that system twice, and with
+                                    each iteration, I learned that earning a
+                                    place in a product means solving a real
+                                    human problem, not just hitting a numerical
+                                    target.
+                                </p>
+
+                                <h2 id="what-earning-its-place-actually-means">
+                                    What "Earning Its Place" Actually Means
+                                </h2>
+
+                                <p>
+                                    An intelligent system earns its place when
+                                    it becomes <strong>the path of least
+                                    resistance</strong>. When users don't fight
+                                    it. When they trust it enough to let it
+                                    handle the boring, repetitive decisions so
+                                    they can focus on the creative or critical
+                                    ones. It's earned when the product manager
+                                    says, "We can't ship without this," and the
+                                    operations team says, "This is reliable
+                                    enough to sleep at night."
+                                </p>
+
+                                <p>
+                                    Earning that trust requires three things:
+                                    <strong>utility, reliability, and
+                                    transparency</strong>. Utility means it
+                                    actually solves a pain point. Reliability
+                                    means it works when you need it, with
+                                    predictable performance. Transparency means
+                                    that when it fails, you understand why, and
+                                    you can override it.
+                                </p>
+
+                                <p>
+                                    In my journey, I've distilled these
+                                    principles into a few core practices that
+                                    guide every intelligent system I build
+                                    today. They're not about the algorithms.
+                                    They're about the wrapper around the
+                                    algorithms — the part that turns a script
+                                    into a service.
+                                </p>
+
+                                <h2 id="the-feedback-loop-is-the-real-intelligence">
+                                    The Feedback Loop Is the Real Intelligence
+                                </h2>
+
+                                <p>
+                                    The first thing I changed was how I thought
+                                    about feedback. Initially, I treated the
+                                    model as a static artefact. Train it,
+                                    deploy it, and move on. The problem is that
+                                    the real world changes. User behaviour
+                                    drifts. New products appear. Seasonal trends
+                                    shift. A model that doesn't learn from its
+                                    environment is a fossil.
+                                </p>
+
+                                <p>
+                                    I started building explicit feedback loops
+                                    into every system. For the recommendation
+                                    engine, I added a simple
+                                    "Was this helpful?" button. For a fraud
+                                    detection system, I integrated a "mark as
+                                    safe" workflow. These explicit signals were
+                                    sparse, but they were high-quality.
+                                </p>
+
+                                <p>
+                                    I also relied on implicit feedback. If a
+                                    user clicked on the second recommendation
+                                    instead of the first, that was signal. If
+                                    they spent more time on a page, that was
+                                    signal. These signals are noisy, but they're
+                                    abundant, and they capture behaviour
+                                    naturally.
+                                </p>
+
+                                <p>
+                                    Here's the simple Java interface I use to
+                                    abstract feedback collection in Spring Boot
+                                    applications:
+                                </p>
+
+                                <pre><code>public interface FeedbackCollector {
+                                    void recordView(String userId, String
+                                    itemId, long timestamp);
+                                    void recordClick(String userId, String
+                                    itemId, long timestamp);
+                                    void recordExplicitFeedback(String userId,
+                                    String itemId, int rating, long timestamp);
+                                    }
+
+                                    @Service
+                                    public class KafkaFeedbackCollector implements
+                                    FeedbackCollector {
+                                    private final KafkaTemplate&lt;String,
+                                    FeedbackEvent&gt; kafkaTemplate;
+
+                                    @Override
+                                    public void recordClick(String userId, String
+                                    itemId, long timestamp) {
+                                    FeedbackEvent event = new FeedbackEvent(
+                                    userId, itemId, "click", timestamp
+                                    );
+                                    kafkaTemplate.send("feedback-events",
+                                    event);
+                                    }
+                                    // Other methods similar
+                                    }</code></pre>
+
+                                <p>
+                                    This decouples the feedback ingestion from
+                                    the main request path. The model updates
+                                    asynchronously, so user experience doesn't
+                                    degrade. The feedback loop is the engine
+                                    that keeps the intelligence relevant.
+                                </p>
+
+                                <h2 id="graceful-degradation-when-the-model-fails">
+                                    Graceful Degradation: When the Model Fails
+                                </h2>
+
+                                <p>
+                                    I used to think that if my model was
+                                    accurate enough, I didn't need a fallback.
+                                    That hubris cost me a major incident. A
+                                    dependency broke in production, the model
+                                    started returning garbage, and the entire
+                                    service errored out. The team had to roll
+                                    back, and we lost hours of uptime.
+                                </p>
+
+                                <p>
+                                    Now I design every intelligent system with
+                                    <strong>graceful degradation</strong>. If
+                                    the model is unavailable or returns
+                                    low-confidence predictions, the system
+                                    falls back to a simpler rule-based logic.
+                                    The rule might not be as clever, but it's
+                                    predictable and safe.
+                                </p>
+
+                                <p>
+                                    Here's the pattern I use for confidence-based
+                                    routing in Python:
+                                </p>
+
+                                <pre><code>class HybridPredictor:
+                                    def __init__(self, model, fallback_rules,
+                                    confidence_threshold=0.7):
+                                    self.model = model
+                                    self.fallback_rules = fallback_rules
+                                    self.confidence_threshold =
+                                    confidence_threshold
+
+                                    def predict(self, features):
+                                    # Get model prediction with confidence
+                                    prediction, confidence =
+                                    self.model.predict_with_confidence(features)
+
+                                    if confidence >= self.confidence_threshold:
+                                    return prediction, "model"
+
+                                    # Fallback to rules
+                                    rule_result =
+                                    self.fallback_rules.predict(features)
+                                    return rule_result, "fallback"</code></pre>
+
+                                <p>
+                                    In Spring Boot, I implement this using a
+                                    <code>@Primary</code> and
+                                    <code>@Conditional</code> setup, where the
+                                    fallback bean activates if the main model
+                                    fails to initialise or times out. This
+                                    pattern has saved me from multiple outages.
+                                </p>
+
+                                <p>
+                                    The key insight is that an imperfect
+                                    fallback is infinitely better than a perfect
+                                    failure. Users will forgive a generic
+                                    recommendation. They won't forgive a 500
+                                    error.
+                                </p>
+
+                                <h2 id="observability-is-not-optional">
+                                    Observability Is Not Optional
+                                </h2>
+
+                                <p>
+                                    I cannot emphasise this enough: an
+                                    intelligent system is a black box unless you
+                                    instrument it. I used to log only the final
+                                    predictions. When things went wrong, I had
+                                    no idea where to look. Was it the data? The
+                                    model version? The infrastructure?
+                                </p>
+
+                                <p>
+                                    I now build observability into every layer
+                                    of the system. I track:
+                                </p>
+
+                                <ul>
+                                    <li>
+                                        <strong>Input distributions:</strong>
+                                        What features are being sent? How have
+                                        they changed over time?
+                                    </li>
+                                    <li>
+                                        <strong>Model latency:</strong> p50,
+                                        p95, p99. A slow model is a bad model,
+                                        regardless of accuracy.
+                                    </li>
+                                    <li>
+                                        <strong>Confidence scores:</strong> Is
+                                        the model uncertain about its
+                                        predictions? Are we relying on the
+                                        fallback more than expected?
+                                    </li>
+                                    <li>
+                                        <strong>Business metrics:</strong>
+                                        Conversion rates, task completion times.
+                                        Does the intelligence actually move the
+                                        needle?
+                                    </li>
+                                </ul>
+
+                                <p>
+                                    I use Micrometer for metrics in Spring Boot
+                                    and expose them to Prometheus:
+                                </p>
+
+                                <pre><code>@RestController
+                                    public class PredictionController {
+                                    private final MeterRegistry meterRegistry;
+                                    private final Counter fallbackCounter;
+
+                                    public PredictionController(MeterRegistry
+                                    meterRegistry) {
+                                    this.meterRegistry = meterRegistry;
+                                    this.fallbackCounter =
+                                    Counter.builder("predictions.fallback")
+                                    .description("Number of predictions that
+                                    fell back to rules")
+                                    .register(meterRegistry);
+                                    }
+
+                                    @PostMapping("/predict")
+                                    public PredictionResponse
+                                    predict(@RequestBody Request req) {
+                                    Timer.Sample sample = Timer.start(meterRegistry);
+                                    try {
+                                    // ... prediction logic
+                                    if (predictionSource == "fallback") {
+                                    fallbackCounter.increment();
+                                    }
+                                    return response;
+                                    } finally {
+                                    sample.stop(Timer.builder("predictions.latency")
+                                    .publishPercentiles(0.5, 0.95, 0.99)
+                                    .register(meterRegistry));
+                                    }
+                                    }
+                                    }</code></pre>
+
+                                <p>
+                                    Observability transforms an intelligent
+                                    system from a "fire and forget" black box
+                                    into a manageable, debuggable component of
+                                    your architecture. It gives you the
+                                    confidence to deploy changes and the data to
+                                    prove whether those changes actually helped.
+                                </p>
+
+                                <h2 id="the-architecture-behind-a-trusted-system">
+                                    The Architecture Behind a Trusted System
+                                </h2>
+
+                                <p>
+                                    I used to embed the inference logic directly
+                                    in the main application. It was quick to
+                                    build, but it tightly coupled the model to
+                                    the business logic. Changing the model meant
+                                    redeploying the entire service. Scaling the
+                                    inference meant scaling everything.
+                                </p>
+
+                                <p>
+                                    Today, I decouple the intelligent system
+                                    into three distinct layers: <strong>data
+                                    preparation</strong>, <strong>inference
+                                    service</strong>, and <strong>decision
+                                    orchestration</strong>. The inference
+                                    service is a stateless, horizontally
+                                    scalable service that exposes a simple REST
+                                    or gRPC endpoint. The orchestration layer
+                                    handles the fallbacks, caching, and
+                                    business rules.
+                                </p>
+
+                                <p>
+                                    Here's a snippet of the gRPC service
+                                    definition I use for the inference layer:
+                                </p>
+
+                                <pre><code>syntax = "proto3";
+
+                                    service InferenceService {
+                                    rpc Predict(PredictRequest) returns
+                                    (PredictResponse);
+                                    rpc GetConfidence(ConfidenceRequest)
+                                    returns (ConfidenceResponse);
+                                    }
+
+                                    message PredictRequest {
+                                    repeated float features = 1;
+                                    string request_id = 2;
+                                    }
+
+                                    message PredictResponse {
+                                    float prediction = 1;
+                                    string source = 2; // "model" or "fallback"
+                                    }</code></pre>
+
+                                <p>
+                                    This separation allows me to update the
+                                    model independently, roll back changes
+                                    instantly, and scale the inference service
+                                    based on demand. It also makes it easy to
+                                    A/B test different models side by side.
+                                    Architecture isn't about adding layers for
+                                    their own sake; it's about giving yourself
+                                    room to evolve.
+                                </p>
+
+                                <h2 id="measuring-what-matters-adoption-over-accuracy">
+                                    Measuring What Matters: Adoption over Accuracy
+                                </h2>
+
+                                <p>
+                                    The hardest lesson I learned is that model
+                                    accuracy doesn't equal system value. I've
+                                    seen models with 95% accuracy fail to change
+                                    user behaviour, and models with 70% accuracy
+                                    become indispensable. The difference is
+                                    <strong>adoption</strong>.
+                                </p>
+
+                                <p>
+                                    A model that suggests the perfect product
+                                    but takes two seconds to load is useless. A
+                                    model that gives a decent suggestion in 50
+                                    milliseconds becomes part of the user's
+                                    flow. The intelligence has to be fast,
+                                    unobtrusive, and consistent.
+                                </p>
+
+                                <p>
+                                    I now track adoption metrics as first-class
+                                    citizens in my evaluation framework. I
+                                    measure:
+                                </p>
+
+                                <ul>
+                                    <li>
+                                        <strong>Coverage:</strong> What
+                                        percentage of requests get a model
+                                        prediction vs. a fallback?
+                                    </li>
+                                    <li>
+                                        <strong>Latency:</strong> How long does
+                                        it take from input to output? What's the
+                                        user-perceived delay?
+                                    </li>
+                                    <li>
+                                        <strong>Intervention rate:</strong> How
+                                        often do users override or ignore the
+                                        suggestion? High intervention is a sign
+                                        of low trust.
+                                    </li>
+                                </ul>
+
+                                <p>
+                                    One of the most impactful experiments I ran
+                                    was a simple A/B test. Variant A had a
+                                    complex deep learning model. Variant B had a
+                                    linear regression model with caching. The
+                                    linear model was faster, cheaper, and easier
+                                    to debug. It won on adoption by a significant
+                                    margin because it was reliable. Users didn't
+                                    care about the sophistication; they cared
+                                    about the experience.
+                                </p>
+
+                                <h2 id="lessons-from-building-a-contextual-bandit-system">
+                                    Lessons from Building a Contextual Bandit
+                                    System
+                                </h2>
+
+                                <p>
+                                    One of my favourite projects was building a
+                                    contextual bandit system for personalised
+                                    promotions. The goal was to decide which
+                                    discount to offer to each user in real time,
+                                    balancing exploration (testing new offers)
+                                    with exploitation (using what we already
+                                    know works).
+                                </p>
+
+                                <p>
+                                    The bandit approach was perfect because it
+                                    integrated learning directly into the
+                                    serving path. Every user interaction was a
+                                    training signal. The system continuously
+                                    adapted without requiring batch retraining.
+                                </p>
+
+                                <p>
+                                    Here's a simplified Python implementation
+                                    using epsilon-greedy exploration:
+                                </p>
+
+                                <pre><code>import numpy as np
+                                    from collections import defaultdict
+
+                                    class ContextualBandit:
+                                    def __init__(self, n_arms=5, n_features=10,
+                                    epsilon=0.1):
+                                    self.n_arms = n_arms
+                                    self.n_features = n_features
+                                    self.epsilon = epsilon
+                                    # Linear regression weights for each arm
+                                    self.weights = np.zeros((n_arms,
+                                    n_features))
+                                    self.covariances = [np.eye(n_features) for _
+                                    in range(n_arms)]
+
+                                    def predict(self, context):
+                                    # Context is a feature vector
+                                    if np.random.random() &lt; self.epsilon:
+                                    # Explore: random arm
+                                    return np.random.randint(self.n_arms)
+
+                                    # Exploit: best arm
+                                    scores = np.dot(self.weights, context)
+                                    return np.argmax(scores)
+
+                                    def update(self, context, arm, reward):
+                                    # Online linear regression update (simplified)
+                                    # Using ridge regression style update
+                                    self.covariances[arm] += np.outer(context,
+                                    context)
+                                    self.weights[arm] += reward * context
+                                    return self</code></pre>
+
+                                <p>
+                                    I wrapped this bandit in a Spring Boot
+                                    service with a Redis cache for the weights.
+                                    The system learned quickly and adapted to
+                                    changing user preferences. It wasn't the
+                                    flashiest algorithm, but it was robust,
+                                    lightweight, and could be explained to
+                                    non-technical stakeholders in five minutes.
+                                    That transparency was key to earning trust
+                                    across the organisation.
+                                </p>
+
+                                <p>
+                                    The bandit taught me that intelligence
+                                    doesn't have to be complex to be valuable.
+                                    In fact, simpler systems are often easier to
+                                    trust and debug, which makes them more
+                                    likely to earn their place.
+                                </p>
+
+                                <h2 id="final-thoughts">Final Thoughts</h2>
+
+                                <p>
+                                    Building intelligent systems that earn
+                                    their place is a discipline that extends
+                                    far beyond machine learning. It's about
+                                    empathy for the user, discipline in
+                                    engineering, and humility about the limits
+                                    of our models. It's about building trust
+                                    through reliability, transparency, and
+                                    continuous learning.
+                                </p>
+
+                                <p>
+                                    I still get excited about new algorithms.
+                                    But now, before I reach for a complex
+                                    model, I ask myself: "Can I explain this to
+                                    the product manager? Can the operations team
+                                    monitor it? Will the user notice if it's
+                                    gone?" If the answer to any of these is no,
+                                    I go back and simplify.
+                                </p>
+
+                                <p>
+                                    The systems I'm most proud of are the
+                                    boring ones. The ones that have been running
+                                    in production for years without incidents.
+                                    The ones that users rely on without
+                                    thinking. The ones that just work.
+                                    That's the ultimate achievement — building
+                                    something so integrated, so reliable, that
+                                    it becomes invisible.
+                                </p>
+
+                                <p>
+                                    Earning a place in a product isn't a
+                                    one-time event. It's a continuous process of
+                                    delivery, observation, and improvement. It's
+                                    a commitment to the users and to the
+                                    engineering team. It's the difference
+                                    between building a toy and building a tool.
+                                </p>
+
+                                <p>
+                                    I still make mistakes. I still occasionally
+                                    over-engineer. But every time I catch
+                                    myself, I think back to that first
+                                    recommendation engine — the one nobody
+                                    wanted — and I remind myself: <strong>start
+                                    with the user, not the model</strong>. The
+                                    rest will follow.
+                                </p>
+                            </article>
+
+                            <!-- Related Articles -->
+
+                            <section class="related-posts">
+                                <h2>Related Articles</h2>
+
+                                <div class="related-grid">
+                                    <article class="related-card">
+                                        <a href="#">
+                                            <img
+                                                src="../../images/hero.png"
+                                                alt="A production monitoring dashboard for an AI service"
+                                            />
+
+                                            <div class="related-card-content">
+                                                <div class="related-meta">
+                                                    ML OPS
+                                                    <span
+                                                        class="meta-separator"
+                                                        >•</span
+                                                    >
+                                                    9 min read
+                                                </div>
+                                                <h3>
+                                                    Observability for AI:
+                                                    Monitoring What Actually
+                                                    Matters
+                                                </h3>
+                                                <p class="related-date">
+                                                    JUL 25, 2026
+                                                </p>
+                                                <p>
+                                                    How I learned to move beyond
+                                                    model metrics and start
+                                                    tracking business outcomes,
+                                                    system health, and user
+                                                    behaviour.
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </article>
+
+                                    <article class="related-card">
+                                        <a href="#">
+                                            <img
+                                                src="../../images/Introduction.webp"
+                                                alt="A/B test results chart comparing two AI models"
+                                            />
+
+                                            <div class="related-card-content">
+                                                <div class="related-meta">
+                                                    SYSTEM DESIGN
+                                                    <span
+                                                        class="meta-separator"
+                                                        >•</span
+                                                    >
+                                                    10 min read
+                                                </div>
+                                                <h3>
+                                                    The Art of A/B Testing
+                                                    Machine Learning Models
+                                                </h3>
+                                                <p class="related-date">
+                                                    JUN 12, 2026
+                                                </p>
+                                                <p>
+                                                    A practical guide to running
+                                                    statistically sound A/B
+                                                    tests for AI systems —
+                                                    without overcomplicating the
+                                                    analysis.
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </article>
+
+                                    <article class="related-card">
+                                        <a href="#">
+                                            <img
+                                                src="../../images/virtual-guard.png"
+                                                alt="A simple toggle switch between AI and fallback logic"
+                                            />
+
+                                            <div class="related-card-content">
+                                                <div class="related-meta">
+                                                    BACKEND
+                                                    <span
+                                                        class="meta-separator"
+                                                        >•</span
+                                                    >
+                                                    8 min read
+                                                </div>
+                                                <h3>
+                                                    Why Every AI System Needs a
+                                                    Kill Switch and a Fallback
+                                                </h3>
+                                                <p class="related-date">
+                                                    MAY 30, 2026
+                                                </p>
+                                                <p>
+                                                    The architecture patterns
+                                                    that let me deploy
+                                                    confidently, knowing I can
+                                                    always fall back to a
+                                                    safe, predictable state.
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </article>
+                                </div>
+                            </section>
+                        </div>
+
+                        <!-- ===================================================
+RIGHT COLUMN
+=================================================== -->
+
+                        <aside class="article-sidebar">
+                            <div class="sidebar-sticky">
+                                <!-- TOC -->
+
+                                <section class="toc">
+                                    <h3>Table of Contents</h3>
+
+                                    <nav>
+                                        <a href="#the-intelligent-system-that-nobody-wanted">
+                                            The Intelligent System That Nobody Wanted
+                                        </a>
+
+                                        <a href="#what-earning-its-place-actually-means">
+                                            What "Earning Its Place" Actually Means
+                                        </a>
+
+                                        <a href="#the-feedback-loop-is-the-real-intelligence">
+                                            The Feedback Loop Is the Real Intelligence
+                                        </a>
+
+                                        <a href="#graceful-degradation-when-the-model-fails">
+                                            Graceful Degradation: When the Model Fails
+                                        </a>
+
+                                        <a href="#observability-is-not-optional">
+                                            Observability Is Not Optional
+                                        </a>
+
+                                        <a href="#the-architecture-behind-a-trusted-system">
+                                            The Architecture Behind a Trusted System
+                                        </a>
+
+                                        <a href="#measuring-what-matters-adoption-over-accuracy">
+                                            Measuring What Matters: Adoption over Accuracy
+                                        </a>
+
+                                        <a href="#lessons-from-building-a-contextual-bandit-system">
+                                            Lessons from Building a Contextual Bandit System
+                                        </a>
+
+                                        <a href="#final-thoughts">
+                                            Final Thoughts
+                                        </a>
+                                    </nav>
+                                </section>
+
+                                <!-- Newsletter -->
+
+                                <section class="newsletter-box">
+                                    <h3>Newsletter</h3>
+
+                                    <p>
+                                        Subscribe for new articles and
+                                        tutorials.
+                                    </p>
+
+                                    <form id="newsletter-form" novalidate>
+                                        <input
+                                            id="newsletter-email"
+                                            name="email"
+                                            type="email"
+                                            autocomplete="email"
+                                            placeholder="Your email"
+                                            required
+                                        />
+
+                                        <button type="submit">
+                                            Subscribe
+                                        </button>
+
+                                        <p
+                                            id="newsletter-status"
+                                            class="form-status"
+                                            aria-live="polite"
+                                        ></p>
+                                    </form>
+                                </section>
+
+                                <!-- Popular -->
+
+                                <section class="popular-posts">
+                                    <h3>Popular Articles</h3>
+
+                                    <div class="popular-list">
+                                        <a href="#" class="popular-card">
+                                            <img
+                                                src="/images/icons/business.jpg"
+                                                alt="A simple fallback system replacing complex AI"
+                                            />
+                                            <div class="popular-content">
+                                                <div class="popular-meta">
+                                                    DESIGN — AUG 2, 2026
+                                                </div>
+                                                <h4>
+                                                    Why I Prefer Simple Heuristics Over Complex Models
+                                                </h4>
+                                            </div>
+                                        </a>
+
+                                        <a href="#" class="popular-card">
+                                            <img
+                                                src="/images/icons/fashion.jpg"
+                                                alt="Data drift visualisation over time"
+                                            />
+                                            <div class="popular-content">
+                                                <div class="popular-meta">
+                                                    OPS — JUL 20, 2026
+                                                </div>
+                                                <h4>
+                                                    Drift Detection for ML Systems: A Practical Guide
+                                                </h4>
+                                            </div>
+                                        </a>
+
+                                        <a href="#" class="popular-card">
+                                            <img
+                                                src="/images/icons/technology.jpg"
+                                                alt="User adoption funnel for an AI feature"
+                                            />
+                                            <div class="popular-content">
+                                                <div class="popular-meta">
+                                                    PRODUCT — JUN 25, 2026
+                                                </div>
+                                                <h4>
+                                                    From Model Metrics to User Impact: The Right KPIs
+                                                </h4>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </section>
+
+                                <!-- Categories -->
+
+                                <section class="categories">
+                                    <h3>Categories</h3>
+
+                                    <div class="category-list">
+                                        <a href="#">Backend</a>
+
+                                        <a href="#">Java</a>
+
+                                        <a href="#">Spring Boot</a>
+
+                                        <a href="#">AI</a>
+
+                                        <a href="#">System Design</a>
+                                    </div>
+                                </section>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <div id="footer"></div>
+
+        <script src="../../components/components.js" defer></script>
+        <script src="../../js/script.js" defer></script>
+        <script src="../../js/article.js" defer></script>
+    </body>
+</html>

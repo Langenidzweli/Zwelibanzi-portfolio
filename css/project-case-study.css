@@ -38,7 +38,7 @@
 }
 
 .back-link:hover{
-    color:var(--text-color);
+    color:var(--text);
 }
 
 .project-title{
@@ -103,7 +103,7 @@
 
     text-decoration:none;
 
-    color:var(--text-color);
+    color:var(--text);
 
     transition:.3s;
 }
@@ -175,12 +175,6 @@
 
 /* Make the overview container respect the global page container so the
    `.content-inner` can left-align within the same page offsets as the hero. */
-.project-overview .container{
-    max-width:1600px;
-    margin: 0 auto;
-    padding: 0 4%;
-}
-
 .project-overview p,
 .project-challenges p,
 .project-lessons p,
@@ -430,7 +424,7 @@
 
 .project-navigation a{
 
-    color:var(--text-color);
+    color:var(--text);
 
     text-decoration:none;
 

@@ -1,41 +1,51 @@
 /*==================================================
                 ARTICLE.JS
-    Zwelibanzi Portfolio
+        Zwelibanzi Langeni Portfolio
 ==================================================*/
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    initializeReadingProgress();
+    calculateReadingTime();
     initializeTableOfContents();
-    initializeShareButtons();
+    initializeCodeBlocks();
     initializeNewsletter();
+    initializeImageZoom();
     initializeRevealAnimations();
 
 });
 
 /*==================================================
-                READING PROGRESS BAR
+                READING TIME
 ==================================================*/
 
-function initializeReadingProgress() {
+function calculateReadingTime() {
 
-    const progress = document.createElement("div");
-    progress.className = "reading-progress";
+    const article =
+        document.querySelector(".article-body");
 
-    document.body.appendChild(progress);
+    if (!article) return;
 
-    window.addEventListener("scroll", () => {
+    const text =
+        article.innerText.trim();
 
-        const scrollTop = window.scrollY;
+    const words =
+        text.split(/\s+/).length;
 
-        const documentHeight =
-            document.documentElement.scrollHeight - window.innerHeight;
+    const minutes =
+        Math.max(
+            1,
+            Math.ceil(words / 220)
+        );
 
-        const progressWidth = (scrollTop / documentHeight) * 100;
+    const element =
+        document.querySelector(".read-time");
 
-        progress.style.width = `${progressWidth}%`;
+    if (element) {
 
-    });
+        element.textContent =
+            `${minutes} min read`;
+
+    }
 
 }
 
@@ -45,28 +55,83 @@ function initializeReadingProgress() {
 
 function initializeTableOfContents() {
 
-    const links = document.querySelectorAll(".toc a");
+    const links =
+        document.querySelectorAll(".toc a");
 
     if (!links.length) return;
 
-    /* Smooth Scroll */
+    const toc =
+        document.querySelector(".toc");
+
+    const sidebar =
+        document.querySelector(".article-sidebar");
+
+    const articleMain =
+        document.querySelector(".article-main");
+
+    if (!toc || !sidebar || !articleMain) return;
+
+    const offsetTop = 96;
+
+    function updateTocState() {
+
+        const scrollY = window.scrollY;
+        const viewportHeight = window.innerHeight;
+        const articleTop = articleMain.offsetTop;
+        const articleBottom = articleMain.offsetTop + articleMain.offsetHeight;
+        const sidebarRect = sidebar.getBoundingClientRect();
+        const shouldPin =
+            scrollY > articleTop + 90 &&
+            scrollY + viewportHeight < articleBottom - 120;
+
+        if (window.innerWidth <= 992) {
+
+            toc.classList.remove("is-pinned");
+            toc.style.width = "";
+            toc.style.left = "";
+            return;
+
+        }
+
+        if (shouldPin) {
+
+            toc.classList.add("is-pinned");
+            toc.style.width = `${sidebarRect.width}px`;
+            toc.style.left = `${sidebarRect.left}px`;
+
+        } else {
+
+            toc.classList.remove("is-pinned");
+            toc.style.width = "";
+            toc.style.left = "";
+
+        }
+
+    }
 
     links.forEach(link => {
 
-        link.addEventListener("click", e => {
+        link.addEventListener("click", event => {
 
-            e.preventDefault();
+            event.preventDefault();
 
-            const target = document.querySelector(
-                link.getAttribute("href")
-            );
+            const target =
+                document.querySelector(
+                    link.getAttribute("href")
+                );
 
             if (!target) return;
 
-            target.scrollIntoView({
+            const position =
+                target.getBoundingClientRect().top +
+                window.pageYOffset -
+                offsetTop;
 
-                behavior: "smooth",
-                block: "start"
+            window.scrollTo({
+
+                top: position,
+
+                behavior: "smooth"
 
             });
 
@@ -74,126 +139,103 @@ function initializeTableOfContents() {
 
     });
 
-    /* Active Section */
+    const sections =
+        document.querySelectorAll(
+            ".article-body h2"
+        );
 
-    const sections = document.querySelectorAll(".article-body h2");
+    const observer =
+        new IntersectionObserver(entries => {
 
-    const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
 
-        entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
 
-            if (!entry.isIntersecting) return;
+                links.forEach(link => {
 
-            links.forEach(link => {
+                    link.classList.remove("active");
 
-                link.classList.remove("active");
+                    if (
 
-                if (
-                    link.getAttribute("href") ===
-                    "#" + entry.target.id
-                ) {
+                        link.getAttribute("href") ===
+                        "#" + entry.target.id
 
-                    link.classList.add("active");
+                    ) {
 
-                }
+                        link.classList.add("active");
+
+                    }
+
+                });
 
             });
 
+        }, {
+
+            rootMargin:
+                "-20% 0px -60% 0px",
+
+            threshold: 0
+
         });
 
-    }, {
+    sections.forEach(section => {
 
-        rootMargin: "-40% 0px -45% 0px"
+        observer.observe(section);
 
     });
 
-    sections.forEach(section => observer.observe(section));
+    updateTocState();
+    window.addEventListener("scroll", updateTocState, { passive: true });
+    window.addEventListener("resize", updateTocState);
 
 }
-
 /*==================================================
-                SHARE BUTTONS
+                CODE BLOCKS
 ==================================================*/
 
-function initializeShareButtons() {
+function initializeCodeBlocks() {
 
-    const pageURL = encodeURIComponent(window.location.href);
+    const blocks =
+        document.querySelectorAll("pre");
 
-    const pageTitle = encodeURIComponent(document.title);
+    if (!blocks.length) return;
 
-    /* LinkedIn */
+    blocks.forEach(block => {
 
-    const linkedin = document.getElementById("linkedin-share");
+        const code =
+            block.querySelector("code");
 
-    if (linkedin) {
+        if (!code) return;
 
-        linkedin.addEventListener("click", e => {
+        const button =
+            document.createElement("button");
 
-            e.preventDefault();
+        button.className = "copy-code";
 
-            window.open(
+        button.type = "button";
 
-                `https://www.linkedin.com/sharing/share-offsite/?url=${pageURL}`,
+        button.textContent = "Copy";
 
-                "_blank",
+        block.appendChild(button);
 
-                "width=600,height=600"
-
-            );
-
-        });
-
-    }
-
-    /* X */
-
-    const x = document.getElementById("x-share");
-
-    if (x) {
-
-        x.addEventListener("click", e => {
-
-            e.preventDefault();
-
-            window.open(
-
-                `https://twitter.com/intent/tweet?url=${pageURL}&text=${pageTitle}`,
-
-                "_blank",
-
-                "width=600,height=500"
-
-            );
-
-        });
-
-    }
-
-    /* Copy */
-
-    const copy = document.getElementById("copy-link");
-
-    if (copy) {
-
-        copy.addEventListener("click", async e => {
-
-            e.preventDefault();
+        button.addEventListener("click", async () => {
 
             try {
 
-                await navigator.clipboard.writeText(window.location.href);
+                await navigator.clipboard.writeText(
+                    code.innerText
+                );
 
-                const original = copy.textContent;
+                button.textContent = "Copied!";
 
-                copy.textContent = "Copied!";
-
-                copy.classList.add("copied");
+                button.classList.add("copied");
 
                 setTimeout(() => {
 
-                    copy.textContent = original;
+                    button.textContent = "Copy";
 
-                    copy.classList.remove("copied");
+                    button.classList.remove("copied");
 
                 }, 2000);
 
@@ -201,13 +243,19 @@ function initializeShareButtons() {
 
             catch {
 
-                alert("Unable to copy link.");
+                button.textContent = "Failed";
+
+                setTimeout(() => {
+
+                    button.textContent = "Copy";
+
+                }, 2000);
 
             }
 
         });
 
-    }
+    });
 
 }
 
@@ -217,24 +265,52 @@ function initializeShareButtons() {
 
 function initializeNewsletter() {
 
-    const form = document.getElementById("newsletter-form");
+    const form =
+        document.getElementById(
+            "newsletter-form"
+        );
 
     if (!form) return;
 
-    const email = document.getElementById("newsletter-email");
+    const email =
+        document.getElementById(
+            "newsletter-email"
+        );
 
-    form.addEventListener("submit", e => {
+    const status =
+        document.getElementById(
+            "newsletter-status"
+        );
 
-        e.preventDefault();
+    if (!email) return;
 
-        const value = email.value.trim();
+    form.addEventListener("submit", event => {
 
-        email.classList.remove("success");
-        email.classList.remove("error");
+        event.preventDefault();
+
+        const value =
+            email.value.trim();
+
+        email.classList.remove(
+            "success",
+            "error"
+        );
 
         if (!isValidEmail(value)) {
 
             email.classList.add("error");
+
+            email.setAttribute(
+                "aria-invalid",
+                "true"
+            );
+
+            if (status) {
+
+                status.textContent =
+                    "Please enter a valid email address.";
+
+            }
 
             email.focus();
 
@@ -244,7 +320,17 @@ function initializeNewsletter() {
 
         email.classList.add("success");
 
-        alert("Thank you for subscribing!");
+        email.setAttribute(
+            "aria-invalid",
+            "false"
+        );
+
+        if (status) {
+
+            status.textContent =
+                "Thank you for subscribing.";
+
+        }
 
         form.reset();
 
@@ -252,7 +338,13 @@ function initializeNewsletter() {
 
             email.classList.remove("success");
 
-        }, 1500);
+            if (status) {
+
+                status.textContent = "";
+
+            }
+
+        }, 2000);
 
     });
 
@@ -265,34 +357,68 @@ function isValidEmail(email) {
 }
 
 /*==================================================
+                IMAGE ZOOM
+==================================================*/
+
+function initializeImageZoom() {
+
+    const images =
+        document.querySelectorAll(
+            ".article-body img"
+        );
+
+    if (!images.length) return;
+
+    images.forEach(image => {
+
+        image.style.cursor = "zoom-in";
+
+        image.addEventListener("click", () => {
+
+            window.open(
+                image.src,
+                "_blank"
+            );
+
+        });
+
+    });
+
+}
+
+/*==================================================
                 REVEAL ANIMATIONS
 ==================================================*/
 
 function initializeRevealAnimations() {
 
-    const elements = document.querySelectorAll(
+    const elements =
+        document.querySelectorAll(
 
-        ".article-body > *, .related-card, .newsletter-box"
+            ".article-body > *, .related-card, .toc, .newsletter-box, .popular-posts, .categories"
 
-    );
+        );
 
-    const observer = new IntersectionObserver(entries => {
+    if (!elements.length) return;
 
-        entries.forEach(entry => {
+    const observer =
+        new IntersectionObserver(entries => {
 
-            if (entry.isIntersecting) {
+            entries.forEach(entry => {
+
+                if (!entry.isIntersecting) return;
 
                 entry.target.classList.add("visible");
 
-            }
+                observer.unobserve(entry.target);
+
+            });
+
+        }, {
+
+            threshold: 0.15
 
         });
-
-    }, {
-
-        threshold: .15
-
-    });
 
     elements.forEach(element => {
 
@@ -305,14 +431,37 @@ function initializeRevealAnimations() {
 }
 
 /*==================================================
-                OPTIONAL
-                UPDATE COPYRIGHT YEAR
+                UTILITIES
 ==================================================*/
 
-const year = document.getElementById("year");
+function debounce(callback, delay = 100) {
+
+    let timeout;
+
+    return (...args) => {
+
+        clearTimeout(timeout);
+
+        timeout = setTimeout(() => {
+
+            callback(...args);
+
+        }, delay);
+
+    };
+
+}
+
+/*==================================================
+            OPTIONAL COPYRIGHT YEAR
+==================================================*/
+
+const year =
+    document.getElementById("year");
 
 if (year) {
 
-    year.textContent = new Date().getFullYear();
+    year.textContent =
+        new Date().getFullYear();
 
 }

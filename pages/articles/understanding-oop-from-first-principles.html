@@ -1,0 +1,1170 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>Understanding OOP from First Principles | Zwelibanzi Langeni</title>
+
+        <link rel="icon" type="image/png" href="../../images/logo.png" />
+
+        <link rel="stylesheet" href="../../css/style.css" />
+        <link rel="stylesheet" href="../../css/article-page.css" />
+    </head>
+
+    <body>
+        <a class="skip-link" href="#main-content">Skip to content</a>
+
+        <div id="navbar"></div>
+
+        <main id="main-content">
+            <section class="article-page">
+                <div class="container">
+                    <div class="article-layout">
+                        <!-- ===================================================
+LEFT COLUMN
+=================================================== -->
+
+                        <div class="article-main">
+                            <!-- Hero -->
+
+                            <header class="article-header">
+                                <div class="article-category">
+                                    <span class="section-label">Backend</span>
+                                    <span class="article-date">June 2026</span>
+                                </div>
+
+                                <h1 class="article-title">
+                                    Understanding OOP from First Principles
+                                </h1>
+
+                                <p class="article-description">
+                                    A personal journey through the foundations
+                                    of Object-Oriented Programming — not as a
+                                    set of rules to memorise, but as a way of
+                                    thinking about code, data, and the problems
+                                    we solve.
+                                </p>
+
+                                <div class="article-meta">
+                                    <div class="author">
+                                        <div class="author-avatar">Z</div>
+
+                                        <div>
+                                            <h4>Zwelibanzi Langeni</h4>
+
+                                            <span>12 min read</span>
+                                </div>
+                                    </div>
+
+                                    <div class="article-share">
+                                        <a href="#">LinkedIn</a>
+
+                                        <a href="#">X</a>
+
+                                        <a href="#">Copy Link</a>
+                                    </div>
+                                </div>
+                            </header>
+
+                            <!-- Hero Image -->
+
+                            <figure class="article-cover">
+                                <img
+                                    src="../../images/Understanding OOP from First Principles.png"
+                                    alt="A mind map of Object-Oriented Programming concepts — encapsulation, inheritance, polymorphism, and abstraction — interconnected like a living system"
+                                />
+                            </figure>
+
+                            <!-- Article -->
+
+                            <article class="article-body">
+                                <h2 id="the-first-time-i-met-oop">
+                                    The First Time I Met OOP
+                                </h2>
+
+                                <p>
+                                    I still remember my first encounter with
+                                    Object-Oriented Programming. It was a
+                                    university lecture, and the professor drew a
+                                    diagram of a <code>Car</code> class with
+                                    <code>color</code> and <code>model</code>
+                                    attributes, then a <code>startEngine()</code>
+                                    method. It seemed almost trivial. I nodded
+                                    along, wrote the code in my IDE, and
+                                    promptly forgot about it.
+                                </p>
+
+                                <p>
+                                    For the next two years, I wrote code that
+                                    was technically OOP — I used classes,
+                                    objects, and inheritance — but I never
+                                    really understood why. I treated OOP as a
+                                    syntax requirement rather than a way of
+                                    thinking. My classes were anemic data bags;
+                                    my inheritance hierarchies were deep and
+                                    brittle; my code was procedural code draped
+                                    in class declarations.
+                                </p>
+
+                                <p>
+                                    It took a failed project, a humbling
+                                    code review, and many late nights of
+                                    refactoring before I began to grasp what OOP
+                                    was truly about. It wasn't about
+                                    <code>extends</code> or
+                                    <code>implements</code>. It was about
+                                    modelling the world in a way that made
+                                    software feel alive, flexible, and
+                                    understandable. This is the story of how I
+                                    unlearned and relearned OOP from first
+                                    principles.
+                                </p>
+
+                                <h2 id="the-problem-oop-was-built-to-solve">
+                                    The Problem OOP Was Built to Solve
+                                </h2>
+
+                                <p>
+                                    To understand OOP, we have to step back to
+                                    the 1960s. Software was growing larger and
+                                    more complex. Procedural languages like
+                                    FORTRAN and COBOL worked well for
+                                    mathematical calculations and business
+                                    reports, but they struggled with
+                                    maintaining state across many functions, and
+                                    they made it difficult to reuse code
+                                    effectively.
+                                </p>
+
+                                <p>
+                                    The core insight behind OOP was simple but
+                                    radical: <strong>data and behaviour
+                                    belong together</strong>. A
+                                    <code>BankAccount</code> doesn't just have a
+                                    balance; it has operations for depositing
+                                    and withdrawing that are intimately tied to
+                                    how the balance is maintained. If you
+                                    separate the data from the behaviour, you
+                                    end up with functions scattered everywhere,
+                                    each one needing to know the internal
+                                    structure of the data.
+                                </p>
+
+                                <p>
+                                    This separation is what leads to
+                                    <strong>spaghetti code</strong>. When a
+                                    change to a data structure requires updating
+                                    dozens of functions, the code becomes
+                                    fragile. OOP's answer was to bundle data and
+                                    behaviour into cohesive units called
+                                    <strong>objects</strong>, and to expose only
+                                    what was necessary through
+                                    <strong>interfaces</strong>. This wasn't
+                                    just a technical decision — it was a
+                                    cognitive one. It made software easier for
+                                    humans to reason about.
+                                </p>
+
+                                <blockquote>
+                                    "OOP is not about the language. It's about
+                                    how you organise your thinking."
+                                </blockquote>
+
+                                <p>
+                                    Over time, I realised that OOP isn't the
+                                    only way to model software. Functional
+                                    programming has its own strengths. But OOP
+                                    remains incredibly powerful for domains
+                                    where stateful interactions are central —
+                                    which is most business applications. The key
+                                    is to understand the why behind the
+                                    features, not just the how.
+                                </p>
+
+                                <h2 id="encapsulation-the-art-of-hiding-what-matters">
+                                    Encapsulation: The Art of Hiding What
+                                    Matters
+                                </h2>
+
+                                <p>
+                                    My first real lesson in OOP came from
+                                    encapsulation. I had a class representing a
+                                    <code>User</code> with a field
+                                    <code>passwordHash</code>. I naively made it
+                                    <code>public</code>. Later, when I needed to
+                                    change the hashing algorithm, I had to
+                                    search through the entire codebase to find
+                                    every place that accessed that field
+                                    directly. It was a mess.
+                                </p>
+
+                                <p>
+                                    Encapsulation taught me that the internal
+                                    state of an object is <em>nobody's
+                                    business</em> but its own. The object should
+                                    expose a controlled set of methods through
+                                    which external code can interact. This is
+                                    the principle of
+                                    <strong>information hiding</strong>.
+                                </p>
+
+                                <p>
+                                    Here's how I would write a
+                                    <code>User</code> class today:
+                                </p>
+
+                                <pre><code>public class User {
+                                    private final Long id;
+                                    private String email;
+                                    private String passwordHash;
+                                    private boolean active;
+
+                                    public User(Long id, String email) {
+                                    this.id = id;
+                                    this.email = email;
+                                    this.active = true;
+                                    }
+
+                                    public String getEmail() {
+                                    return email;
+                                    }
+
+                                    public void changeEmail(String newEmail,
+                                    PasswordValidator validator) {
+                                    if (!validator.isValid(newEmail)) {
+                                    throw new IllegalArgumentException("Invalid
+                                    email");
+                                    }
+                                    this.email = newEmail;
+                                    }
+
+                                    public void setPassword(String rawPassword,
+                                    PasswordHasher hasher) {
+                                    this.passwordHash = hasher.hash(rawPassword);
+                                    }
+
+                                    public boolean isActive() {
+                                    return active;
+                                    }
+
+                                    public void deactivate() {
+                                    this.active = false;
+                                    }
+
+                                    // No getPasswordHash() — no one needs it
+                                    }</code></pre>
+
+                                <p>
+                                    Notice that I don't expose the password hash
+                                    at all. The user object handles password
+                                    changes itself, using a hashing strategy
+                                    that can be swapped out later. The
+                                    <code>active</code> flag is only modifiable
+                                    through <code>deactivate()</code>, which
+                                    gives me a place to add audit logging later.
+                                    Encapsulation isn't about being secretive;
+                                    it's about being intentional about what you
+                                    expose and how.
+                                </p>
+
+                                <p>
+                                    The second benefit of encapsulation is that
+                                    it reduces the ripple effect of changes. If
+                                    I change the internal representation of
+                                    <code>passwordHash</code> from a
+                                    <code>String</code> to a custom
+                                    <code>Password</code> object, the rest of
+                                    the codebase is unaffected because no one
+                                    outside the class was accessing it directly.
+                                    This is the superpower of encapsulation.
+                                </p>
+
+                                <h2 id="abstraction-seeing-the-forest-not-just-the-trees">
+                                    Abstraction: Seeing the Forest, Not Just the
+                                    Trees
+                                </h2>
+
+                                <p>
+                                    If encapsulation is about hiding details
+                                    from the outside, abstraction is about
+                                    hiding details from the inside. An
+                                    abstract class or an interface defines a
+                                    <strong>contract</strong> without
+                                    specifying the implementation. This allows
+                                    you to work at a higher level of thinking.
+                                </p>
+
+                                <p>
+                                    I used to write code like this:
+                                </p>
+
+                                <pre><code>public class EmailService {
+                                    private SmtpClient smtp = new
+                                    SmtpClient("smtp.example.com", 587);
+
+                                    public void sendWelcomeEmail(String to) {
+                                    // SMTP-specific code...
+                                    }
+                                    }</code></pre>
+
+                                <p>
+                                    The problem with this code is that it ties
+                                    the <code>EmailService</code> to a specific
+                                    SMTP implementation. If I need to switch to
+                                    a different email provider, or mock the
+                                    email service in tests, I have to change the
+                                    <code>EmailService</code> itself.
+                                </p>
+
+                                <p>
+                                    Abstraction solves this:
+                                </p>
+
+                                <pre><code>public interface EmailSender {
+                                    void send(String to, String subject, String
+                                    body);
+                                    }
+
+                                    @Service
+                                    public class EmailService {
+                                    private final EmailSender emailSender;
+
+                                    public EmailService(EmailSender emailSender) {
+                                    this.emailSender = emailSender;
+                                    }
+
+                                    public void sendWelcomeEmail(String to) {
+                                    emailSender.send(to, "Welcome",
+                                    "Thanks for joining!");
+                                    }
+                                    }</code></pre>
+
+                                <p>
+                                    Now, <code>EmailService</code> depends on an
+                                    abstraction (<code>EmailSender</code>), not
+                                    a concrete implementation. I can provide a
+                                    <code>SmtpEmailSender</code>, a
+                                    <code>SendGridEmailSender</code>, or a
+                                    <code>MockEmailSender</code> for tests. This
+                                    is the essence of the
+                                    <strong>Dependency Inversion Principle</strong>,
+                                    and it makes the code more flexible,
+                                    testable, and maintainable.
+                                </p>
+
+                                <p>
+                                    Abstraction also helps with the
+                                    <strong>single responsibility principle</strong>.
+                                    Each class should have one reason to change.
+                                    By extracting interfaces, I can split large
+                                    classes into smaller, focused ones that
+                                    communicate via well-defined contracts.
+                                </p>
+
+                                <h2 id="inheritance-a-double-edged-sword">
+                                    Inheritance: A Double-Edged Sword
+                                </h2>
+
+                                <p>
+                                    No OOP topic is more controversial than
+                                    inheritance. When I was a beginner, I
+                                    thought inheritance was the crown jewel of
+                                    OOP. I created deep hierarchies:
+                                    <code>Vehicle</code> → <code>Car</code> →
+                                    <code>SportsCar</code> →
+                                    <code>ElectricSportsCar</code>. It felt
+                                    elegant until I had to add a
+                                    <code>Bicycle</code> that didn't have an
+                                    engine, or a <code>SelfDrivingCar</code>
+                                    that shared logic with both
+                                    <code>Car</code> and <code>Robot</code>. My
+                                    hierarchy collapsed under its own rigidity.
+                                </p>
+
+                                <p>
+                                    The problem with inheritance is that it
+                                    creates a tight coupling between the parent
+                                    and child classes. Changes to the parent
+                                    ripple down to all children. Overriding
+                                    methods requires careful consideration of
+                                    the parent's implementation. And multiple
+                                    inheritance (which Java wisely avoids) leads
+                                    to the diamond problem.
+                                </p>
+
+                                <p>
+                                    Today, I treat inheritance as a tool to be
+                                    used sparingly. I follow these rules:
+                                </p>
+
+                                <ul>
+                                    <li>
+                                        <strong>Use inheritance only for "is-a"
+                                        relationships.</strong> A
+                                        <code>Dog</code> is an
+                                        <code>Animal</code>. That's fine. A
+                                        <code>UserService</code> is not a
+                                        <code>BaseService</code> — that's a
+                                        misuse.
+                                    </li>
+                                    <li>
+                                        <strong>Prefer composition over
+                                        inheritance.</strong> Instead of
+                                        extending a class, hold a reference to
+                                        it and delegate calls. This is more
+                                        flexible and doesn't lock you into a
+                                        hierarchy.
+                                    </li>
+                                    <li>
+                                        <strong>Keep hierarchies
+                                        shallow.</strong> Two or three levels
+                                        maximum. Anything deeper becomes hard to
+                                        understand and maintain.
+                                    </li>
+                                </ul>
+
+                                <p>
+                                    Here's an example of composition over
+                                    inheritance:
+                                </p>
+
+                                <pre><code>public class ElectricSportsCar {
+                                    private final Car car;
+                                    private final ElectricEngine engine;
+
+                                    public ElectricSportsCar(Car car,
+                                    ElectricEngine engine) {
+                                    this.car = car;
+                                    this.engine = engine;
+                                    }
+
+                                    public void drive() {
+                                    car.accelerate();
+                                    engine.start();
+                                    // ... 
+                                    }
+                                    }</code></pre>
+
+                                <p>
+                                    This approach gives me the same capabilities
+                                    without the rigid coupling. I can change the
+                                    <code>Car</code> or <code>ElectricEngine</code>
+                                    independently, and I can reuse them in other
+                                    contexts. Inheritance is powerful, but it's
+                                    also dangerous. Use it with intention and
+                                    restraint.
+                                </p>
+
+                                <h2 id="polymorphism-the-great-unifier">
+                                    Polymorphism: The Great Unifier
+                                </h2>
+
+                                <p>
+                                    Polymorphism is what makes OOP truly
+                                    powerful. It allows different classes to be
+                                    treated through a common interface, with
+                                    each class providing its own implementation.
+                                    This is the foundation of the
+                                    <strong>Open/Closed Principle</strong> —
+                                    classes should be open for extension but
+                                    closed for modification.
+                                </p>
+
+                                <p>
+                                    I remember the day I truly understood
+                                    polymorphism. I was working on a payment
+                                    processing system. I had different payment
+                                    methods: credit card, PayPal, and bank
+                                    transfer. Each had its own validation and
+                                    processing logic. My initial solution was a
+                                    giant <code>if-else</code> chain that
+                                    checked the payment type and called the
+                                    corresponding methods. It was ugly and grew
+                                    with each new payment method.
+                                </p>
+
+                                <p>
+                                    Polymorphism showed me a better way:
+                                </p>
+
+                                <pre><code>public interface PaymentProcessor {
+                                    PaymentResult process(PaymentRequest request);
+                                    }
+
+                                    @Component
+                                    public class CreditCardProcessor implements
+                                    PaymentProcessor {
+                                    @Override
+                                    public PaymentResult process(PaymentRequest
+                                    request) {
+                                    // Credit card specific logic
+                                    }
+                                    }
+
+                                    @Component
+                                    public class PayPalProcessor implements
+                                    PaymentProcessor {
+                                    @Override
+                                    public PaymentResult process(PaymentRequest
+                                    request) {
+                                    // PayPal specific logic
+                                    }
+                                    }
+
+                                    @Service
+                                    public class PaymentService {
+                                    private final Map&lt;PaymentType,
+                                    PaymentProcessor&gt; processors;
+
+                                    public PaymentService(List&lt;PaymentProcessor&gt;
+                                    processorList) {
+                                    this.processors = processorList.stream()
+                                    .collect(Collectors.toMap(
+                                    p -> p.getType(), Function.identity()
+                                    ));
+                                    }
+
+                                    public PaymentResult process(PaymentRequest
+                                    request) {
+                                    PaymentProcessor processor =
+                                    processors.get(request.getType());
+                                    if (processor == null) {
+                                    throw new UnsupportedPaymentException();
+                                    }
+                                    return processor.process(request);
+                                    }
+                                    }</code></pre>
+
+                                <p>
+                                    To add a new payment method, I simply create
+                                    a new class that implements
+                                    <code>PaymentProcessor</code>. I don't have
+                                    to touch the existing code. The system is
+                                    open for extension but closed for
+                                    modification — exactly what polymorphism
+                                    enables.
+                                </p>
+
+                                <p>
+                                    Polymorphism also makes code more readable.
+                                    The <code>PaymentService</code> is small and
+                                    focused. It doesn't need to know the
+                                    intricacies of each payment method. It just
+                                    delegates to the appropriate processor. This
+                                    separation of concerns is what makes large
+                                    systems manageable.
+                                </p>
+
+                                <h2 id="composition-over-inheritance-the-hard-won-lesson">
+                                    Composition Over Inheritance: The Hard-Won
+                                    Lesson
+                                </h2>
+
+                                <p>
+                                    The principle of
+                                    <strong>composition over inheritance</strong>
+                                    is one of the most important lessons in my
+                                    OOP journey. I learned it the hard way after
+                                    building a class hierarchy that collapsed
+                                    under its own weight. The project was a GUI
+                                    framework, and I had a base
+                                    <code>Component</code> class with dozens of
+                                    subclasses: <code>Button</code>,
+                                    <code>TextField</code>, <code>Panel</code>,
+                                    <code>Window</code>, etc. Adding a new
+                                    feature like tooltips required modifying the
+                                    base class and all its subclasses. It was a
+                                    nightmare.
+                                </p>
+
+                                <p>
+                                    Composition offers a better solution.
+                                    Instead of inheriting behaviour, you compose
+                                    it from smaller, focused objects.
+                                </p>
+
+                                <pre><code>public class Button {
+                                    private final Renderer renderer;
+                                    private final ClickHandler clickHandler;
+                                    private final Tooltip tooltip;
+
+                                    public Button(Renderer renderer, ClickHandler
+                                    clickHandler, Tooltip tooltip) {
+                                    this.renderer = renderer;
+                                    this.clickHandler = clickHandler;
+                                    this.tooltip = tooltip;
+                                    }
+
+                                    public void render() {
+                                    renderer.render(this);
+                                    }
+
+                                    public void click() {
+                                    clickHandler.handle(this);
+                                    }
+
+                                    public void showTooltip() {
+                                    tooltip.show(this);
+                                    }
+                                    }</code></pre>
+
+                                <p>
+                                    Now the <code>Button</code> class is a
+                                    container of behaviours. I can change the
+                                    rendering strategy, the click logic, or the
+                                    tooltip behaviour independently. I can even
+                                    reuse these behaviours in other components
+                                    like <code>Checkbox</code> or
+                                    <code>Image</code>. This is far more
+                                    flexible than a rigid inheritance hierarchy.
+                                </p>
+
+                                <p>
+                                    In practice, I almost always prefer
+                                    composition. It leads to smaller, more
+                                    focused classes that are easier to test and
+                                    understand. Inheritance is still useful for
+                                    the <strong>Template Method</strong>
+                                    pattern or for framework extension points,
+                                    but it's no longer my default choice.
+                                </p>
+
+                                <h2 id="solid-principles-the-bridge-between-theory-and-practice">
+                                    SOLID Principles: The Bridge Between Theory
+                                    and Practice
+                                </h2>
+
+                                <p>
+                                    All of these ideas — encapsulation,
+                                    abstraction, polymorphism, composition —
+                                    are distilled in the SOLID principles.
+                                    I didn't fully appreciate them until I had
+                                    made every mistake they were designed to
+                                    prevent. But once I internalised them, my
+                                    code changed dramatically.
+                                </p>
+
+                                <ul>
+                                    <li>
+                                        <strong>Single Responsibility:</strong>
+                                        A class should have only one reason to
+                                        change. I used to write
+                                        "God classes" that did everything.
+                                        Now I split them into focused
+                                        <code>UserRepository</code>,
+                                        <code>UserValidator</code>, and
+                                        <code>UserNotifier</code> classes.
+                                    </li>
+                                    <li>
+                                        <strong>Open/Closed:</strong> Open for
+                                        extension, closed for modification. I
+                                        use interfaces and dependency injection
+                                        to allow new behaviour without touching
+                                        existing code.
+                                    </li>
+                                    <li>
+                                        <strong>Liskov Substitution:</strong>
+                                        Subtypes must be substitutable for their
+                                        base types. I avoid overrides that break
+                                        the parent's contract. If a
+                                        <code>Square</code> extends
+                                        <code>Rectangle</code>, it must behave
+                                        like a rectangle.
+                                    </li>
+                                    <li>
+                                        <strong>Interface Segregation:</strong>
+                                        Many client-specific interfaces are
+                                        better than one general-purpose
+                                        interface. I split large interfaces like
+                                        <code>UserService</code> into
+                                        <code>UserReader</code>,
+                                        <code>UserWriter</code>, and
+                                        <code>UserAdmin</code>.
+                                    </li>
+                                    <li>
+                                        <strong>Dependency Inversion:</strong>
+                                        Depend on abstractions, not concretions.
+                                        I use constructor injection with
+                                        interfaces, making my code more testable
+                                        and flexible.
+                                    </li>
+                                </ul>
+
+                                <p>
+                                    These principles aren't rules to be followed
+                                    blindly. They're guidelines that help you
+                                    think about the structure of your code. The
+                                    best code I've written follows them
+                                    naturally because the design emerged from
+                                    careful thought, not from a checklist.
+                                </p>
+
+                                <h2 id="writing-oop-code-that-breathes">
+                                    Writing OOP Code That Breathes
+                                </h2>
+
+                                <p>
+                                    Over the years, I've developed a sense of
+                                    what good OOP code feels like. It's not just
+                                    about satisfying a linter or passing tests.
+                                    It's about a quality that's hard to
+                                    quantify but easy to recognise:
+                                    <strong>the code breathes</strong>.
+                                </p>
+
+                                <p>
+                                    Code that breathes is easy to navigate. You
+                                    can open a class and immediately understand
+                                    its purpose. The methods are short and named
+                                    well. The dependencies are clear and
+                                    minimal. Adding a new feature feels natural,
+                                    not like forcing a square peg into a round
+                                    hole.
+                                </p>
+
+                                <p>
+                                    I've learned to cultivate this quality
+                                    through practice and discipline. I refactor
+                                    relentlessly. I rename variables and methods
+                                    until they feel right. I extract classes
+                                    when a class grows too large. I write tests
+                                    that document the behaviour. I ask myself:
+                                    "If I came back to this code in six months,
+                                    would I be able to understand it quickly?"
+                                </p>
+
+                                <p>
+                                    One practice that has helped immensely is
+                                    <strong>reading other people's code</strong>.
+                                    I've studied open-source projects like
+                                    Spring Framework and JUnit. I've seen how
+                                    expert developers organise their code. I've
+                                    adopted their patterns and adapted them to
+                                    my own style. You can't become a good
+                                    writer without reading good writing, and the
+                                    same is true for code.
+                                </p>
+
+                                <p>
+                                    Another practice is
+                                    <strong>pair programming</strong>.
+                                    Explaining my design choices to another
+                                    developer forces me to articulate the why.
+                                    It exposes gaps in my reasoning and leads to
+                                    better designs. The best code I've written
+                                    came from conversations, not from sitting
+                                    alone in a room.
+                                </p>
+
+                                <h2 id="my-oop-journey-never-ended">
+                                    My OOP Journey Never Ended
+                                </h2>
+
+                                <p>
+                                    I often joke that I've been learning OOP for
+                                    ten years and I'm still a beginner. The
+                                    truth is, every project teaches me something
+                                    new. A new problem forces me to think in a
+                                    new way. A new language feature opens up
+                                    possibilities I hadn't considered. The
+                                    journey never ends, and that's exactly why I
+                                    love it.
+                                </p>
+
+                                <p>
+                                    I've also learned that OOP doesn't exist in
+                                    a vacuum. Today, I often mix OOP with
+                                    functional concepts — using
+                                    <code>Stream</code>s and lambdas in Java,
+                                    or immutable data structures. The lines
+                                    between paradigms are blurring, and that's a
+                                    good thing. The best solution uses the right
+                                    tool for the job.
+                                </p>
+
+                                <p>
+                                    But the core lessons of OOP remain
+                                    invaluable. Encapsulation, abstraction,
+                                    polymorphism, and composition are timeless
+                                    ideas. They help us manage complexity,
+                                    build testable systems, and write code that
+                                    doesn't rot. They are the foundation upon
+                                    which I build everything.
+                                </p>
+
+                                <blockquote>
+                                    "The best OOP code looks like a well-written
+                                    story — coherent, purposeful, and
+                                    impossible to put down."
+                                </blockquote>
+
+                                <p>
+                                    My advice to anyone starting their OOP
+                                    journey is this: don't memorise definitions.
+                                    Build things. Break them. Fix them. Build
+                                    them again. Each time you'll understand a
+                                    little more. And one day, you'll open a file
+                                    and realise that the code you wrote feels
+                                    alive. That's when you know you've truly
+                                    understood OOP from first principles.
+                                </p>
+
+                                <h2 id="final-thoughts">Final Thoughts</h2>
+
+                                <p>
+                                    Understanding OOP from first principles is
+                                    not about mastering a checklist of features.
+                                    It's about embracing a mindset — a way of
+                                    thinking about problems and solutions that
+                                    prioritises clarity, flexibility, and
+                                    resilience. It's about recognising that
+                                    software is a living thing, and that the
+                                    structure we give it determines how well it
+                                    can grow and adapt.
+                                </p>
+
+                                <p>
+                                    I've made countless mistakes in my OOP
+                                    journey. I've written classes that were too
+                                    big, hierarchies that were too deep, and
+                                    abstractions that were too clever. But each
+                                    mistake taught me something valuable. Each
+                                    refactor made me a better developer. And
+                                    each project reminded me why I love this
+                                    craft.
+                                </p>
+
+                                <p>
+                                    If there's one thing I want you to take away
+                                    from this article, it's this:
+                                    <strong>OOP is not about the language; it's
+                                    about how you organise your thinking.</strong>
+                                    The classes, interfaces, and methods are
+                                    just tools. The real power comes from how
+                                    you use them to model the world and solve
+                                    problems.
+                                </p>
+
+                                <p>
+                                    So go out there and build something. Make
+                                    mistakes. Refactor. Learn. And enjoy the
+                                    journey. Because the journey is the best
+                                    part of being a software engineer.
+                                </p>
+                            </article>
+
+                            <!-- Related Articles -->
+
+                            <section class="related-posts">
+                                <h2>Related Articles</h2>
+
+                                <div class="related-grid">
+                                    <article class="related-card">
+                                        <a href="#">
+                                            <img
+                                            src="../../images/hero.png"
+                                            alt="Two code blocks side by side showing inheritance vs composition"
+                                            />
+
+                                            <div class="related-card-content">
+                                                <div class="related-meta">
+                                                    JAVA
+                                                    <span
+                                                    class="meta-separator"
+                                                    >•</span
+                                                    >
+                                                    8 min read
+                                                </div>
+                                                <h3>
+                                                    Why Composition Beats
+                                                    Inheritance in Real-World
+                                                    Code
+                                                </h3>
+                                                <p class="related-date">
+                                                    MAY 12, 2026
+                                                </p>
+                                                <p>
+                                                    A practical breakdown of why
+                                                    I've replaced most
+                                                    inheritance hierarchies with
+                                                    composable, flexible
+                                                    designs — and how you can
+                                                    too.
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </article>
+
+                                    <article class="related-card">
+                                        <a href="#">
+                                            <img
+                                            src="../../images/Introduction.webp"
+                                            alt="Java class diagram with multiple methods and fields"
+                                            />
+
+                                            <div class="related-card-content">
+                                                <div class="related-meta">
+                                                    JAVA
+                                                    <span
+                                                    class="meta-separator"
+                                                    >•</span
+                                                    >
+                                                    7 min read
+                                                </div>
+                                                <h3>
+                                                    Java and the Art of Writing
+                                                    Classes That Don't Hurt
+                                                </h3>
+                                                <p class="related-date">
+                                                    APR 28, 2026
+                                                </p>
+                                                <p>
+                                                    Lessons from years of Java
+                                                    development on how to design
+                                                    classes that are a joy to
+                                                    use, not a burden to
+                                                    maintain.
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </article>
+
+                                    <article class="related-card">
+                                        <a href="#">
+                                            <img
+                                            src="../../images/virtual-guard.png"
+                                            alt="Developer looking at a procedural codebase vs an OOP codebase"
+                                            />
+
+                                            <div class="related-card-content">
+                                                <div class="related-meta">
+                                                    BACKEND
+                                                    <span
+                                                    class="meta-separator"
+                                                    >•</span
+                                                    >
+                                                    9 min read
+                                                </div>
+                                                <h3>
+                                                    From Procedural to OOP:
+                                                    Unlearning and Relearning
+                                                </h3>
+                                                <p class="related-date">
+                                                    MAR 10, 2026
+                                                </p>
+                                                <p>
+                                                    My personal journey moving
+                                                    from C-style procedural code
+                                                    to a true object-oriented
+                                                    mindset — and the habits I
+                                                    had to break along the way.
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </article>
+                                </div>
+                            </section>
+                        </div>
+
+                        <!-- ===================================================
+RIGHT COLUMN
+=================================================== -->
+
+                        <aside class="article-sidebar">
+                            <div class="sidebar-sticky">
+                                <!-- TOC -->
+
+                                <section class="toc">
+                                    <h3>Table of Contents</h3>
+
+                                    <nav>
+                                        <a href="#the-first-time-i-met-oop">
+                                            The First Time I Met OOP
+                                        </a>
+
+                                        <a
+                                            href="#the-problem-oop-was-built-to-solve"
+                                        >
+                                            The Problem OOP Was Built to Solve
+                                        </a>
+
+                                        <a
+                                            href="#encapsulation-the-art-of-hiding-what-matters"
+                                        >
+                                            Encapsulation: The Art of Hiding
+                                            What Matters
+                                        </a>
+
+                                        <a
+                                            href="#abstraction-seeing-the-forest-not-just-the-trees"
+                                        >
+                                            Abstraction: Seeing the Forest, Not
+                                            Just the Trees
+                                        </a>
+
+                                        <a
+                                            href="#inheritance-a-double-edged-sword"
+                                        >
+                                            Inheritance: A Double-Edged Sword
+                                        </a>
+
+                                        <a
+                                            href="#polymorphism-the-great-unifier"
+                                        >
+                                            Polymorphism: The Great Unifier
+                                        </a>
+
+                                        <a
+                                            href="#composition-over-inheritance-the-hard-won-lesson"
+                                        >
+                                            Composition Over Inheritance: The
+                                            Hard-Won Lesson
+                                        </a>
+
+                                        <a
+                                            href="#solid-principles-the-bridge-between-theory-and-practice"
+                                        >
+                                            SOLID Principles: The Bridge
+                                            Between Theory and Practice
+                                        </a>
+
+                                        <a
+                                            href="#writing-oop-code-that-breathes"
+                                        >
+                                            Writing OOP Code That Breathes
+                                        </a>
+
+                                        <a
+                                            href="#my-oop-journey-never-ended"
+                                        >
+                                            My OOP Journey Never Ended
+                                        </a>
+
+                                        <a href="#final-thoughts">
+                                            Final Thoughts
+                                        </a>
+                                    </nav>
+                                </section>
+
+                                <!-- Newsletter -->
+
+                                <section class="newsletter-box">
+                                    <h3>Newsletter</h3>
+
+                                    <p>
+                                        Subscribe for new articles and
+                                        tutorials.
+                                    </p>
+
+                                    <form id="newsletter-form" novalidate>
+                                        <input
+                                            id="newsletter-email"
+                                            name="email"
+                                            type="email"
+                                            autocomplete="email"
+                                            placeholder="Your email"
+                                            required
+                                        />
+
+                                        <button type="submit">
+                                            Subscribe
+                                        </button>
+
+                                        <p
+                                            id="newsletter-status"
+                                            class="form-status"
+                                            aria-live="polite"
+                                        ></p>
+                                    </form>
+                                </section>
+
+                                <!-- Popular -->
+
+                                <section class="popular-posts">
+                                    <h3>Popular Articles</h3>
+
+                                    <div class="popular-list">
+                                        <a href="#" class="popular-card">
+                                            <img
+                                            src="/images/icons/business.jpg"
+                                            alt="A lock and key representing encapsulation in Java"
+                                            />
+                                            <div class="popular-content">
+                                                <div class="popular-meta">
+                                                    JAVA — JUN 5, 2026
+                                                </div>
+                                                <h4>
+                                                    Encapsulation in Java: The
+                                                    One Rule That Changed My
+                                                    Code
+                                                </h4>
+                                            </div>
+                                        </a>
+
+                                        <a href="#" class="popular-card">
+                                            <img
+                                            src="/images/icons/fashion.jpg"
+                                            alt="Abstract shapes representing polymorphism"
+                                            />
+                                            <div class="popular-content">
+                                                <div class="popular-meta">
+                                                    OOP — MAY 22, 2026
+                                                </div>
+                                                <h4>
+                                                    Polymorphism Demystified: A
+                                                    Story of Interfaces and
+                                                    Abstract Classes
+                                                </h4>
+                                            </div>
+                                        </a>
+
+                                        <a href="#" class="popular-card">
+                                            <img
+                                            src="/images/icons/technology.jpg"
+                                            alt="SOLID principles written on a whiteboard"
+                                            />
+                                            <div class="popular-content">
+                                                <div class="popular-meta">
+                                                    DESIGN — APR 14, 2026
+                                                </div>
+                                                <h4>
+                                                    SOLID Principles: 5 Lessons
+                                                    That Took Me Years to Learn
+                                                </h4>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </section>
+
+                                <!-- Categories -->
+
+                                <section class="categories">
+                                    <h3>Categories</h3>
+
+                                    <div class="category-list">
+                                        <a href="#">Backend</a>
+
+                                        <a href="#">Java</a>
+
+                                        <a href="#">Spring Boot</a>
+
+                                        <a href="#">AI</a>
+
+                                        <a href="#">System Design</a>
+                                    </div>
+                                </section>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <div id="footer"></div>
+
+        <script src="../../components/components.js" defer></script>
+        <script src="../../js/script.js" defer></script>
+        <script src="../../js/article.js" defer></script>
+    </body>
+</html>

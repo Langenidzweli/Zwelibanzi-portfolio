@@ -17,12 +17,17 @@ html {
     scroll-behavior: smooth;
     overflow-x: hidden;
     width: 100%;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    scroll-padding-top: 7rem;
 }
 
 body {
     background: var(--bg);
     color: var(--text);
     font-family: var(--body-font);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
 
     display: flex;
     flex-direction: column;
@@ -69,6 +74,48 @@ img {
     height: auto;
 }
 
+.skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -3.5rem;
+    z-index: 200;
+    padding: .8rem 1rem;
+    border-radius: 999px;
+    border: 1px solid var(--border-soft);
+    background: var(--surface-elevated);
+    color: var(--text);
+    text-decoration: none;
+    transition: top var(--transition-base), background-color var(--transition-base);
+}
+
+.skip-link:focus {
+    top: 1rem;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
 a,
 button,
 .btn,
@@ -79,6 +126,31 @@ img {
         border-color var(--transition-base),
         transform var(--transition-base),
         opacity var(--transition-base);
+}
+
+.btn,
+button,
+.filter-button,
+.project-actions a,
+.project-links a,
+.article-share a,
+.contact-email {
+    min-height: 44px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
 
 /*=========================================
@@ -115,6 +187,10 @@ img {
     --section-spacing-xl: 10rem;
     --section-spacing-lg: 8rem;
     --transition-base: .3s ease;
+    --radius-sm: .75rem;
+    --radius-md: 1rem;
+    --radius-lg: 1.5rem;
+    --radius-pill: 999px;
     --space-1: .5rem;
     --space-2: 1rem;
     --space-3: 1.5rem;
@@ -630,7 +706,7 @@ body.nav-open {
     align-items: center;
 
     padding: 1rem 2rem;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
 
     text-decoration: none;
     font-size: 1rem;
@@ -824,7 +900,7 @@ body.nav-open {
     max-width: 100%;
     max-height: 100%;
     overflow: hidden;
-    border-radius: 22px;
+    border-radius: var(--radius-lg);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-bottom: none;
     background-color: transparent;
@@ -1228,7 +1304,7 @@ body.nav-open {
 .project-image {
     position: relative;
     overflow: hidden;
-    border-radius: 16px;
+    border-radius: var(--radius-md);
     display: flex;
     align-items: stretch;
     height: 100%;

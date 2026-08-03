@@ -5,16 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Writing</title>
-    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="icon" type="image/png" href="../images/logo.png" />
 
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/writing-page.css" />
   </head>
 
   <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <div id="navbar"></div>
 
-    <main>
+    <main id="main-content" tabindex="-1">
       <!-- =========================================
                   HERO
       ========================================== -->
@@ -24,7 +25,7 @@
           <header class="writing-header">
             <span class="section-label"> Writing </span>
 
-            <h1 class="section-title  writing-title">
+            <h1 class="section-title writing-title">
               Notes from the workshop.
             </h1>
 
@@ -47,7 +48,11 @@
             <!-- Categories -->
 
             <div class="filter">
-              <button class="filter-button">
+              <button
+                class="filter-button"
+                type="button"
+                aria-label="Filter by category"
+              >
                 All Categories
 
                 <span>⌄</span>
@@ -79,7 +84,11 @@
             <!-- Topics -->
 
             <div class="filter">
-              <button class="filter-button">
+              <button
+                class="filter-button"
+                type="button"
+                aria-label="Filter by topic"
+              >
                 All Topics
 
                 <span>⌄</span>
@@ -111,7 +120,11 @@
             <!-- Tags -->
 
             <div class="filter">
-              <button class="filter-button">
+              <button
+                class="filter-button"
+                type="button"
+                aria-label="Filter by tag"
+              >
                 All Tags
 
                 <span>⌄</span>
@@ -153,21 +166,23 @@
             <!-- ARTICLE -->
 
             <article class="article-card">
-              <a href="./article-page.html">
-                <img src="../images/article-1.jpg" alt="Article" />
+              <a href="./articles/building-rest-apis-that-dont-rot.html">
+                <img
+                  src="../images/Building REST APIs That Don't Rot.jpg"
+                  alt="Article preview for Building REST APIs That Don't Rot"
+                />
 
                 <div class="article-content">
-                  <span class="article-category"> Backend </span>
+                  <span class="article-category"> Programming </span>
 
-                  <h3>Designing APIs that survive version three.</h3>
+                  <h3>Building REST APIs that don't rot</h3>
 
                   <p>
-                    Thoughts on API versioning, consistency and building
-                    software that grows with your users.
+                   A personal journey from messy first APIs to maintainable, evolvable systems  and the principles that got me there.
                   </p>
 
                   <div class="article-meta">
-                    <span>8 min read</span>
+                    <span>11 min read</span>
 
                     <span>•</span>
 
@@ -178,23 +193,25 @@
             </article>
 
             <article class="article-card">
-              <a href="./article-page.html">
-                <img src="../images/article-2.jpg" alt="" />
+              <a href="./articles/understanding-oop-from-first-principles.html">
+                <img
+                  src="../images/Understanding OOP from First Principles.png"
+                  alt="Article preview for Understanding OOP from first principles"
+                />
 
                 <div class="article-content">
                   <span class="article-category">
-                    Artificial Intelligence
+                    Programming
                   </span>
 
-                  <h3>What makes software feel intelligent?</h3>
+                  <h3>Understanding OOP from first principles</h3>
 
                   <p>
-                    Building AI that actually improves products instead of
-                    becoming a gimmick.
+                    A personal journey through the foundations of Object-Oriented Programming, not as a set of rules to memorise, but as a way of thinking about code, data, and the problems we solve.
                   </p>
 
                   <div class="article-meta">
-                    <span>9 min read</span>
+                    <span>12 min read</span>
 
                     <span>•</span>
 
@@ -205,21 +222,23 @@
             </article>
 
             <article class="article-card">
-              <a href="./article-page.html">
-                <img src="../images/article-3.jpg" alt="" />
+              <a href="./articles/small-java-tips-i-wish-id-known-earlier.html">
+                <img
+                  src="../images/Small Java Tips I Wish I'd Known Earlier.jpg"
+                  alt="Article preview for Small Java tips I wish I'd known earlier"
+                />
 
                 <div class="article-content">
-                  <span class="article-category"> Spring Boot </span>
+                  <span class="article-category"> Programming </span>
 
-                  <h3>Building maintainable backend systems.</h3>
+                  <h3>Small Java tips I wish I'd known earlier</h3>
 
                   <p>
-                    Architecture decisions that make projects easier to extend
-                    over time.
+                    A collection of tiny, practical Java lessons that took me years to discover — each one made my code cleaner, safer, and more expressive
                   </p>
 
                   <div class="article-meta">
-                    <span>7 min read</span>
+                    <span>10 min read</span>
 
                     <span>•</span>
 
@@ -228,6 +247,170 @@
                 </div>
               </a>
             </article>
+
+            <article class="article-card">
+              <a href="./articles/learning-machine-learning-the-slow-way.html">
+                <img
+                  src="../images/Learning Machine Learning the Slow Way.jpg"
+                  alt="Article preview for Learning machine learning the slow way"
+                />
+
+                <div class="article-content">
+                  <span class="article-category">  AI </span>
+
+                  <h3>Learning machine learning the slow way</h3>
+
+                  <p>
+                    How I stopped chasing hype, went back to basics, and finally started to understand the models I was building, without a PhD but with a lot of patience.
+                  </p>
+
+                  <div class="article-meta">
+                    <span>11 min read</span>
+
+                    <span>•</span>
+
+                    <span>March 2026</span>
+                  </div>
+                </div>
+              </a>
+            </article>
+
+            <article class="article-card">
+              <a href="./articles/my-ai-journey-what actually-stuck.html">
+                <img
+                  src="../images/My AI Journey — What Actually Stuck.png"
+                  alt="Article preview for My AI journey, what actually stuck"
+                />
+
+                <div class="article-content">
+                  <span class="article-category"> AI</span>
+
+                  <h3> My AI journey, what actually stuck</h3>
+
+                  <p>
+                   A candid reflection on the hype, the failures, and the few principles that survived the noise, and still guide how I build with AI today.
+                  </p>
+
+                  <div class="article-meta">
+                    <span>11 min read</span>
+
+                    <span>•</span>
+
+                    <span>March 2026</span>
+                  </div>
+                </div>
+              </a>
+            </article>
+
+            <article class="article-card">
+              <a href="./articles/building-intelligent-systems -that-earn-their-place.html">
+                <img
+                  src="../images/Building Intelligent.png"
+                  alt="Article preview for Building intelligent systems that earn their place"
+                />
+
+                <div class="article-content">
+                  <span class="article-category"> AI </span>
+
+                  <h3>Building intelligent systems that earn their place</h3>
+
+                  <p>
+                    A collection of tiny, practical Java lessons that took me years to discover, each one made my code cleaner, safer, and more expressive
+                  </p>
+
+                  <div class="article-meta">
+                    <span>12 min read</span>
+
+                    <span>•</span>
+
+                    <span>March 2026</span>
+                  </div>
+                </div>
+              </a>
+            </article>
+
+            <article class="article-card">
+              <a href="./articles/lessons-from-university-so-far.html">
+                <img
+                  src="../images/Lessons from University, So Far.jfif"
+                  alt="Article preview for Lessons from university, so far"
+                />
+
+                <div class="article-content">
+                  <span class="article-category"> Career </span>
+
+                  <h3>Lessons from university, so far</h3>
+
+                  <p>
+                    A personal reflection on the modules that shaped me, the marks that humbled me, and the quiet realisation that the real education happened outside the lecture hall.
+                  </p>
+
+                  <div class="article-meta">
+                    <span>10 min read</span>
+
+                    <span>•</span>
+
+                    <span>March 2026</span>
+                  </div>
+                </div>
+              </a>
+            </article>
+
+            <article class="article-card">
+              <a href="./articles/how-i-learn-a-new-area-of-software.html">
+                <img
+                  src="../images/How I Learn a New Area of Software.jfif"
+                  alt="Article preview for How I learn a new area of software"
+                />
+
+                <div class="article-content">
+                  <span class="article-category"> Career</span>
+
+                  <h3>How I learn a new area of software</h3>
+
+                  <p>
+                  A personal framework for diving into unfamiliar domains, from the first terrifying blank screen to the quiet confidence of building something that actually works.
+                  </p>
+
+                  <div class="article-meta">
+                    <span>10 min read</span>
+
+                    <span>•</span>
+
+                    <span>March 2026</span>
+                  </div>
+                </div>
+              </a>
+            </article>
+
+            <article class="article-card">
+              <a href="./articles/mistakes-i've-made-in-public.html">
+                <img
+                  src="../images/Mistakes I've Made, in Public.png"
+                  alt="Article preview for Mistakes I've made, in public"
+                />
+
+                <div class="article-content">
+                  <span class="article-category"> Career </span>
+
+                  <h3>Mistakes I've made, in public</h3>
+
+                  <p>
+                    A brutally honest recount of the bugs I shipped, the bad decisions I made, and the embarrassing moments that taught me more about engineering than any success ever could.
+                  </p>
+
+                  <div class="article-meta">
+                    <span>11 min read</span>
+
+                    <span>•</span>
+
+                    <span>March 2026</span>
+                  </div>
+                </div>
+              </a>
+            </article>
+
+            
 
             <!-- Continue adding more -->
           </div>
@@ -240,11 +423,13 @@
 
       <section class="pagination">
         <div class="container">
-          <button>Previous</button>
+          <button type="button" aria-label="Go to previous page">
+            Previous
+          </button>
 
           <span> Page 1 of 5 </span>
 
-          <button>Next</button>
+          <button type="button" aria-label="Go to next page">Next</button>
         </div>
       </section>
     </main>

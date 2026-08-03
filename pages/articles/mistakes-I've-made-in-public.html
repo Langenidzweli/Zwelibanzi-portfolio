@@ -1,0 +1,1085 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>Mistakes I've Made, in Public | Zwelibanzi Langeni</title>
+
+        <link rel="icon" type="image/png" href="../../images/logo.png" />
+
+        <link rel="stylesheet" href="../../css/style.css" />
+        <link rel="stylesheet" href="../../css/article-page.css" />
+    </head>
+
+    <body>
+        <a class="skip-link" href="#main-content">Skip to content</a>
+
+        <div id="navbar"></div>
+
+        <main id="main-content">
+            <section class="article-page">
+                <div class="container">
+                    <div class="article-layout">
+                        <!-- ===================================================
+LEFT COLUMN
+=================================================== -->
+
+                        <div class="article-main">
+                            <!-- Hero -->
+
+                            <header class="article-header">
+                                <div class="article-category">
+                                    <span class="section-label">Lessons</span>
+                                    <span class="article-date">August 2026</span>
+                                </div>
+
+                                <h1 class="article-title">
+                                    Mistakes I've Made, in Public
+                                </h1>
+
+                                <p class="article-description">
+                                    A brutally honest recount of the bugs I
+                                    shipped, the bad decisions I made, and the
+                                    embarrassing moments that taught me more
+                                    about engineering than any success ever
+                                    could.
+                                </p>
+
+                                <div class="article-meta">
+                                    <div class="author">
+                                        <div class="author-avatar">Z</div>
+
+                                        <div>
+                                            <h4>Zwelibanzi Langeni</h4>
+
+                                            <span>11 min read</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="article-share">
+                                        <a href="#">LinkedIn</a>
+
+                                        <a href="#">X</a>
+
+                                        <a href="#">Copy Link</a>
+                                    </div>
+                                </div>
+                            </header>
+
+                            <!-- Hero Image -->
+
+                            <figure class="article-cover">
+                                <img
+                                    src="../../images/Mistakes I've Made, in Public.png"
+                                    alt="A whiteboard covered in crossed-out diagrams and corrected mistakes — the messy reality of learning"
+                                />
+                            </figure>
+
+                            <!-- Article -->
+
+                            <article class="article-body">
+                                <h2 id="why-im-writing-this">
+                                    Why I'm Writing This
+                                </h2>
+
+                                <p>
+                                    I've made a lot of mistakes. Some small.
+                                    Some spectacular. Most of them in full view
+                                    of colleagues, managers, and sometimes the
+                                    entire internet. I've shipped code that
+                                    broke in production, designed systems that
+                                    collapsed under load, and given
+                                    presentations that I still cringe about
+                                    years later.
+                                </p>
+
+                                <p>
+                                    For a long time, I tried to hide these
+                                    mistakes. I'd quietly fix the bug and hope
+                                    no one noticed. I'd reframe a bad decision
+                                    as a "learning experience" without admitting
+                                    it was actually a failure. I'd avoid talking
+                                    about the embarrassing moments in case they
+                                    diminished people's perception of my
+                                    competence.
+                                </p>
+
+                                <p>
+                                    But I've come to realise that the mistakes
+                                    are the most valuable part of my journey.
+                                    They're the moments that forced me to grow.
+                                    They're the stories that make me a better
+                                    mentor and a more empathetic engineer. And
+                                    they're the things that, when shared,
+                                    help others avoid the same pitfalls.
+                                </p>
+
+                                <p>
+                                    This article is my public confession. These
+                                    are the mistakes I've made, in the open,
+                                    with the hope that you might learn from them
+                                    — or at least feel less alone in your own
+                                    failures.
+                                </p>
+
+                                <h2 id="the-optimistic-deadline">
+                                    The Optimistic Deadline That Killed My
+                                    Weekend
+                                </h2>
+
+                                <p>
+                                    Early in my career, I was asked to estimate
+                                    how long a feature would take. I was
+                                    confident. I had built something similar
+                                    before. I said, "Three days." The project
+                                    manager wrote it down, and I felt a swell of
+                                    pride. I was the developer who could deliver
+                                    fast.
+                                </p>
+
+                                <p>
+                                    Three days came and went. The feature wasn't
+                                    finished. I worked through the weekend,
+                                    cutting corners to make it work. I deployed
+                                    on Monday morning, exhausted and relieved.
+                                    Then the bug reports started coming in.
+                                    Something I had rushed caused a cascade of
+                                    failures in unrelated parts of the system.
+                                </p>
+
+                                <p>
+                                    I had made the classic mistake:
+                                    <strong>optimism bias</strong>. I had
+                                    estimated the best-case scenario and ignored
+                                    the inevitable obstacles. I had let my ego
+                                    drive my estimate instead of my experience.
+                                    And I had paid the price with a ruined
+                                    weekend and a damaged reputation.
+                                </p>
+
+                                <p>
+                                    The lesson was painful but clear:
+                                    <strong>always add a buffer</strong>.
+                                    Estimate what you think it will take, then
+                                    multiply by 1.5 or 2. Account for the
+                                    unknown unknowns. And never, ever let the
+                                    desire to look good override the need to be
+                                    realistic. The trust you lose from a missed
+                                    deadline is much harder to regain than the
+                                    respect you might gain from a conservative
+                                    estimate.
+                                </p>
+
+                                <p>
+                                    I now use a simple framework for estimating:
+                                </p>
+
+                                <pre><code>// My estimation formula today
+                                    // 1. Break down the work into small tasks
+                                    // 2. Estimate each task in hours
+                                    // 3. Add 50% for unexpected issues
+                                    // 4. Add 20% for context switching and
+                                    meetings
+                                    // 5. Round up to the nearest day
+
+                                    function estimate(taskList) {
+                                    let totalHours = 0;
+                                    for (let task of taskList) {
+                                    totalHours += task.estimate;
+                                    }
+                                    let withBuffer = totalHours * 1.5;
+                                    let withOverhead = withBuffer * 1.2;
+                                    return Math.ceil(withOverhead / 8); // days
+                                    }</code></pre>
+
+                                <p>
+                                    It's not perfect, but it's much closer to
+                                    reality than my naive early estimates. And
+                                    it's saved me from many more ruined
+                                    weekends.
+                                </p>
+
+                                <h2 id="the-production-outage-i-caused">
+                                    The Production Outage I Caused
+                                </h2>
+
+                                <p>
+                                    This one still stings. I was a junior
+                                    developer, and I had been given a seemingly
+                                    simple task: add a new field to a database
+                                    table. I wrote the migration script, tested
+                                    it in my development environment, and
+                                    deployed it to production. Within minutes,
+                                    the entire application started throwing
+                                    exceptions. The site was down for forty-five
+                                    minutes.
+                                </p>
+
+                                <p>
+                                    The problem was that I had added a
+                                    <code>NOT NULL</code> constraint to a column
+                                    that had existing <code>NULL</code> values
+                                    in production. My development database had
+                                    been populated with test data that didn't
+                                    have the issue, so I never saw the failure.
+                                    I had committed the cardinal sin of
+                                    database migrations: <strong>never assume
+                                    your test data matches production</strong>.
+                                </p>
+
+                                <p>
+                                    I sat at my desk, face burning, as the team
+                                    scrambled to roll back the migration. The
+                                    senior engineer who helped me fix it was
+                                    calm and professional, but I could see the
+                                    disappointment in his eyes. I had broken the
+                                    service in public, and there was no hiding
+                                    it.
+                                </p>
+
+                                <p>
+                                    That day changed how I approach migrations
+                                    forever. Now, every migration script I write
+                                    has:
+                                </p>
+
+                                <ul>
+                                    <li>
+                                        A <strong>dry-run mode</strong> that
+                                        shows what will change without
+                                        executing it.
+                                    </li>
+                                    <li>
+                                        A <strong>rollback plan</strong> written
+                                        before the migration is executed.
+                                    </li>
+                                    <li>
+                                        A <strong>validation step</strong> that
+                                        checks for existing data that would
+                                        violate the new constraints.
+                                    </li>
+                                </ul>
+
+                                <p>
+                                    Here's the pattern I use for safe migrations
+                                    in SQL:
+                                </p>
+
+                                <pre><code>-- Step 1: Add the column as nullable first
+                                    ALTER TABLE users ADD COLUMN timezone VARCHAR(50);
+
+                                    -- Step 2: Backfill data for existing rows
+                                    UPDATE users SET timezone = 'UTC' WHERE timezone IS
+                                    NULL;
+
+                                    -- Step 3: Verify no nulls remain
+                                    SELECT COUNT(*) FROM users WHERE timezone IS NULL;
+                                    -- This should return 0
+
+                                    -- Step 4: Add the NOT NULL constraint
+                                    ALTER TABLE users ALTER COLUMN timezone SET NOT NULL;
+                                    </code></pre>
+
+                                <p>
+                                    The forty-five minutes of downtime was
+                                    humiliating. But it made me a better
+                                    engineer. I now treat every migration with
+                                    the respect it deserves, and I've never
+                                    caused another outage from a schema change.
+                                </p>
+
+                                <h2 id="the-architecture-i-over-engineered">
+                                    The Architecture I Over-Engineered
+                                </h2>
+
+                                <p>
+                                    I was once tasked with building a simple
+                                    notification service. The requirements were
+                                    straightforward: send an email when certain
+                                    events occurred. I could have built it with
+                                    a single Spring Boot service and a
+                                    transactional outbox pattern. Instead, I
+                                    built a microservices architecture with
+                                    three separate services, a message queue,
+                                    and a separate notification service.
+                                </p>
+
+                                <p>
+                                    I was so excited about the architecture
+                                    that I didn't stop to ask the most important
+                                    question: <strong>what problem am I
+                                    actually solving?</strong> The simple
+                                    notification service didn't need the
+                                    complexity. It needed to work reliably and
+                                    be easy to maintain. Instead, I created a
+                                    system that was difficult to debug, slow to
+                                    develop, and expensive to run.
+                                </p>
+
+                                <p>
+                                    The worst part was that I presented this
+                                    architecture to my team with enthusiasm. I
+                                    drew diagrams. I explained the benefits of
+                                    loose coupling and eventual consistency. I
+                                    was convincing — and I was wrong. The team
+                                    went along with it because I was the
+                                    "expert" on the project.
+                                </p>
+
+                                <p>
+                                    A few months later, we were still struggling
+                                    to ship the first feature. The complexity
+                                    had slowed us down so much that we were
+                                    barely making progress. The project was
+                                    eventually rewritten as a single, simple
+                                    service. I had wasted months of effort and
+                                    eroded my team's trust.
+                                </p>
+
+                                <p>
+                                    The lesson was brutal but essential:
+                                    <strong>start with the simplest thing that
+                                    could possibly work</strong>. You can always
+                                    add complexity later, when you actually need
+                                    it. Adding complexity too early is like
+                                    building a skyscraper when a bungalow would
+                                    do. It's not clever; it's wasteful.
+                                </p>
+
+                                <p>
+                                    I now ask myself three questions before any
+                                    architectural decision:
+                                </p>
+
+                                <ol>
+                                    <li>
+                                        <strong>Is this complexity necessary
+                                        today?</strong>
+                                    </li>
+                                    <li>
+                                        <strong>What is the cost of not having
+                                        this complexity?</strong>
+                                    </li>
+                                    <li>
+                                        <strong>Could we defer this decision
+                                        until we have more data?</strong>
+                                    </li>
+                                </ol>
+
+                                <p>
+                                    Most of the time, the answer to all three is
+                                    "no". And that's when I know I'm on the
+                                    right track.
+                                </p>
+
+                                <h2 id="the-code-review-i-botched">
+                                    The Code Review I Botched
+                                </h2>
+
+                                <p>
+                                    I once gave a code review that was
+                                    devastatingly bad. A junior developer had
+                                    submitted a pull request with a reasonable
+                                    implementation. But I was in a bad mood, and
+                                    I picked apart every line. I called out
+                                    minor style issues as if they were critical
+                                    bugs. I suggested a completely different
+                                    approach that would have required a full
+                                    rewrite. I wrote comments that were
+                                    dismissive and, frankly, unkind.
+                                </p>
+
+                                <p>
+                                    The developer didn't push back. They made
+                                    the changes I requested, but I could see the
+                                    enthusiasm drain from their face. The PR sat
+                                    in review for a week. When it finally
+                                    merged, the code was worse than the original
+                                    implementation — and it was my fault.
+                                </p>
+
+                                <p>
+                                    The senior engineer on the team pulled me
+                                    aside later and said, "That review wasn't
+                                    helpful. It was about you, not about the
+                                    code." She was right. I had let my ego and
+                                    my frustration get in the way of mentoring
+                                    someone. I had created a hostile environment
+                                    instead of a learning one.
+                                </p>
+
+                                <p>
+                                    That conversation changed how I approach
+                                    code reviews. Now, every review I write
+                                    follows a simple rule:
+                                    <strong>assume good faith and be kind</strong>.
+                                    I focus on the code, not the person. I ask
+                                    questions instead of making demands. I
+                                    provide context for my suggestions. And I
+                                    always find something to praise.
+                                </p>
+
+                                <p>
+                                    Here's the template I use in my code review
+                                    comments now:
+                                </p>
+
+                                <pre><code>// Code Review Comment Template
+                                    // 1. Acknowledge something positive
+                                    // "I really like how you structured this
+                                    method."
+
+                                    // 2. Ask clarifying questions
+                                    // "I'm curious about the choice to use X
+                                    instead of Y — what was the reasoning?"
+
+                                    // 3. Suggest improvements with rationale
+                                    // "Would you consider refactoring this loop
+                                    into a stream? It might be more readable and
+                                    easier to test."
+
+                                    // 4. Offer to help
+                                    // "If you'd like to pair on this, I'm
+                                    available after stand-up."</code></pre>
+
+                                <p>
+                                    I still make mistakes in code reviews. But I
+                                    no longer make the mistake of being cruel.
+                                    The junior developer I failed is now a
+                                    senior engineer, and we have a good
+                                    relationship. But I think about that review
+                                    often — it reminds me that how you give
+                                    feedback matters as much as the feedback
+                                    itself.
+                                </p>
+
+                                <h2 id="the-presentation-i-bombed">
+                                    The Presentation I Bombed
+                                </h2>
+
+                                <p>
+                                    I was asked to give a technical talk at a
+                                    company-wide engineering meeting. I was
+                                    excited — this was my chance to show what I
+                                    knew. I prepared slides, practiced my
+                                    delivery, and walked into the room with
+                                    confidence.
+                                </p>
+
+                                <p>
+                                    Then the questions started. A senior
+                                    architect asked something I hadn't
+                                    considered. I fumbled. Someone else pointed
+                                    out a flaw in my reasoning. I tried to
+                                    recover, but I dug myself deeper. My face
+                                    burned. My voice wavered. By the end of the
+                                    talk, I had lost the room entirely.
+                                </p>
+
+                                <p>
+                                    I spent the rest of the day replaying the
+                                    presentation in my head. I was convinced
+                                    everyone thought I was incompetent. I
+                                    avoided eye contact with the people who had
+                                    asked questions. I seriously considered
+                                    quitting.
+                                </p>
+
+                                <p>
+                                    The lesson I eventually learned was that
+                                    <strong>presentations are not about
+                                    being right; they're about being
+                                    humble and curious</strong>. When someone
+                                    asks a question you can't answer, you say,
+                                    "That's a great question — I don't know the
+                                    answer, but I'll find out." When someone
+                                    points out a flaw, you say, "Thank you for
+                                    catching that — let me think about it."
+                                </p>
+
+                                <p>
+                                    I also learned to
+                                    <strong>prepare for the tough questions</strong>.
+                                    Before every presentation now, I write down
+                                    the worst possible questions someone could
+                                    ask, and I prepare answers. I also
+                                    acknowledge the limitations of my arguments
+                                    upfront, so I control the framing instead
+                                    of being ambushed by it.
+                                </p>
+
+                                <p>
+                                    The bombed presentation was humiliating. But
+                                    it taught me that vulnerability is not
+                                    weakness. The next time I gave a talk, I
+                                    started with a slide that listed the things
+                                    I was still figuring out. The room relaxed.
+                                    People engaged more. I had turned my
+                                    biggest weakness into a strength.
+                                </p>
+
+                                <h2 id="the-performance-issue-i-missed">
+                                    The Performance Issue I Missed
+                                </h2>
+
+                                <p>
+                                    I once shipped a feature that worked
+                                    perfectly in development. It passed all the
+                                    tests. It had been reviewed by my team. It
+                                    was deployed, and I moved on to the next
+                                    thing. A month later, the application
+                                    started experiencing mysterious timeouts.
+                                    Users were complaining. The performance
+                                    team was pulling their hair out.
+                                </p>
+
+                                <p>
+                                    The root cause was a database query I had
+                                    written. It worked fine with a few hundred
+                                    records, but in production, with millions of
+                                    records, it was a disaster. I had forgotten
+                                    to add an index on a foreign key column. The
+                                    query was doing a full table scan for every
+                                    request. The database was struggling to keep
+                                    up, and the application was failing under
+                                    load.
+                                </p>
+
+                                <p>
+                                    The embarrassing part was that I had
+                                    reviewed the query with a senior engineer,
+                                    and neither of us had noticed. We were both
+                                    guilty of the same oversight: we had assumed
+                                    the query would perform well based on local
+                                    testing, and we had ignored the reality of
+                                    production scale.
+                                </p>
+
+                                <p>
+                                    The fix was trivial — a single index
+                                    statement. But the damage was done. I had
+                                    wasted hours of the performance team's time
+                                    and caused days of degraded service for our
+                                    users. I added an index and deployed it in
+                                    minutes. The problem disappeared instantly.
+                                </p>
+
+                                <p>
+                                    The lesson was clear:
+                                    <strong>test with production-like data
+                                    volumes</strong>. If you can't replicate
+                                    production scale, at least think about how
+                                    your code will behave when it's under real
+                                    load. And never, ever assume that a query
+                                    that works on a small dataset will work on a
+                                    large one.
+                                </p>
+
+                                <p>
+                                    I now have a checklist for every database
+                                    query I write:
+                                </p>
+
+                                <pre><code>// Database Query Checklist
+                                    // 1. Is there an index on the columns used
+                                    in the WHERE clause?
+                                    // 2. Is there an index on the columns used
+                                    in ORDER BY?
+                                    // 3. Are there any joins? Do they have
+                                    indexes on the join columns?
+                                    // 4. What is the EXPLAIN plan? Does it show
+                                    an index scan or a table scan?
+                                    // 5. How does this query behave with 10x the
+                                    current data volume?
+                                    // 6. Is there a way to paginate the results
+                                    to limit the data loaded? </code></pre>
+
+                                <p>
+                                    That checklist has saved me from many more
+                                    performance issues. But I still remember the
+                                    feeling of watching the database struggle
+                                    because of my oversight. It was a lesson I
+                                    won't forget.
+                                </p>
+
+                                <h2 id="the-time-i-was-wrong-about-the-framework">
+                                    The Time I Was Wrong About the Framework
+                                </h2>
+
+                                <p>
+                                    I once spent a week arguing against using a
+                                    particular framework on a project. I had
+                                    used an earlier version of it years ago, and
+                                    it had been a nightmare. I was convinced
+                                    this new version would be the same. I wrote
+                                    long emails. I drew diagrams of how the
+                                    framework would fail. I was loud and
+                                    persistent.
+                                </p>
+
+                                <p>
+                                    The team, including the senior architect,
+                                    disagreed with me. They had evaluated the
+                                    framework and believed it was a good fit for
+                                    the project. I was so certain I was right
+                                    that I couldn't see the possibility that I
+                                    might be wrong.
+                                </p>
+
+                                <p>
+                                    The project went ahead with the framework,
+                                    over my objections. A year later, it was one
+                                    of the most successful projects the company
+                                    had ever built. The framework had improved
+                                    dramatically. The team had been right, and I
+                                    had been wrong — spectacularly wrong.
+                                </p>
+
+                                <p>
+                                    I had to go to the team and admit my
+                                    mistake. It was one of the hardest
+                                    conversations I've ever had. But it taught
+                                    me a lesson that has shaped my career:
+                                    <strong>being wrong is not a weakness;
+                                    refusing to learn from it is</strong>.
+                                </p>
+
+                                <p>
+                                    I now approach technical debates with a
+                                    different mindset. Instead of trying to be
+                                    right, I try to
+                                    <strong>be curious about being wrong</strong>.
+                                    I ask questions instead of making
+                                    pronouncements. I assume that other people
+                                    have information I don't have. And I'm
+                                    always open to changing my mind when the
+                                    evidence shows I'm wrong.
+                                </p>
+
+                                <p>
+                                    The framework that I was wrong about is now
+                                    a tool I use regularly. And every time I
+                                    use it, I'm reminded of the importance of
+                                    humility in engineering.
+                                </p>
+
+                                <h2 id="the-thing-i-said-on-twitter">
+                                    The Thing I Said on Twitter
+                                </h2>
+
+                                <p>
+                                    I don't want to go into specifics, but I've
+                                    posted things on social media that I
+                                    regretted. I've been too opinionated. I've
+                                    been dismissive of other people's work. I've
+                                    written things that, in retrospect, made me
+                                    look arrogant and unkind.
+                                </p>
+
+                                <p>
+                                    The worst part is that the internet never
+                                    forgets. A comment you made five years ago
+                                    can resurface and embarrass you again. I've
+                                    learned that
+                                    <strong>public writing is permanent
+                                    writing</strong>, and I've become much more
+                                    careful about what I put out there.
+                                </p>
+
+                                <p>
+                                    The lesson isn't to stop writing publicly.
+                                    It's to
+                                    <strong>write with empathy and
+                                    humility</strong>. Before I post anything
+                                    now, I ask myself: "Would I be comfortable
+                                    saying this to someone's face? Would I be
+                                    comfortable if they read it ten years from
+                                    now?" If the answer is no, I don't post it.
+                                </p>
+
+                                <p>
+                                    I've also learned to apologise publicly when
+                                    I'm wrong. A sincere, specific apology can
+                                    repair a lot of damage. People remember how
+                                    you handled a mistake more than the mistake
+                                    itself.
+                                </p>
+
+                                <h2 id="the-mistake-i-still-make">
+                                    The Mistake I Still Make
+                                </h2>
+
+                                <p>
+                                    Here's the truth: I still make mistakes.
+                                    Every day. I still ship bugs. I still make
+                                    bad estimates. I still say the wrong thing
+                                    in a meeting. I still get defensive when I
+                                    shouldn't. The difference is that I've
+                                    stopped pretending I don't.
+                                </p>
+
+                                <p>
+                                    I've learned to <strong>fail fast and fail
+                                    openly</strong>. When I make a mistake, I
+                                    acknowledge it immediately. I apologise if
+                                    I've affected someone else. I fix the
+                                    problem. And I document what I learned. This
+                                    approach has earned me more trust than being
+                                    perfect ever could.
+                                </p>
+
+                                <p>
+                                    I've also learned that mistakes are
+                                    <strong>data</strong>. Every bug I've shipped
+                                    has taught me something about my testing
+                                    process. Every bad estimate has taught me
+                                    something about my planning. Every
+                                    embarrassing moment has taught me something
+                                    about how I want to show up in the world.
+                                </p>
+
+                                <h2 id="final-thoughts">Final Thoughts</h2>
+
+                                <p>
+                                    I've made a lot of mistakes, and I've made
+                                    most of them in public. It's been
+                                    uncomfortable, humiliating, and sometimes
+                                    painful. But it's also been the most
+                                    effective way to learn.
+                                </p>
+
+                                <p>
+                                    The engineers I admire most are not the ones
+                                    who never make mistakes. They're the ones
+                                    who make mistakes gracefully. They
+                                    acknowledge them. They learn from them. They
+                                    share their lessons with others. They're
+                                    human, and they're not afraid to show it.
+                                </p>
+
+                                <p>
+                                    If you're reading this and you're
+                                    embarrassed about a mistake you made, I want
+                                    you to know that it's okay. You're not
+                                    alone. The best engineers I know have made
+                                    much bigger mistakes than you have. They've
+                                    shipped bugs that cost millions. They've
+                                    designed architectures that failed
+                                    catastrophically. They've said things they
+                                    regret. And they're still here, still
+                                    learning, still growing.
+                                </p>
+
+                                <p>
+                                    The only real mistake is the one you don't
+                                    learn from. So learn from yours. Share them
+                                    with others. And keep going. The best
+                                    engineers aren't the ones who never fall —
+                                    they're the ones who keep getting back up.
+                                </p>
+
+                                <p>
+                                    I'm still getting back up. And I'll probably
+                                    keep making mistakes in public for a long
+                                    time. I hope you'll join me.
+                                </p>
+                            </article>
+
+                            <!-- Related Articles -->
+
+                            <section class="related-posts">
+                                <h2>Related Articles</h2>
+
+                                <div class="related-grid">
+                                    <article class="related-card">
+                                        <a href="#">
+                                            <img
+                                                src="../../images/hero.png"
+                                                alt="A developer looking at a production error dashboard"
+                                            />
+
+                                            <div class="related-card-content">
+                                                <div class="related-meta">
+                                                    OPS
+                                                    <span
+                                                        class="meta-separator"
+                                                        >•</span
+                                                    >
+                                                    7 min read
+                                                </div>
+                                                <h3>
+                                                    How I Learned to Love
+                                                    Production Errors
+                                                </h3>
+                                                <p class="related-date">
+                                                    JUL 22, 2026
+                                                </p>
+                                                <p>
+                                                    A story about my journey
+                                                    from dreading alerts to
+                                                    treating them as the best
+                                                    source of learning.
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </article>
+
+                                    <article class="related-card">
+                                        <a href="#">
+                                            <img
+                                                src="../../images/Introduction.webp"
+                                                alt="A developer giving a presentation with confidence"
+                                            />
+
+                                            <div class="related-card-content">
+                                                <div class="related-meta">
+                                                    CAREER
+                                                    <span
+                                                        class="meta-separator"
+                                                        >•</span
+                                                    >
+                                                    6 min read
+                                                </div>
+                                                <h3>
+                                                    Recovering from a Bad
+                                                    Presentation
+                                                </h3>
+                                                <p class="related-date">
+                                                    JUN 28, 2026
+                                                </p>
+                                                <p>
+                                                    Practical tips for when the
+                                                    talk goes wrong and you
+                                                    have to face the room
+                                                    anyway.
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </article>
+
+                                    <article class="related-card">
+                                        <a href="#">
+                                            <img
+                                                src="../../images/virtual-guard.png"
+                                                alt="A developer admitting they were wrong in a meeting"
+                                            />
+
+                                            <div class="related-card-content">
+                                                <div class="related-meta">
+                                                    MINDSET
+                                                    <span
+                                                        class="meta-separator"
+                                                        >•</span
+                                                    >
+                                                    8 min read
+                                                </div>
+                                                <h3>
+                                                    The Power of Public
+                                                    Apologies in Engineering
+                                                </h3>
+                                                <p class="related-date">
+                                                    MAY 15, 2026
+                                                </p>
+                                                <p>
+                                                    Why owning your mistakes
+                                                    out loud is the fastest way
+                                                    to earn trust and build a
+                                                    culture of psychological
+                                                    safety.
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </article>
+                                </div>
+                            </section>
+                        </div>
+
+                        <!-- ===================================================
+RIGHT COLUMN
+=================================================== -->
+
+                        <aside class="article-sidebar">
+                            <div class="sidebar-sticky">
+                                <!-- TOC -->
+
+                                <section class="toc">
+                                    <h3>Table of Contents</h3>
+
+                                    <nav>
+                                        <a href="#why-im-writing-this">
+                                            Why I'm Writing This
+                                        </a>
+
+                                        <a href="#the-optimistic-deadline">
+                                            The Optimistic Deadline That Killed
+                                            My Weekend
+                                        </a>
+
+                                        <a href="#the-production-outage-i-caused">
+                                            The Production Outage I Caused
+                                        </a>
+
+                                        <a
+                                            href="#the-architecture-i-over-engineered"
+                                        >
+                                            The Architecture I Over-Engineered
+                                        </a>
+
+                                        <a href="#the-code-review-i-botched">
+                                            The Code Review I Botched
+                                        </a>
+
+                                        <a href="#the-presentation-i-bombed">
+                                            The Presentation I Bombed
+                                        </a>
+
+                                        <a
+                                            href="#the-performance-issue-i-missed"
+                                        >
+                                            The Performance Issue I Missed
+                                        </a>
+
+                                        <a
+                                            href="#the-time-i-was-wrong-about-the-framework"
+                                        >
+                                            The Time I Was Wrong About the
+                                            Framework
+                                        </a>
+
+                                        <a href="#the-thing-i-said-on-twitter">
+                                            The Thing I Said on Twitter
+                                        </a>
+
+                                        <a
+                                            href="#the-mistake-i-still-make"
+                                        >
+                                            The Mistake I Still Make
+                                        </a>
+
+                                        <a href="#final-thoughts">
+                                            Final Thoughts
+                                        </a>
+                                    </nav>
+                                </section>
+
+                                <!-- Newsletter -->
+
+                                <section class="newsletter-box">
+                                    <h3>Newsletter</h3>
+
+                                    <p>
+                                        Subscribe for new articles and
+                                        tutorials.
+                                    </p>
+
+                                    <form id="newsletter-form" novalidate>
+                                        <input
+                                            id="newsletter-email"
+                                            name="email"
+                                            type="email"
+                                            autocomplete="email"
+                                            placeholder="Your email"
+                                            required
+                                        />
+
+                                        <button type="submit">
+                                            Subscribe
+                                        </button>
+
+                                        <p
+                                            id="newsletter-status"
+                                            class="form-status"
+                                            aria-live="polite"
+                                        ></p>
+                                    </form>
+                                </section>
+
+                                <!-- Popular -->
+
+                                <section class="popular-posts">
+                                    <h3>Popular Articles</h3>
+
+                                    <div class="popular-list">
+                                        <a href="#" class="popular-card">
+                                            <img
+                                                src="/images/icons/business.jpg"
+                                                alt="A developer fixing a production bug"
+                                            />
+                                            <div class="popular-content">
+                                                <div class="popular-meta">
+                                                    OPS — AUG 5, 2026
+                                                </div>
+                                                <h4>
+                                                    How I Debug Production
+                                                    Outages Without Panicking
+                                                </h4>
+                                            </div>
+                                        </a>
+
+                                        <a href="#" class="popular-card">
+                                            <img
+                                                src="/images/icons/fashion.jpg"
+                                                alt="A whiteboard with crossed-out decisions"
+                                            />
+                                            <div class="popular-content">
+                                                <div class="popular-meta">
+                                                    DESIGN — JUL 20, 2026
+                                                </div>
+                                                <h4>
+                                                    Why I Over-Engineered My
+                                                    First System (and How I
+                                                    Fixed It)
+                                                </h4>
+                                            </div>
+                                        </a>
+
+                                        <a href="#" class="popular-card">
+                                            <img
+                                                src="/images/icons/technology.jpg"
+                                                alt="A developer giving feedback in a code review"
+                                            />
+                                            <div class="popular-content">
+                                                <div class="popular-meta">
+                                                    TEAM — JUN 30, 2026
+                                                </div>
+                                                <h4>
+                                                    How to Give Code Review
+                                                    Feedback That Doesn't Hurt
+                                                </h4>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </section>
+
+                                <!-- Categories -->
+
+                                <section class="categories">
+                                    <h3>Categories</h3>
+
+                                    <div class="category-list">
+                                        <a href="#">Backend</a>
+
+                                        <a href="#">Java</a>
+
+                                        <a href="#">Spring Boot</a>
+
+                                        <a href="#">AI</a>
+
+                                        <a href="#">System Design</a>
+                                    </div>
+                                </section>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <div id="footer"></div>
+
+        <script src="../../components/components.js" defer></script>
+        <script src="../../js/script.js" defer></script>
+        <script src="../../js/article.js" defer></script>
+    </body>
+</html>

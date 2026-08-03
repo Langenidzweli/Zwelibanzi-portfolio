@@ -129,7 +129,7 @@
     border:1px solid var(--border-soft);
     border-radius:12px;
 
-    color:var(--text-color);
+    color:var(--text);
 
     font-size:.95rem;
 
@@ -139,7 +139,14 @@
 }
 
 .filter-button:hover{
-    border-color:var(--text-color);
+    border-color:var(--text);
+}
+
+.filter-button:focus-visible,
+.pagination button:focus-visible,
+.article-card a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
 }
 
 .filter-button span{
@@ -155,7 +162,7 @@
 
     width:100%;
 
-    background:var(--background-color);
+    background:var(--bg);
 
     border:1px solid var(--border-soft);
     border-radius:12px;
@@ -179,7 +186,7 @@
 
     padding:1rem 1.2rem;
 
-    color:var(--text-light);
+    color:var(--text);
 
     text-decoration:none;
 
@@ -190,7 +197,7 @@
 
     background:rgba(255,255,255,.04);
 
-    color:var(--text-color);
+    color:var(--text);
 }
 
 
@@ -329,7 +336,7 @@
 
     border-radius:10px;
 
-    color:var(--text-color);
+    color:var(--text);
 
     cursor:pointer;
 
@@ -338,7 +345,7 @@
 
 .pagination button:hover{
 
-    border-color:var(--text-color);
+    border-color:var(--text);
 
     transform:translateY(-2px);
 }

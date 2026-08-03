@@ -1,0 +1,911 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>Learning Machine Learning the Slow Way | Zwelibanzi Langeni</title>
+
+        <link rel="icon" type="image/png" href="../../images/logo.png" />
+
+        <link rel="stylesheet" href="../../css/style.css" />
+        <link rel="stylesheet" href="../../css/article-page.css" />
+    </head>
+
+    <body>
+        <a class="skip-link" href="#main-content">Skip to content</a>
+
+        <div id="navbar"></div>
+
+        <main id="main-content">
+            <section class="article-page">
+                <div class="container">
+                    <div class="article-layout">
+                        <!-- ===================================================
+LEFT COLUMN
+=================================================== -->
+
+                        <div class="article-main">
+                            <!-- Hero -->
+
+                            <header class="article-header">
+                                <div class="article-category">
+                                    <span class="section-label">AI</span>
+                                    <span class="article-date">July 2026</span>
+                                </div>
+
+                                <h1 class="article-title">
+                                    Learning Machine Learning the Slow Way
+                                </h1>
+
+                                <p class="article-description">
+                                    How I stopped chasing hype, went back to
+                                    basics, and finally started to understand
+                                    the models I was building — without a PhD,
+                                    but with a lot of patience.
+                                </p>
+
+                                <div class="article-meta">
+                                    <div class="author">
+                                        <div class="author-avatar">Z</div>
+
+                                        <div>
+                                            <h4>Zwelibanzi Langeni</h4>
+
+                                            <span>11 min read</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="article-share">
+                                        <a href="#">LinkedIn</a>
+
+                                        <a href="#">X</a>
+
+                                        <a href="#">Copy Link</a>
+                                    </div>
+                                </div>
+                            </header>
+
+                            <!-- Hero Image -->
+
+                            <figure class="article-cover">
+                                <img
+                                    src="../../images/Learning Machine Learning the Slow Way.jpg"
+                                    alt="A winding forest path representing the slow, deliberate journey of learning machine learning from the ground up"
+                                />
+                            </figure>
+
+                            <!-- Article -->
+
+                            <article class="article-body">
+                                <h2 id="the-slow-path-i-chose">
+                                    The Slow Path I Chose
+                                </h2>
+
+                                <p>
+                                    I first encountered machine learning the way
+                                    many backend engineers do — through a
+                                    tutorial titled "Build a Neural Network in
+                                    10 Minutes." I copied the code, ran it, and
+                                    watched the accuracy numbers climb. I felt a
+                                    rush of excitement. I thought I had unlocked
+                                    a superpower.
+                                </p>
+
+                                <p>
+                                    That feeling lasted about a week. When I
+                                    tried to apply the same approach to a real
+                                    problem — predicting customer churn for a
+                                    side project — my model performed
+                                    abysmally. I didn't know why. I didn't know
+                                    how to fix it. I realised that the 10-minute
+                                    tutorial had given me a recipe, but it
+                                    hadn't given me understanding.
+                                </p>
+
+                                <p>
+                                    I made a decision then: I would learn
+                                    machine learning the slow way. No shortcuts.
+                                    No copy-paste from Kaggle. I would build
+                                    things from scratch, fail repeatedly, and
+                                    force myself to understand the maths and the
+                                    trade-offs. It took years. It was
+                                    frustrating. But it was the best decision
+                                    I've ever made as an engineer.
+                                </p>
+
+                                <p>
+                                    This is the story of that journey — the
+                                    mistakes, the breakthroughs, and the quiet
+                                    satisfaction of finally understanding what
+                                    the models are actually doing.
+                                </p>
+
+                                <h2 id="my-first-model-a-spectacular-failure">
+                                    My First Model: A Spectacular Failure
+                                </h2>
+
+                                <p>
+                                    My first serious attempt was a logistic
+                                    regression model to classify whether a
+                                    customer would make a purchase. I had a
+                                    dataset, I had scikit-learn, and I had
+                                    confidence. I trained the model, evaluated
+                                    it on my test set, and got an accuracy of
+                                    92%. I was ecstatic.
+                                </p>
+
+                                <p>
+                                    Then I deployed it. The real-world
+                                    performance was barely above random guessing.
+                                    I had made every classic mistake: I had
+                                    trained on data with target leakage, I had
+                                    ignored class imbalance, and I had evaluated
+                                    on a test set that was too small and not
+                                    representative of the real distribution.
+                                </p>
+
+                                <p>
+                                    That failure taught me the first hard lesson:
+                                    <strong>your model is only as good as your
+                                    data and your evaluation strategy</strong>.
+                                    The algorithm itself is almost never the
+                                    bottleneck.
+                                </p>
+
+                                <p>
+                                    I started over. I spent weeks cleaning the
+                                    data, understanding each feature, and
+                                    building a proper validation pipeline. I
+                                    learned about stratified cross-validation,
+                                    precision and recall, and the confusion
+                                    matrix. The next model performed well in
+                                    production, and I understood exactly why.
+                                </p>
+
+                                <h2 id="the-math-i-had-to-relearn">
+                                    The Math I Had to Relearn (and Actually
+                                    Enjoy)
+                                </h2>
+
+                                <p>
+                                    I had taken calculus and linear algebra in
+                                    university, but I had forgotten most of it.
+                                    When I started reading blog posts about
+                                    gradient descent and backpropagation, I
+                                    realised I needed to go back to the basics.
+                                </p>
+
+                                <p>
+                                    I didn't enrol in a course. Instead, I
+                                    implemented everything from scratch. I wrote
+                                    a linear regression model using only NumPy,
+                                    deriving the gradient descent update step by
+                                    hand. I built a simple neural network with
+                                    one hidden layer and manually computed the
+                                    gradients. It was slow, and I made many
+                                    mistakes, but each mistake forced me to
+                                    understand the underlying maths.
+                                </p>
+
+                                <p>
+                                    Here's a snippet of the kind of code I wrote
+                                    to truly understand backpropagation:
+                                </p>
+
+                                <pre><code>import numpy as np
+
+                                    class SimpleNN:
+                                    def __init__(self, input_size, hidden_size,
+                                    output_size):
+                                    self.W1 = np.random.randn(input_size,
+                                    hidden_size) * 0.01
+                                    self.b1 = np.zeros((1, hidden_size))
+                                    self.W2 = np.random.randn(hidden_size,
+                                    output_size) * 0.01
+                                    self.b2 = np.zeros((1, output_size))
+
+                                    def sigmoid(self, x):
+                                    return 1 / (1 + np.exp(-x))
+
+                                    def sigmoid_derivative(self, x):
+                                    return x * (1 - x)
+
+                                    def forward(self, X):
+                                    self.z1 = np.dot(X, self.W1) + self.b1
+                                    self.a1 = self.sigmoid(self.z1)
+                                    self.z2 = np.dot(self.a1, self.W2) + self.b2
+                                    self.a2 = self.sigmoid(self.z2)
+                                    return self.a2
+
+                                    def backward(self, X, y, learning_rate):
+                                    m = X.shape[0]
+                                    # Loss derivative
+                                    dZ2 = self.a2 - y
+                                    dW2 = (1/m) * np.dot(self.a1.T, dZ2)
+                                    db2 = (1/m) * np.sum(dZ2, axis=0,
+                                    keepdims=True)
+
+                                    dA1 = np.dot(dZ2, self.W2.T)
+                                    dZ1 = dA1 * self.sigmoid_derivative(self.a1)
+                                    dW1 = (1/m) * np.dot(X.T, dZ1)
+                                    db1 = (1/m) * np.sum(dZ1, axis=0,
+                                    keepdims=True)
+
+                                    # Update weights
+                                    self.W2 -= learning_rate * dW2
+                                    self.b2 -= learning_rate * db2
+                                    self.W1 -= learning_rate * dW1
+                                    self.b1 -= learning_rate * db1</code></pre>
+
+                                <p>
+                                    Writing this code was tedious, but it
+                                    demystified the entire process. Today, I use
+                                    high-level frameworks like PyTorch, but I
+                                    never treat them as black boxes. I know what
+                                    the optimiser is doing, I understand the
+                                    effect of different activation functions,
+                                    and I can debug training curves with
+                                    confidence.
+                                </p>
+
+                                <p>
+                                    The math isn't scary — it's just a language.
+                                    And like any language, you learn it by
+                                    speaking it, not by memorising vocabulary.
+                                </p>
+
+                                <h2 id="data-quality-over-model-fancy">
+                                    Data Quality Over Model Fancy
+                                </h2>
+
+                                <p>
+                                    I used to believe that the best model would
+                                    win. I'd spend weeks tuning hyperparameters,
+                                    trying different architectures, and
+                                    experimenting with exotic loss functions.
+                                    Then a senior engineer on my team said
+                                    something that changed my perspective:
+                                    "A simple model with great data will always
+                                    beat a complex model with mediocre data."
+                                </p>
+
+                                <p>
+                                    I started spending 80% of my time on data
+                                    preparation. I wrote scripts to clean
+                                    outliers, handle missing values, and
+                                    normalise features. I built visualisations
+                                    to understand distributions and
+                                    correlations. I created synthetic
+                                    examples for minority classes to address
+                                    imbalance.
+                                </p>
+
+                                <p>
+                                    The results were dramatic. A simple logistic
+                                    regression on well-prepared data often
+                                    outperformed a random forest on raw data.
+                                    Feature engineering became my favourite part
+                                    of the process — creating new features from
+                                    domain knowledge that captured patterns the
+                                    raw data couldn't see.
+                                </p>
+
+                                <p>
+                                    One of my favourite tricks is the
+                                    <strong>target encoding</strong> for
+                                    high-cardinality categorical variables:
+                                </p>
+
+                                <pre><code>def target_encode(df, column, target,
+                                    min_samples=10):
+                                    # Calculate mean target per category
+                                    encoding = df.groupby(column)[target].mean()
+                                    counts = df.groupby(column)[target].count()
+
+                                    # Smooth with global mean to avoid overfitting
+                                    global_mean = df[target].mean()
+                                    smoothed = (encoding * counts + global_mean *
+                                    min_samples) / (counts + min_samples)
+
+                                    df[column + '_encoded'] =
+                                    df[column].map(smoothed)
+                                    return df</code></pre>
+
+                                <p>
+                                    This simple encoding, with smoothing to
+                                    prevent overfitting, consistently improved
+                                    my model performance without adding any
+                                    complexity to the algorithm. Data quality is
+                                    the great equaliser in machine learning.
+                                </p>
+
+                                <h2 id="overfitting-and-the-validation-wake-up-call">
+                                    Overfitting and the Validation Wake-Up Call
+                                </h2>
+
+                                <p>
+                                    I spent a week building a deep learning
+                                    model that achieved 99% accuracy on my
+                                    training set. I was thrilled. Then I ran it
+                                    on the validation set and got 67%. I had
+                                    committed the cardinal sin of machine
+                                    learning: I had tuned my model to the
+                                    training data until it memorised the noise.
+                                </p>
+
+                                <p>
+                                    Overfitting is the Siren's song of ML. It
+                                    seduces you with impressive numbers on the
+                                    data you have, while failing on the data you
+                                    don't. I learned to split my data properly —
+                                    training, validation, and holdout test sets
+                                    — and never to look at the test set until
+                                    the very end.
+                                </p>
+
+                                <p>
+                                    I also discovered the power of
+                                    <strong>early stopping</strong> and
+                                    <strong>regularisation</strong>. Instead of
+                                    training for a fixed number of epochs, I
+                                    monitor the validation loss and stop when it
+                                    starts to increase. In PyTorch:
+                                </p>
+
+                                <pre><code>best_val_loss = float('inf')
+                                    patience = 5
+                                    patience_counter = 0
+
+                                    for epoch in range(max_epochs):
+                                    train_loss = train_one_epoch(model, train_loader)
+                                    val_loss = evaluate(model, val_loader)
+
+                                    if val_loss &lt; best_val_loss:
+                                    best_val_loss = val_loss
+                                    patience_counter = 0
+                                    torch.save(model.state_dict(), 'best_model.pt')
+                                    else:
+                                    patience_counter += 1
+                                    if patience_counter >= patience:
+                                    print("Early stopping triggered")
+                                    break</code></pre>
+
+                                <p>
+                                    Another lesson: <strong>simpler models
+                                    generalise better</strong>. I used to think
+                                    that more layers, more neurons, and more
+                                    complex architectures were always better.
+                                    Now, I start with the simplest model that
+                                    could possibly work and only add complexity
+                                    when the data demands it. Occam's razor
+                                    applies to ML more than any other field.
+                                </p>
+
+                                <h2 id="from-notebook-to-maintainable-code">
+                                    From Notebook to Maintainable Code
+                                </h2>
+
+                                <p>
+                                    Jupyter notebooks are wonderful for
+                                    exploration. But they're terrible for
+                                    production. I learned this the hard way when
+                                    I tried to deploy a model that was buried in
+                                    a massive notebook with cells that had to be
+                                    run in a specific order.
+                                </p>
+
+                                <p>
+                                    I rewrote the entire pipeline as a modular
+                                    Python package. I separated data loading,
+                                    feature engineering, model training, and
+                                    evaluation into distinct modules. I wrote
+                                    unit tests for each component. I added
+                                    logging and configuration management. The
+                                    process took three times longer than the
+                                    original notebook, but it saved me countless
+                                    hours of debugging later.
+                                </p>
+
+                                <p>
+                                    Here's the structure I use now:
+                                </p>
+
+                                <pre><code>ml_project/
+                                    ├── data/
+                                    │   ├── loader.py
+                                    │   └── preprocess.py
+                                    ├── features/
+                                    │   ├── build.py
+                                    │   └── transforms.py
+                                    ├── models/
+                                    │   ├── train.py
+                                    │   └── predict.py
+                                    ├── evaluation/
+                                    │   └── metrics.py
+                                    ├── pipelines/
+                                    │   └── full_pipeline.py
+                                    └── config.yaml</code></pre>
+
+                                <p>
+                                    I also adopted
+                                    <strong>MLflow</strong> for experiment
+                                    tracking. I log every model run with its
+                                    hyperparameters, metrics, and a hash of the
+                                    training data. This lets me reproduce any
+                                    experiment months later and compare results
+                                    objectively. It's the engineering discipline
+                                    that makes ML sustainable.
+                                </p>
+
+                                <p>
+                                    The shift from "notebook scientist" to "ML
+                                    engineer" was uncomfortable, but it made my
+                                    work more reliable and collaborative. Code
+                                    that is well-structured is code that can be
+                                    trusted.
+                                </p>
+
+                                <h2 id="the-deployment-reality-check">
+                                    The Deployment Reality Check
+                                </h2>
+
+                                <p>
+                                    Building a model is one thing. Deploying it
+                                    is a completely different beast. My first
+                                    deployment was a disaster. The model worked
+                                    perfectly in my development environment, but
+                                    in production, it crashed with obscure
+                                    dependency errors, consumed too much memory,
+                                    and was too slow for real-time requests.
+                                </p>
+
+                                <p>
+                                    I learned about the importance of
+                                    <strong>model serialisation</strong>
+                                    (using <code>joblib</code> or
+                                    <code>ONNX</code>), containerisation with
+                                    Docker, and serving infrastructure like
+                                    <code>TorchServe</code> or
+                                    <code>FastAPI</code>. Here's the FastAPI
+                                    pattern I use now:
+                                </p>
+
+                                <pre><code>from fastapi import FastAPI, HTTPException
+                                    import numpy as np
+                                    import joblib
+
+                                    app = FastAPI()
+                                    model = joblib.load('model.joblib')
+                                    scaler = joblib.load('scaler.joblib')
+
+                                    @app.post("/predict")
+                                    async def predict(data: dict):
+                                    try:
+                                    features = np.array(data['features']).reshape(1,
+                                    -1)
+                                    scaled = scaler.transform(features)
+                                    prediction = model.predict(scaled)
+                                    return {"prediction": int(prediction[0])}
+                                    except Exception as e:
+                                    raise HTTPException(status_code=400,
+                                    detail=str(e))
+
+                                    @app.get("/health")
+                                    async def health():
+                                    return {"status": "ok"}</code></pre>
+
+                                <p>
+                                    I also added monitoring — tracking
+                                    prediction drift, input distributions, and
+                                    model latency. A model in production isn't a
+                                    static artefact; it's a living system that
+                                    needs to be watched and maintained. The
+                                    deployment phase taught me more about
+                                    system design than any book ever did.
+                                </p>
+
+                                <p>
+                                    One more lesson: <strong>always have a
+                                    fallback</strong>. If your model service
+                                    goes down, or returns garbage, your system
+                                    should degrade gracefully. I implemented a
+                                    simple rule-based fallback that kicks in
+                                    when the model's confidence is too low or
+                                    the service times out. It's not perfect, but
+                                    it's better than failing entirely.
+                                </p>
+
+                                <h2 id="staying-curious-in-a-hype-driven-world">
+                                    Staying Curious in a Hype-Driven World
+                                </h2>
+
+                                <p>
+                                    The hardest part of learning ML today is
+                                    filtering the noise. Every week, a new model
+                                    is announced with state-of-the-art results.
+                                    Every month, a new framework promises to
+                                    revolutionise the field. It's easy to feel
+                                    overwhelmed and inadequate.
+                                </p>
+
+                                <p>
+                                    I made peace with this by focusing on
+                                    fundamentals. I don't need to know every
+                                    new architecture. I need to understand the
+                                    core principles — how models learn, how to
+                                    evaluate them, how to turn a business
+                                    problem into a machine learning problem.
+                                    These fundamentals never go out of style.
+                                </p>
+
+                                <p>
+                                    I also found a community of engineers who
+                                    share my approach — people who value
+                                    understanding over hype. We share papers,
+                                    discuss implementations, and review each
+                                    other's code. This has been invaluable. The
+                                    best way to learn is to teach, and I've
+                                    learned more from explaining concepts to
+                                    others than from any lecture.
+                                </p>
+
+                                <p>
+                                    I still read papers, but I read them
+                                    critically. I ask myself: "What problem does
+                                    this solve? What are the assumptions? What
+                                    would it take to replicate this?" Most
+                                    papers don't survive this scrutiny, and
+                                    that's fine. The ones that do become part of
+                                    my mental toolkit.
+                                </p>
+
+                                <blockquote>
+                                    "In the rush to build the next big thing,
+                                    don't forget to understand the thing you
+                                    just built."
+                                </blockquote>
+
+                                <p>
+                                    My curiosity extends beyond algorithms. I'm
+                                    fascinated by the ethics of ML — how bias
+                                    creeps into data, how models can amplify
+                                    inequality, how to build systems that are
+                                    fair and transparent. These are the
+                                    questions that will define the field in the
+                                    coming decade, and they deserve as much
+                                    attention as any technical detail.
+                                </p>
+
+                                <h2 id="final-thoughts">Final Thoughts</h2>
+
+                                <p>
+                                    Learning machine learning the slow way has
+                                    been one of the most rewarding challenges of
+                                    my career. I'm not the fastest coder or the
+                                    most mathematically gifted engineer. But I
+                                    am persistent, and I am curious, and those
+                                    two qualities have carried me further than
+                                    any shortcut ever could.
+                                </p>
+
+                                <p>
+                                    If you're starting your journey, my advice
+                                    is this: ignore the hype. Build a linear
+                                    regression from scratch. Understand the bias-
+                                    variance trade-off. Spend time on data
+                                    quality. Write tests for your pipeline. And
+                                    never, ever stop asking "why?".
+                                </p>
+
+                                <p>
+                                    The slow path is not the easy path. But it
+                                    is the path that leads to real understanding.
+                                    And real understanding is what separates
+                                    someone who uses ML from someone who truly
+                                    <em>knows</em> it.
+                                </p>
+
+                                <p>
+                                    I'm still on that path. Every project
+                                    teaches me something new. Every failure
+                                    reveals a gap in my knowledge. And every
+                                    success reminds me why I fell in love with
+                                    this field in the first place. It's not
+                                    about the algorithms. It's about the
+                                    problems we solve and the people we help.
+                                    That's what keeps me going.
+                                </p>
+                            </article>
+
+                            <!-- Related Articles -->
+
+                            <section class="related-posts">
+                                <h2>Related Articles</h2>
+
+                                <div class="related-grid">
+                                    <article class="related-card">
+                                        <a href="#">
+                                            <img
+                                                src="../../images/hero.png"
+                                                alt="Data cleaning workflow showing messy data transforming into clean features"
+                                            />
+
+                                            <div class="related-card-content">
+                                                <div class="related-meta">
+                                                    AI
+                                                    <span
+                                                        class="meta-separator"
+                                                        >•</span
+                                                    >
+                                                    8 min read
+                                                </div>
+                                                <h3>
+                                                    Why Data Cleaning Is 80% of
+                                                    Machine Learning
+                                                </h3>
+                                                <p class="related-date">
+                                                    JUN 20, 2026
+                                                </p>
+                                                <p>
+                                                    A deep dive into the
+                                                    unglamorous but essential
+                                                    work that makes or breaks
+                                                    every ML project I've ever
+                                                    worked on.
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </article>
+
+                                    <article class="related-card">
+                                        <a href="#">
+                                            <img
+                                                src="../../images/Introduction.webp"
+                                                alt="Recommendation system interface showing product suggestions"
+                                            />
+
+                                            <div class="related-card-content">
+                                                <div class="related-meta">
+                                                    AI
+                                                    <span
+                                                        class="meta-separator"
+                                                        >•</span
+                                                    >
+                                                    9 min read
+                                                </div>
+                                                <h3>
+                                                    Building a Recommendation
+                                                    System in Python
+                                                </h3>
+                                                <p class="related-date">
+                                                    MAY 15, 2026
+                                                </p>
+                                                <p>
+                                                    A step-by-step journey from
+                                                    collaborative filtering to
+                                                    matrix factorisation, with
+                                                    code and lessons learned the
+                                                    hard way.
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </article>
+
+                                    <article class="related-card">
+                                        <a href="#">
+                                            <img
+                                                src="../../images/virtual-guard.png"
+                                                alt="A developer transitioning from backend code to ML models"
+                                            />
+
+                                            <div class="related-card-content">
+                                                <div class="related-meta">
+                                                    CAREER
+                                                    <span
+                                                        class="meta-separator"
+                                                        >•</span
+                                                    >
+                                                    7 min read
+                                                </div>
+                                                <h3>
+                                                    From Software Engineer to ML
+                                                    Engineer: My Transition
+                                                </h3>
+                                                <p class="related-date">
+                                                    APR 10, 2026
+                                                </p>
+                                                <p>
+                                                    What I had to unlearn and
+                                                    relearn when I moved from
+                                                    building APIs to building
+                                                    models — and the skills that
+                                                    transferred surprisingly
+                                                    well.
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </article>
+                                </div>
+                            </section>
+                        </div>
+
+                        <!-- ===================================================
+RIGHT COLUMN
+=================================================== -->
+
+                        <aside class="article-sidebar">
+                            <div class="sidebar-sticky">
+                                <!-- TOC -->
+
+                                <section class="toc">
+                                    <h3>Table of Contents</h3>
+
+                                    <nav>
+                                        <a href="#the-slow-path-i-chose">
+                                            The Slow Path I Chose
+                                        </a>
+
+                                        <a href="#my-first-model-a-spectacular-failure">
+                                            My First Model: A Spectacular
+                                            Failure
+                                        </a>
+
+                                        <a href="#the-math-i-had-to-relearn">
+                                            The Math I Had to Relearn (and
+                                            Actually Enjoy)
+                                        </a>
+
+                                        <a href="#data-quality-over-model-fancy">
+                                            Data Quality Over Model Fancy
+                                        </a>
+
+                                        <a
+                                            href="#overfitting-and-the-validation-wake-up-call"
+                                        >
+                                            Overfitting and the Validation
+                                            Wake-Up Call
+                                        </a>
+
+                                        <a
+                                            href="#from-notebook-to-maintainable-code"
+                                        >
+                                            From Notebook to Maintainable Code
+                                        </a>
+
+                                        <a href="#the-deployment-reality-check">
+                                            The Deployment Reality Check
+                                        </a>
+
+                                        <a
+                                            href="#staying-curious-in-a-hype-driven-world"
+                                        >
+                                            Staying Curious in a Hype-Driven
+                                            World
+                                        </a>
+
+                                        <a href="#final-thoughts">
+                                            Final Thoughts
+                                        </a>
+                                    </nav>
+                                </section>
+
+                                <!-- Newsletter -->
+
+                                <section class="newsletter-box">
+                                    <h3>Newsletter</h3>
+
+                                    <p>
+                                        Subscribe for new articles and
+                                        tutorials.
+                                    </p>
+
+                                    <form id="newsletter-form" novalidate>
+                                        <input
+                                            id="newsletter-email"
+                                            name="email"
+                                            type="email"
+                                            autocomplete="email"
+                                            placeholder="Your email"
+                                            required
+                                        />
+
+                                        <button type="submit">
+                                            Subscribe
+                                        </button>
+
+                                        <p
+                                            id="newsletter-status"
+                                            class="form-status"
+                                            aria-live="polite"
+                                        ></p>
+                                    </form>
+                                </section>
+
+                                <!-- Popular -->
+
+                                <section class="popular-posts">
+                                    <h3>Popular Articles</h3>
+
+                                    <div class="popular-list">
+                                        <a href="#" class="popular-card">
+                                            <img
+                                                src="/images/icons/business.jpg"
+                                                alt="Graph showing underfitting and overfitting curves"
+                                            />
+                                            <div class="popular-content">
+                                                <div class="popular-meta">
+                                                    AI — JUL 5, 2026
+                                                </div>
+                                                <h4>
+                                                    Understanding Overfitting in
+                                                    Deep Learning
+                                                </h4>
+                                            </div>
+                                        </a>
+
+                                        <a href="#" class="popular-card">
+                                            <img
+                                                src="/images/icons/fashion.jpg"
+                                                alt="Feature engineering process diagram"
+                                            />
+                                            <div class="popular-content">
+                                                <div class="popular-meta">
+                                                    DATA — JUN 18, 2026
+                                                </div>
+                                                <h4>
+                                                    Feature Engineering Tips
+                                                    That Saved My Models
+                                                </h4>
+                                            </div>
+                                        </a>
+
+                                        <a href="#" class="popular-card">
+                                            <img
+                                                src="/images/icons/technology.jpg"
+                                                alt="ML model deployment pipeline with CI/CD"
+                                            />
+                                            <div class="popular-content">
+                                                <div class="popular-meta">
+                                                    ML OPS — MAY 22, 2026
+                                                </div>
+                                                <h4>
+                                                    Productionizing ML Models
+                                                    Without Losing Your Mind
+                                                </h4>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </section>
+
+                                <!-- Categories -->
+
+                                <section class="categories">
+                                    <h3>Categories</h3>
+
+                                    <div class="category-list">
+                                        <a href="#">Backend</a>
+
+                                        <a href="#">Java</a>
+
+                                        <a href="#">Spring Boot</a>
+
+                                        <a href="#">AI</a>
+
+                                        <a href="#">System Design</a>
+                                    </div>
+                                </section>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <div id="footer"></div>
+
+        <script src="../../components/components.js" defer></script>
+        <script src="../../js/script.js" defer></script>
+        <script src="../../js/article.js" defer></script>
+    </body>
+</html>

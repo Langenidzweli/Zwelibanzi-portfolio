@@ -1,0 +1,1094 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>Building REST APIs That Don't Rot | Zwelibanzi Langeni</title>
+
+        <link rel="icon" type="image/png" href="../../images/logo.png" />
+
+        <link rel="stylesheet" href="../../css/style.css" />
+        <link rel="stylesheet" href="../../css/article-page.css" />
+    </head>
+
+    <body>
+        <a class="skip-link" href="#main-content">Skip to content</a>
+
+        <div id="navbar"></div>
+
+        <main id="main-content">
+            <section class="article-page">
+                <div class="container">
+                    <div class="article-layout">
+                        <!-- ===================================================
+LEFT COLUMN
+=================================================== -->
+
+                        <div class="article-main">
+                            <!-- Hero -->
+
+                            <header class="article-header">
+                                <div class="article-category">
+                                    <span class="section-label">Backend</span>
+                                    <span class="article-date">May 2026</span>
+                                </div>
+
+                                <h1 class="article-title">
+                                    Building REST APIs That Don't Rot
+                                </h1>
+
+                                <p class="article-description">
+                                    A personal journey from messy first APIs to
+                                    maintainable, evolvable systems — and the
+                                    principles that got me there.
+                                </p>
+
+                                <div class="article-meta">
+                                    <div class="author">
+                                        <div class="author-avatar">Z</div>
+
+                                        <div>
+                                            <h4>Zwelibanzi Langeni</h4>
+
+                                            <span>11 min read</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="article-share">
+                                        <a href="#">LinkedIn</a>
+
+                                        <a href="#">X</a>
+
+                                        <a href="#">Copy Link</a>
+                                    </div>
+                                </div>
+                            </header>
+
+                            <!-- Hero Image -->
+
+                            <figure class="article-cover">
+                                <img
+                                src="../../images/Building REST APIs That Don't Rot.jpg"
+                                alt="A clean, well-structured REST API architecture diagram showing controllers, services, and repositories working in harmony"
+                                />
+                            </figure>
+
+                            <!-- Article -->
+
+                            <article class="article-body">
+                                <h2 id="the-first-api-i-built">
+                                    The First API I Built
+                                </h2>
+
+                                <p>
+                                    I still remember the weekend I built my first
+                                    REST API. I had just discovered Spring Boot,
+                                    and the sheer thrill of spinning up a web
+                                    server with a few annotations felt like
+                                    magic. I wrote my first
+                                    <code>@RestController</code>, mapped a
+                                    couple of endpoints, and watched Postman
+                                    return JSON responses with a sense of
+                                    triumph. I was twenty-two, caffeinated, and
+                                    utterly convinced I had mastered backend
+                                    engineering.
+                                </p>
+
+                                <p>
+                                    That API was supposed to be a simple user
+                                    management service for a side project. I
+                                    packed everything into a single controller —
+                                    validation, business logic, database
+                                    queries, even some half-baked error
+                                    handling. It worked perfectly on my machine,
+                                    and I deployed it with a grin. I thought I
+                                    had built something solid.
+                                </p>
+
+                                <p>
+                                    Looking back, that API was a textbook
+                                    example of what happens when excitement
+                                    outpaces experience. But I didn't know that
+                                    then. All I knew was that I had built
+                                    something that worked, and that felt like
+                                    enough.
+                                </p>
+
+                                <h2 id="when-my-api-started-rotting">
+                                    When My API Started Rotting
+                                </h2>
+
+                                <p>
+                                    Fast forward eight months. A friend wanted
+                                    to collaborate on the project, so I dusted
+                                    off the codebase and opened the controller
+                                    file. My jaw tightened. The class had grown
+                                    to over six hundred lines. There were
+                                    duplicate methods, inconsistent naming, and
+                                    a sprawling switch statement that routed
+                                    requests based on query parameters. I
+                                    couldn't tell which endpoint did what
+                                    without tracing through the entire file.
+                                </p>
+
+                                <p>
+                                    The worst part? I couldn't blame anyone
+                                    else. I had written every single line.
+                                </p>
+
+                                <blockquote>
+                                    "Every API is a promise to your future self."
+                                </blockquote>
+
+                                <p>
+                                    That was the moment I realised my API had
+                                    rotted. Not because of a single catastrophic
+                                    failure, but because of hundreds of tiny
+                                    shortcuts I had taken in the name of
+                                    shipping quickly. I had told myself I'd
+                                    refactor later. Later never came.
+                                </p>
+
+                                <p>
+                                    Adding a new feature took forever. Changing
+                                    existing behaviour risked breaking something
+                                    unrelated. The tests I had written were
+                                    brittle and covered only the happy path. I
+                                    felt like I was walking through a minefield
+                                    every time I touched the code.
+                                </p>
+
+                                <p>
+                                    That experience was a turning point. I
+                                    realised that building an API that works
+                                    today is easy. Building an API that still
+                                    works — and is still pleasant to work with —
+                                    a year from now is the real challenge. I
+                                    became obsessed with understanding why
+                                    software rots and what I could do to prevent
+                                    it.
+                                </p>
+
+                                <h2 id="five-principles-that-changed-everything">
+                                    Five Principles That Changed Everything
+                                </h2>
+
+                                <p>
+                                    Over the next few years, I read voraciously.
+                                    I studied the codebases of open-source
+                                    projects I admired. I refactored my old
+                                    projects over and over, learning something
+                                    new each time. Gradually, a set of
+                                    principles emerged — principles that
+                                    transformed how I think about API design.
+                                </p>
+
+                                <p>
+                                    These aren't the usual SOLID or Clean
+                                    Architecture platitudes, though those are
+                                    important too. These are the practical,
+                                    battle-tested lessons I've carried from
+                                    project to project, the ones that have saved
+                                    me from myself more times than I can count.
+                                </p>
+
+                                <h3 id="keep-controllers-thin">
+                                    Keep Controllers Thin
+                                </h3>
+
+                                <p>
+                                    The first rule I adopted is almost
+                                    embarrassingly simple: keep your controllers
+                                    thin. A controller should be a thin veneer
+                                    over your application logic — it parses the
+                                    request, delegates to a service, and
+                                    constructs a response. That's it. No
+                                    business logic, no database access, no
+                                    complex validation beyond basic request
+                                    validation.
+                                </p>
+
+                                <p>
+                                    Here's what a well-behaved controller looks
+                                    like in Spring Boot:
+                                </p>
+
+                                <pre><code>@RestController
+                                    @RequestMapping("/api/v1/users")
+                                    @Validated
+                                    public class UserController {
+
+                                    private final UserService userService;
+
+                                    public UserController(UserService
+                                    userService) {
+                                    this.userService = userService;
+                                    }
+
+                                    @GetMapping("/{id}")
+                                    public ResponseEntity&lt;UserResponse&gt;
+                                    getUser(@PathVariable Long id) {
+                                    return ResponseEntity.ok(userService.getUser(id));
+                                    }
+
+                                    @PostMapping
+                                    public ResponseEntity&lt;UserResponse&gt;
+                                    createUser(@Valid @RequestBody CreateUserRequest
+                                    request) {
+                                    UserResponse response =
+                                    userService.createUser(request);
+                                    return ResponseEntity.status(HttpStatus.CREATED)
+                                    .body(response);
+                                    }
+
+                                    @PutMapping("/{id}")
+                                    public ResponseEntity&lt;UserResponse&gt;
+                                    updateUser(
+                                    @PathVariable Long id,
+                                    @Valid @RequestBody UpdateUserRequest
+                                    request) {
+                                    return ResponseEntity.ok(userService.updateUser(id,
+                                    request));
+                                    }
+
+                                    @DeleteMapping("/{id}")
+                                    public ResponseEntity&lt;Void&gt;
+                                    deleteUser(@PathVariable Long id) {
+                                    userService.deleteUser(id);
+                                    return ResponseEntity.noContent().build();
+                                    }
+                                    }</code></pre>
+
+                                <p>
+                                    Look at how little is happening in that
+                                    controller. It maps HTTP verbs to service
+                                    methods, applies validation, and returns
+                                    appropriate HTTP status codes. All the
+                                    interesting work — the business logic,
+                                    transaction management, and domain rules —
+                                    lives in the service layer.
+                                </p>
+
+                                <p>
+                                    This separation has saved me countless
+                                    times. When I need to change how user
+                                    creation works, I touch the service. When I
+                                    need to change the API contract — maybe add
+                                    a new endpoint or change the response
+                                    structure — I touch the controller. These
+                                    concerns stay neatly separated, which means
+                                    changes are localised and the risk of
+                                    unintended side effects drops dramatically.
+                                </p>
+
+                                <h3 id="think-in-resources">
+                                    Think in Resources
+                                </h3>
+
+                                <p>
+                                    REST is about resources. I know that sounds
+                                    obvious, but it's surprisingly easy to
+                                    forget. I've seen countless APIs that are
+                                    really just RPC calls dressed in REST
+                                    clothing — endpoint names like
+                                    <code>/api/activateUser</code> or
+                                    <code>/api/processOrder</code> that scream
+                                    "procedure call" rather than "resource
+                                    manipulation".
+                                </p>
+
+                                <p>
+                                    The shift in thinking is subtle but
+                                    profound. Instead of designing endpoints
+                                    around actions, design them around nouns.
+                                    What resources exist in your system? What
+                                    operations make sense on those resources?
+                                </p>
+
+                                <p>
+                                    For a user management system, the resource
+                                    is a <code>User</code>. The operations are
+                                    create, read, update, and delete. For an
+                                    e-commerce system, resources might include
+                                    <code>Order</code>, <code>Product</code>,
+                                    and <code>Customer</code>. Each resource
+                                    gets its own URI space, and HTTP methods
+                                    express the action.
+                                </p>
+
+                                <p>
+                                    This resource-oriented thinking forces you
+                                    to model your domain explicitly. It reveals
+                                    hidden concepts and relationships. And it
+                                    makes your API predictable — developers who
+                                    understand REST can intuit how your API
+                                    works without reading extensive
+                                    documentation.
+                                </p>
+
+                                <p>
+                                    One of my favourite examples of getting this
+                                    right is the GitHub API. It's resource-based
+                                    through and through. You work with
+                                    repositories, issues, pull requests, and
+                                    comments as first-class resources. The
+                                    consistency makes the API feel coherent and
+                                    discoverable.
+                                </p>
+
+                                <h3 id="consistency-beats-cleverness">
+                                    Consistency Beats Cleverness
+                                </h3>
+
+                                <p>
+                                    I used to be clever. I'd use
+                                    <code>@JsonView</code> to return different
+                                    fields based on the user's role. I'd nest
+                                    resources five levels deep because it seemed
+                                    elegant. I'd use query parameters to
+                                    overload endpoints with multiple behaviours.
+                                </p>
+
+                                <p>
+                                    I don't do that anymore.
+                                </p>
+
+                                <p>
+                                    Clever solutions are often the ones that
+                                    cause the most pain later. They're
+                                    surprising, non-obvious, and hard to
+                                    remember. When you come back to the codebase
+                                    six months later, you spend twenty minutes
+                                    trying to understand why the same endpoint
+                                    returns different fields for different users.
+                                </p>
+
+                                <p>
+                                    Instead, I now favour boring, consistent
+                                    conventions. Here's what that looks like in
+                                    practice:
+                                </p>
+
+                                <ul>
+                                    <li>
+                                        <strong>Naming:</strong> Use plural
+                                        nouns for collections (
+                                        <code>/api/v1/users</code>), singular
+                                        for specific resources (
+                                        <code>/api/v1/users/{id}</code>). Use
+                                        kebab-case for multi-word resources (
+                                        <code>/api/v1/order-items</code>).
+                                    </li>
+                                    <li>
+                                        <strong>HTTP methods:</strong> GET for
+                                        retrieval, POST for creation, PUT for
+                                        full updates, PATCH for partial updates,
+                                        DELETE for deletion. Never use GET for
+                                        state-changing operations.
+                                    </li>
+                                    <li>
+                                        <strong>Status codes:</strong> 200 for
+                                        success with a body, 201 for creation,
+                                        204 for success without a body, 400 for
+                                        client errors, 404 for not found, 500
+                                        for server errors. Be consistent about
+                                        when you use each.
+                                    </li>
+                                    <li>
+                                        <strong>Error responses:</strong> Use a
+                                        standard error envelope with fields like
+                                        <code>timestamp</code>,
+                                        <code>status</code>,
+                                        <code>error</code>, and
+                                        <code>path</code>.
+                                    </li>
+                                </ul>
+
+                                <p>
+                                    The goal is to make your API predictable. A
+                                    developer who has worked with one of your
+                                    endpoints should be able to guess how the
+                                    others work. This reduces the cognitive
+                                    burden of adopting your API and makes it
+                                    feel professional and polished.
+                                </p>
+
+                                <p>
+                                    Consistency also extends to your codebase.
+                                    Use the same patterns for validation,
+                                    logging, and exception handling across all
+                                    your controllers. If you use
+                                    <code>@Valid</code> on one endpoint, use it
+                                    on all of them. If you log requests in one
+                                    place, log them everywhere. The cumulative
+                                    effect of these small consistencies is a
+                                    codebase that feels cohesive and
+                                    well-crafted.
+                                </p>
+
+                                <h2 id="design-for-tomorrow">
+                                    Design for Tomorrow
+                                </h2>
+
+                                <p>
+                                    One of the hardest lessons I learned was
+                                    that APIs are forever. Once you release an
+                                    API and clients start depending on it,
+                                    changing it becomes a negotiation. You can't
+                                    just delete a field or rename an endpoint
+                                    because you think the new name is better.
+                                    You have to support the old version while
+                                    introducing the new one.
+                                </p>
+
+                                <p>
+                                    This is why versioning matters. I used to
+                                    avoid versioning because it felt like extra
+                                    work. I'd just evolve the API in place and
+                                    hope no one noticed. That strategy worked
+                                    exactly zero times.
+                                </p>
+
+                                <p>
+                                    Today, I version my APIs from day one. I put
+                                    the version in the URL path:
+                                    <code>/api/v1/users</code>,
+                                    <code>/api/v2/users</code>. This is explicit
+                                    and easy for clients to understand. It also
+                                    gives me a clean mechanism for deprecating
+                                    old versions gradually.
+                                </p>
+
+                                <p>
+                                    But versioning isn't just about the path. It
+                                    also means thinking about how your API will
+                                    evolve. What fields might you need to add?
+                                    What operations might become more complex?
+                                    Designing with future growth in mind doesn't
+                                    mean over-engineering — it means leaving
+                                    room for change.
+                                </p>
+
+                                <p>
+                                    One pattern I've found useful is the
+                                    <strong>expandable contract</strong>.
+                                    Instead of returning a fixed set of fields,
+                                    consider supporting field selection via
+                                    query parameters:
+                                    <code
+                                    >/api/v1/users/42?fields=id,name,email</code
+                                    >. This allows clients to request exactly
+                                    what they need and gives you flexibility to
+                                    add new fields without breaking existing
+                                    clients.
+                                </p>
+
+                                <p>
+                                    Another strategy is to use
+                                    <strong>API evolution guidelines</strong>.
+                                    Document how you'll handle breaking changes,
+                                    how long you'll support old versions, and
+                                    what the deprecation process looks like.
+                                    This sets clear expectations and reduces
+                                    friction when you need to make significant
+                                    changes.
+                                </p>
+
+                                <h2 id="documentation-is-part-of-the-product">
+                                    Documentation Is Part of the Product
+                                </h2>
+
+                                <p>
+                                    I used to think documentation was an
+                                    afterthought. I'd write the code, deploy it,
+                                    and then maybe jot down some notes in a
+                                    README. I treated documentation as a chore,
+                                    something to be done grudgingly after the
+                                    real work was finished.
+                                </p>
+
+                                <p>
+                                    Then I started using other people's APIs. I
+                                    discovered how frustrating it is to work
+                                    with an API that has no documentation, or
+                                    worse, documentation that's inaccurate or
+                                    out of date. I realised that documentation
+                                    is not a luxury — it's a core part of the
+                                    product.
+                                </p>
+
+                                <p>
+                                    Today, I use OpenAPI (formerly Swagger) to
+                                    document my APIs. I generate the
+                                    specification from the code using annotations
+                                    like <code>@Operation</code> and
+                                    <code>@ApiResponse</code>. This keeps the
+                                    documentation in sync with the code and
+                                    produces a machine-readable specification
+                                    that can be used to generate client SDKs,
+                                    API explorers, and interactive
+                                    documentation.
+                                </p>
+
+                                <p>
+                                    Here's a simple example of a documented
+                                    endpoint:
+                                </p>
+
+                                <pre><code>@Operation(summary = "Get a user by ID",
+                                    description = "Returns the user with the specified ID,
+                                    including profile information and preferences.")
+                                    @ApiResponses(value = {
+                                    @ApiResponse(responseCode = "200", description =
+                                    "User found", content = @Content(mediaType =
+                                    "application/json", schema = @Schema(implementation
+                                    = UserResponse.class))),
+                                    @ApiResponse(responseCode = "404", description =
+                                    "User not found"),
+                                    @ApiResponse(responseCode = "401", description =
+                                    "Unauthorized")
+                                    })
+                                    @GetMapping("/{id}")
+                                    public ResponseEntity&lt;UserResponse&gt;
+                                    getUser(@PathVariable Long id) {
+                                    return ResponseEntity.ok(userService.getUser(id));
+                                    }</code></pre>
+
+                                <p>
+                                    The annotations add context that helps
+                                    clients understand the endpoint's behaviour,
+                                    expected inputs, and possible responses. But
+                                    the real value comes from the OpenAPI
+                                    specification itself. With a spec, I can:
+                                </p>
+
+                                <ul>
+                                    <li>
+                                        Generate an interactive API explorer that
+                                        lets developers try out endpoints in
+                                        their browser.
+                                    </li>
+                                    <li>
+                                        Generate client SDKs for multiple
+                                        languages so clients don't have to
+                                        write HTTP requests manually.
+                                    </li>
+                                    <li>
+                                        Validate that my API conforms to the
+                                        specification, catching errors early.
+                                    </li>
+                                    <li>
+                                        Use the spec as a contract for
+                                        integration testing.
+                                    </li>
+                                </ul>
+
+                                <p>
+                                    Documentation is also where you communicate
+                                    your API's personality. A well-written
+                                    description, a clear error message, a
+                                    thoughtful example — these small touches
+                                    make the API feel cared for. They signal to
+                                    users that you've thought about their
+                                    experience.
+                                </p>
+
+                                <h2 id="building-apis-that-age-gracefully">
+                                    Building APIs That Age Gracefully
+                                </h2>
+
+                                <p>
+                                    The goal, ultimately, is to build APIs that
+                                    age gracefully. APIs that don't become
+                                    brittle and tangled as the codebase grows.
+                                    APIs that remain easy to understand, easy to
+                                    change, and easy to trust.
+                                </p>
+
+                                <p>
+                                    The secret, I've learned, is to embrace
+                                    change rather than resist it. Software rots
+                                    when it becomes rigid. When you stop
+                                    refactoring, stop improving, stop learning.
+                                    A healthy codebase is one that changes
+                                    constantly — not because it's unstable, but
+                                    because it's evolving to meet new needs.
+                                </p>
+
+                                <p>
+                                    Refactoring is not a sign of failure. It's a
+                                    sign of maturity. I refactor my code
+                                    constantly now, not because it was wrong the
+                                    first time, but because I understand the
+                                    problem better now than I did when I wrote
+                                    it. Each refactor is an opportunity to make
+                                    the code simpler, clearer, and more
+                                    maintainable.
+                                </p>
+
+                                <p>
+                                    One practice I've adopted is the
+                                    <strong>boy scout rule</strong>: leave the
+                                    codebase cleaner than you found it. When I
+                                    touch a file, I look for small improvements
+                                    I can make — renaming a variable, extracting
+                                    a method, adding a comment. These
+                                    micro-refactors accumulate over time and
+                                    keep the codebase from decaying.
+                                </p>
+
+                                <p>
+                                    I also pay attention to
+                                    <strong>architectural boundaries</strong>.
+                                    Clean Architecture, Hexagonal Architecture,
+                                    Onion Architecture — they all share a
+                                    common insight: keep the core domain
+                                    independent of external concerns. The
+                                    business logic should not depend on the
+                                    database, the web framework, or the
+                                    messaging system. This independence makes it
+                                    easier to change external dependencies
+                                    without rewriting the core logic.
+                                </p>
+
+                                <p>
+                                    For my REST APIs, this means keeping the
+                                    domain model separate from the API contract.
+                                    The <code>User</code> entity in the database
+                                    is not the same as the
+                                    <code>UserResponse</code> DTO returned by
+                                    the API. I map between them in the service
+                                    layer, which gives me the freedom to evolve
+                                    the domain model without breaking the API
+                                    contract.
+                                </p>
+
+                                <h2 id="testing-learning-and-staying-curious">
+                                    Testing, Learning, and Staying Curious
+                                </h2>
+
+                                <p>
+                                    I want to talk about testing because it's
+                                    where I've changed the most. In my early
+                                    days, I wrote tests for the sake of
+                                    coverage. I'd mock everything, write
+                                    assertions that verified the mock
+                                    interactions, and declare victory. I didn't
+                                    really understand what I was testing or why.
+                                </p>
+
+                                <p>
+                                    Today, I approach testing differently. I
+                                    write tests that verify behaviour, not
+                                    implementation. I test the API as a whole,
+                                    using
+                                    <code>@SpringBootTest</code> with
+                                    <code>TestRestTemplate</code> or
+                                    <code>WebTestClient</code>. I test the
+                                    important flows — successful requests,
+                                    validation failures, error scenarios,
+                                    authentication and authorisation. These
+                                    integration tests give me confidence that
+                                    the API works correctly end-to-end.
+                                </p>
+
+                                <p>
+                                    I also write unit tests for the service
+                                    layer, focusing on the business logic. These
+                                    tests are fast and targeted. They mock the
+                                    repository layer and verify that the service
+                                    behaves correctly for different inputs.
+                                </p>
+
+                                <p>
+                                    Contract testing has been a revelation. I
+                                    use <code>spring-cloud-contract</code> to
+                                    define contracts between my API and its
+                                    consumers. The contracts are written in
+                                    Groovy or YAML and used to generate both
+                                    server-side tests and client-side stubs.
+                                    This ensures that changes to the API don't
+                                    break consumers — and that consumers are
+                                    using the API correctly.
+                                </p>
+
+                                <blockquote>
+                                    "Good architecture isn't about adding
+                                    layers. It's about removing friction."
+                                </blockquote>
+
+                                <p>
+                                    The most important part of this journey,
+                                    though, is staying curious. I've learned
+                                    more from reading other people's code and
+                                    experimenting with new ideas than from any
+                                    tutorial. I build side projects to test
+                                    concepts. I rewrite old projects using new
+                                    approaches. I contribute to open-source
+                                    projects to see how other people solve
+                                    problems.
+                                </p>
+
+                                <p>
+                                    Curiosity is what keeps the craft alive.
+                                    Without it, you stagnate. You repeat the
+                                    same patterns, make the same mistakes, and
+                                    never grow. With it, every project becomes
+                                    an opportunity to learn something new.
+                                </p>
+
+                                <h2 id="final-thoughts">Final Thoughts</h2>
+
+                                <p>
+                                    Building REST APIs that don't rot is not
+                                    about a single tool or technique. It's about
+                                    a mindset. It's about caring deeply about
+                                    the quality of the code you write. It's
+                                    about respecting the people who will work
+                                    with your code in the future. It's about
+                                    understanding that software is never
+                                    finished — it's always evolving.
+                                </p>
+
+                                <p>
+                                    I've been building APIs for years now, and I
+                                    still make mistakes. I still write code that
+                                    I later regret. But I've also learned to
+                                    recognise the signs of rot early, to
+                                    refactor before the debt becomes
+                                    unmanageable, and to design with
+                                    maintainability as a first-class concern.
+                                </p>
+
+                                <p>
+                                    If I could go back and give my younger self
+                                    one piece of advice, it would be this:
+                                    <strong
+                                    >your API is a promise to your future
+                                    self.</strong
+                                    >
+                                    Write code that you'll be proud to come back
+                                    to. Write code that you'll be able to
+                                    understand and change without dread. Write
+                                    code that ages gracefully.
+                                </p>
+
+                                <p>
+                                    That's what building REST APIs that don't
+                                    rot really means. It's not about perfection
+                                    — it's about intention. It's about building
+                                    with care, learning from mistakes, and
+                                    always, always striving to be better.
+                                </p>
+
+                                <p>
+                                    The journey never ends, and that's exactly
+                                    why I love it.
+                                </p>
+                            </article>
+
+                            <!-- Related Articles -->
+
+                            <section class="related-posts">
+                                <h2>Related Articles</h2>
+
+                                <div class="related-grid">
+                                    <article class="related-card">
+                                        <a href="#">
+                                            <img
+                                            src="../../images/hero.png"
+                                            alt="Clean Architecture layered diagram showing dependency flow from infrastructure to domain"
+                                            />
+
+                                            <div class="related-card-content">
+                                                <div class="related-meta">
+                                                    BACKEND
+                                                    <span
+                                                    class="meta-separator"
+                                                    >•</span
+                                                    >
+                                                    9 min read
+                                                </div>
+                                                <h3>
+                                                    Why Clean Architecture
+                                                    Changed My Thinking
+                                                </h3>
+                                                <p class="related-date">
+                                                    APR 18, 2026
+                                                </p>
+                                                <p>
+                                                    How separating domain logic
+                                                    from infrastructure
+                                                    transformed the way I build
+                                                    Spring Boot applications —
+                                                    and why I'll never go back.
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </article>
+
+                                    <article class="related-card">
+                                        <a href="#">
+                                            <img
+                                            src="../../images/Introduction.webp"
+                                            alt="Spring Boot logo with code snippets on a dark background"
+                                            />
+
+                                            <div class="related-card-content">
+                                                <div class="related-meta">
+                                                    JAVA
+                                                    <span
+                                                    class="meta-separator"
+                                                    >•</span
+                                                    >
+                                                    8 min read
+                                                </div>
+                                                <h3>
+                                                    Lessons From Building My
+                                                    First Spring Boot
+                                                    Application
+                                                </h3>
+                                                <p class="related-date">
+                                                    MAR 22, 2026
+                                                </p>
+                                                <p>
+                                                    The mistakes I made, the
+                                                    things I got right, and the
+                                                    lessons that stuck with me
+                                                    after shipping my first
+                                                    production Spring Boot
+                                                    service.
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </article>
+
+                                    <article class="related-card">
+                                        <a href="#">
+                                            <img
+                                            src="../../images/virtual-guard.png"
+                                            alt="Scale and complexity diagram showing how software grows over time"
+                                            />
+
+                                            <div class="related-card-content">
+                                                <div class="related-meta">
+                                                    SYSTEM DESIGN
+                                                    <span
+                                                    class="meta-separator"
+                                                    >•</span
+                                                    >
+                                                    10 min read
+                                                </div>
+                                                <h3>
+                                                    Building Software That
+                                                    Scales Without Becoming
+                                                    Complex
+                                                </h3>
+                                                <p class="related-date">
+                                                    FEB 14, 2026
+                                                </p>
+                                                <p>
+                                                    Practical strategies for
+                                                    keeping your codebase simple
+                                                    and maintainable as your
+                                                    user base grows and new
+                                                    features pile on.
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </article>
+                                </div>
+                            </section>
+                        </div>
+
+                        <!-- ===================================================
+RIGHT COLUMN
+=================================================== -->
+
+                        <aside class="article-sidebar">
+                            <div class="sidebar-sticky">
+                                <!-- TOC -->
+
+                                <section class="toc">
+                                    <h3>Table of Contents</h3>
+
+                                    <nav>
+                                        <a href="#the-first-api-i-built">
+                                            The First API I Built
+                                        </a>
+
+                                        <a href="#when-my-api-started-rotting">
+                                            When My API Started Rotting
+                                        </a>
+
+                                        <a
+                                        href="#five-principles-that-changed-everything"
+                                        >
+                                            Five Principles That Changed
+                                            Everything
+                                        </a>
+
+                                        <a href="#keep-controllers-thin">
+                                            Keep Controllers Thin
+                                        </a>
+
+                                        <a href="#think-in-resources">
+                                            Think in Resources
+                                        </a>
+
+                                        <a href="#consistency-beats-cleverness">
+                                            Consistency Beats Cleverness
+                                        </a>
+
+                                        <a href="#design-for-tomorrow">
+                                            Design for Tomorrow
+                                        </a>
+
+                                        <a
+                                        href="#documentation-is-part-of-the-product"
+                                        >
+                                            Documentation Is Part of the Product
+                                        </a>
+
+                                        <a
+                                        href="#building-apis-that-age-gracefully"
+                                        >
+                                            Building APIs That Age Gracefully
+                                        </a>
+
+                                        <a
+                                        href="#testing-learning-and-staying-curious"
+                                        >
+                                            Testing, Learning and Staying
+                                            Curious
+                                        </a>
+
+                                        <a href="#final-thoughts">
+                                            Final Thoughts
+                                        </a>
+                                    </nav>
+                                </section>
+
+                                <!-- Newsletter -->
+
+                                <section class="newsletter-box">
+                                    <h3>Newsletter</h3>
+
+                                    <p>
+                                        Subscribe for new articles and
+                                        tutorials.
+                                    </p>
+
+                                    <form id="newsletter-form" novalidate>
+                                        <input
+                                            id="newsletter-email"
+                                            name="email"
+                                            type="email"
+                                            autocomplete="email"
+                                            placeholder="Your email"
+                                            required
+                                        />
+
+                                        <button type="submit">
+                                            Subscribe
+                                        </button>
+
+                                        <p
+                                            id="newsletter-status"
+                                            class="form-status"
+                                            aria-live="polite"
+                                        ></p>
+                                    </form>
+                                </section>
+
+                                <!-- Popular -->
+
+                                <section class="popular-posts">
+                                    <h3>Popular Articles</h3>
+
+                                    <div class="popular-list">
+                                        <a href="#" class="popular-card">
+                                            <img
+                                            src="/images/icons/business.jpg"
+                                            alt="Distributed systems architecture diagram showing multiple services"
+                                            />
+                                            <div class="popular-content">
+                                                <div class="popular-meta">
+                                                    BACKEND — APR 2, 2026
+                                                </div>
+                                                <h4>
+                                                    Distributed Systems Are
+                                                    Hard — Here's What Helped
+                                                    Me
+                                                </h4>
+                                            </div>
+                                        </a>
+
+                                        <a href="#" class="popular-card">
+                                            <img
+                                            src="/images/icons/fashion.jpg"
+                                            alt="Java code with lambda expressions and streams"
+                                            />
+                                            <div class="popular-content">
+                                                <div class="popular-meta">
+                                                    JAVA — MAR 15, 2026
+                                                </div>
+                                                <h4>
+                                                    Java Streams and
+                                                    Functional Programming:
+                                                    What I Wish I Knew Earlier
+                                                </h4>
+                                            </div>
+                                        </a>
+
+                                        <a href="#" class="popular-card">
+                                            <img
+                                            src="/images/icons/technology.jpg"
+                                            alt="Spring Boot application with annotations and autoconfiguration"
+                                            />
+                                            <div class="popular-content">
+                                                <div class="popular-meta">
+                                                    SPRING BOOT — FEB 28, 2026
+                                                </div>
+                                                <h4>
+                                                    Spring Boot Beyond the
+                                                    Basics: Configuration That
+                                                    Works
+                                                </h4>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </section>
+
+                                <!-- Categories -->
+
+                                <section class="categories">
+                                    <h3>Categories</h3>
+
+                                    <div class="category-list">
+                                        <a href="#">Backend</a>
+
+                                        <a href="#">Java</a>
+
+                                        <a href="#">Spring Boot</a>
+
+                                        <a href="#">AI</a>
+
+                                        <a href="#">System Design</a>
+                                    </div>
+                                </section>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <div id="footer"></div>
+
+        <script src="../../components/components.js" defer></script>
+        <script src="../../js/script.js" defer></script>
+        <script src="../../js/article.js" defer></script>
+    </body>
+</html>
